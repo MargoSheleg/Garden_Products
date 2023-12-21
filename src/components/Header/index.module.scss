@@ -1,0 +1,19 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4vh;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 4vh;
+}
+
+a {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 20px;
+  font-family: "Montserrat", sans-serif;
+}
