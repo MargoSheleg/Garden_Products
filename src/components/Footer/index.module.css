@@ -1,0 +1,100 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.contactsInfo {
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: "phone phone socials" "address address working-hours";
+  padding: 4vh;
+  gap: 4vh;
+}
+
+.contactsP {
+  padding-left: 4vh;
+  padding-right: 4vh;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 64px;
+  color: #282828;
+}
+
+.phone {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-area: phone;
+  background-color: #f1f3f4;
+  border-radius: 10px;
+  padding: 3vh;
+}
+
+.socials {
+  -ms-grid-row: 1;
+  -ms-grid-column: 5;
+  grid-area: socials;
+  background-color: #f1f3f4;
+  border-radius: 10px;
+  padding: 3vh;
+}
+
+.address {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-area: address;
+  background-color: #f1f3f4;
+  border-radius: 10px;
+  padding: 3vh;
+}
+
+.workingHours {
+  -ms-grid-row: 3;
+  -ms-grid-column: 5;
+  grid-area: working-hours;
+  background-color: #f1f3f4;
+  border-radius: 10px;
+  padding: 3vh;
+}
+
+.phoneP,
+.socialsP,
+.addressP,
+.workingHoursP {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: #8b8b8b;
+  padding-bottom: 2vh;
+}
+
+.phoneText,
+.addressText,
+.workingHoursText {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 40px;
+  color: #282828;
+}
+
+.twoIconsInSocials {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  gap: 2vh;
+}
+
+.map {
+  border-radius: 10px;
+  min-height: 350px;
+  width: 100%;
+  padding-left: 4vh;
+  padding-right: 4vh;
+  padding-bottom: 4vh;
+}

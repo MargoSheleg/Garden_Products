@@ -2,6 +2,7 @@ import logo from "../../assets/images/logo.svg";
 import cart from "../../assets/images/cart.svg";
 import styles from "./index.module.css";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Header() {
   let [btnColorMainpage, changeBtnColorMainPage] = useState("black");
@@ -47,48 +48,56 @@ function Header() {
   return (
     <header className={styles.Header}>
       <div>
-        <img src={logo} />
+        <Link to="/">
+          <img src={logo} />
+        </Link>
       </div>
       <nav className={styles.nav}>
-        <a
+        <Link
+          to="/"
           style={{ color: btnColorMainpage }}
-          className={styles.a}
+          className={styles.Link}
           href=""
           onMouseOver={btnTurnGreenMainPage}
           onMouseOut={btnTurnBlackEverything}
         >
           Main Page
-        </a>
-        <a
+        </Link>
+        <Link
+          to="/categories"
           style={{ color: btnColorCategories }}
-          className={styles.a}
+          className={styles.Link}
           href=""
           onMouseOver={btnTurnGreenCategories}
           onMouseOut={btnTurnBlackEverything}
         >
           Categories
-        </a>
-        <a
+        </Link>
+        <Link
+          to="/allproducts"
           style={{ color: btnColorAllproducts }}
-          className={styles.a}
+          className={styles.Link}
           href=""
           onMouseOver={btnTurnGreenAllproducts}
           onMouseOut={btnTurnBlackEverything}
         >
           All products
-        </a>
-        <a
+        </Link>
+        <Link
+          to="allsales"
           style={{ color: btnColorAllsales }}
-          className={styles.a}
+          className={styles.Link}
           href=""
           onMouseOver={btnTurnGreenAllsales}
           onMouseOut={btnTurnBlackEverything}
         >
           All sales
-        </a>
+        </Link>
       </nav>
       <div>
-        <img src={cart} />
+        <Link>
+          <img src={cart} />
+        </Link>
       </div>
     </header>
   );

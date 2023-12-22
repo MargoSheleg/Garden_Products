@@ -1,15 +1,21 @@
 import "./App.css";
 import Header from "./components/Header";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home/index";
+import Footer from "./components/Footer/index";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/" element={<Categories />} />
-      <Route path="/" element={<AllProducts />} />
-      <Route path="/" element={<AllSales />} />
-    </Routes>
+    <>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        {/* <Route path="/categories" element={<Categories />} />
+      <Route path="/allproducts" element={<AllProducts />} />
+      <Route path="/allsales" element={<AllSales />} /> */}
+      </Routes>
+      <Footer />
+    </>
   );
 }
 
