@@ -1,0 +1,40 @@
+@import "../../styles/variables";
+
+.notFound {
+  padding: 6%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btnGoHome {
+  @include stylesForGreenBtn;
+}
+
+.pageNotFound {
+  color: $thisBlackColor;
+  font: {
+    family: $fontMontserrat;
+    weight: 700;
+    size: 64px;
+  }
+  margin: 2%;
+}
+
+.pOfTheError {
+  margin: 2%;
+  color: $thidDarkGrayColor;
+  font: {
+    family: $fontMontserrat;
+    weight: 500;
+    size: 20px;
+  }
+  text-align: center;
+}
+
+.btnGoHome {
+  @include stylesForGreenBtn;
+  padding: 2vh 4vw 2vh 4vw;
+  margin: 2%;
+  white-space: nowrap;
+}

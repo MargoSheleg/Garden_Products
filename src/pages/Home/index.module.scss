@@ -1,0 +1,174 @@
+@import "../../styles/variables";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// =============================Amazing Discounts=========================================================
+
+.amazingDiscountsDiv {
+  background-image: url(../../assets/images/gardenerAtWork.svg);
+  background-size: auto 100vh;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh;
+
+  padding: 4vh;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 4%;
+}
+
+h1 {
+  font: {
+    family: $fontMontserrat;
+    weight: 700;
+    size: 96px;
+  }
+  color: white;
+}
+
+.checkOutBtn {
+  @include stylesForGreenBtn;
+  padding: 1% 4% 1% 4%;
+}
+
+// ============================Categories==================================================
+
+.categories {
+  padding: 7vh 4vh 5vh 4vh;
+}
+
+h2 {
+  font: {
+    family: $fontMontserrat;
+    weight: 700;
+    size: 64px;
+  }
+  color: $thisBlackColor;
+}
+
+.categoriesTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.buttonAllCategories {
+  @include stylesForGrayBtn;
+}
+
+.buttonAllCategories::before {
+  @include stylesForGrayBtnBefore;
+}
+
+.categoriesFourBlocks {
+  display: flex;
+  justify-content: space-between;
+  padding: 4% 0 4% 0;
+}
+
+.categoriesBlockDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+}
+
+.categoriesBlocksImg {
+  position: relative;
+  max-width: 310px;
+  height: 100%;
+
+  border-radius: 6px 6px 0 0;
+}
+
+.categoriesBlocksP {
+  font: {
+    family: $fontMontserrat;
+    weight: 500;
+    size: 20px;
+  }
+  text-align: center;
+  color: $thisBlackColor;
+}
+
+.link {
+  text-decoration: none;
+  overflow: visible;
+  border-radius: 6px;
+}
+
+.link:hover {
+  box-shadow: 1px 2px 6px 2px $thisGrayColor;
+}
+
+// =====================================Get discount===========================================
+
+.discount {
+  margin: 4vh;
+  padding: 3vh;
+  border-radius: 6px;
+  background: linear-gradient(to left, $thisDarkGreenColor, $thisGreenColor);
+  margin: 3vh;
+}
+
+.discountText {
+  font: {
+    family: $fontMontserrat;
+    weight: 700;
+    size: 64px;
+  }
+  color: $thisWhiteColor;
+  text-align: center;
+  padding: 1vh;
+}
+
+.photoAndInputs {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+}
+
+.inputDiscount {
+  border-radius: 6px;
+  margin: 1vh;
+  padding: 1vh;
+  background: transparent;
+  border: 2px $thisWhiteColor solid;
+  color: $thisWhiteColor;
+  outline: none;
+  height: 6vh;
+  font-size: 27px;
+}
+
+.inputDiscount::placeholder {
+  color: $thisWhiteColor;
+}
+
+.inputDiscount:focus::placeholder {
+  color: $thisGrayColor;
+}
+
+.getDiscount {
+  display: flex;
+  flex-direction: column;
+}
+
+.btnGetDiscount {
+  background-color: $thisWhiteColor;
+  border: none;
+  margin: 1vh;
+  padding: 2vh;
+  border-radius: 6px;
+  color: $thisBlackColor;
+  font: {
+    family: $fontMontserrat;
+    weight: 600;
+    size: 20px;
+  }
+  cursor: pointer;
+}

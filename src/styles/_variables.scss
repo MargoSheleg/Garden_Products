@@ -4,5 +4,50 @@
   padding: 3vh;
 }
 
+@mixin stylesForGreenBtn {
+  font: {
+    family: $fontMontserrat;
+    weight: 600;
+    size: 20px;
+  }
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+@mixin stylesForGrayBtn {
+  position: relative;
+  border: 1px solid $thisGrayColor;
+  border-radius: 6px;
+  padding: 0.5vh 1vw 0.5vh 1vw;
+  font: {
+    family: $fontMontserrat;
+    weight: 500;
+    size: 16px;
+  }
+  color: $thidDarkGrayColor;
+  background-color: transparent;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+@mixin stylesForGrayBtnBefore {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -1px;
+  width: 68vw;
+  height: 1px;
+  background-color: $thisGrayColor;
+}
+
 $fontMontserrat: "Montserrat", sans-serif;
-$textColorBlack: #282828;
+
+$thisBlackColor: #282828;
+$thisGreenColor: #339933;
+$thisGrayColor: #dddddd;
+$thidDarkGrayColor: #8b8b8b;
+$thisWhiteColor: #ffffff;
+$thisDarkGreenColor: #0b710b;

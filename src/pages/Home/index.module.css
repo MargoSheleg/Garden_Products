@@ -1,0 +1,243 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.amazingDiscountsDiv {
+  background-image: url(../../assets/images/gardenerAtWork.svg);
+  background-size: auto 100vh;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh;
+  padding: 4vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 4%;
+}
+
+h1 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 96px;
+  color: white;
+}
+
+.checkOutBtn {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 1% 4% 1% 4%;
+}
+
+.categories {
+  padding: 7vh 4vh 5vh 4vh;
+}
+
+h2 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 64px;
+  color: #282828;
+}
+
+.categoriesTitle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+.buttonAllCategories {
+  position: relative;
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+  padding: 0.5vh 1vw 0.5vh 1vw;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #8b8b8b;
+  background-color: transparent;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.buttonAllCategories::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -1px;
+  width: 68vw;
+  height: 1px;
+  background-color: #dddddd;
+}
+
+.categoriesFourBlocks {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 4% 0 4% 0;
+}
+
+.categoriesBlockDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 2vh;
+}
+
+.categoriesBlocksImg {
+  position: relative;
+  max-width: 310px;
+  height: 100%;
+  border-radius: 6px 6px 0 0;
+}
+
+.categoriesBlocksP {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  text-align: center;
+  color: #282828;
+}
+
+.link {
+  text-decoration: none;
+  overflow: visible;
+  border-radius: 6px;
+}
+
+.link:hover {
+  -webkit-box-shadow: 1px 2px 6px 2px #dddddd;
+          box-shadow: 1px 2px 6px 2px #dddddd;
+}
+
+.discount {
+  margin: 4vh;
+  padding: 3vh;
+  border-radius: 6px;
+  background: -webkit-gradient(linear, right top, left top, from(#0b710b), to(#339933));
+  background: linear-gradient(to left, #0b710b, #339933);
+  margin: 3vh;
+}
+
+.discountText {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 64px;
+  color: #ffffff;
+  text-align: center;
+  padding: 1vh;
+}
+
+.photoAndInputs {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1.4fr 1fr;
+  grid-template-columns: 1.4fr 1fr;
+}
+
+.inputDiscount {
+  border-radius: 6px;
+  margin: 1vh;
+  padding: 1vh;
+  background: transparent;
+  border: 2px #ffffff solid;
+  color: #ffffff;
+  outline: none;
+  height: 6vh;
+  font-size: 27px;
+}
+
+.inputDiscount::-webkit-input-placeholder {
+  color: #ffffff;
+}
+
+.inputDiscount::-moz-placeholder {
+  color: #ffffff;
+}
+
+.inputDiscount:-ms-input-placeholder {
+  color: #ffffff;
+}
+
+.inputDiscount::-ms-input-placeholder {
+  color: #ffffff;
+}
+
+.inputDiscount::placeholder {
+  color: #ffffff;
+}
+
+.inputDiscount:focus::-webkit-input-placeholder {
+  color: #dddddd;
+}
+
+.inputDiscount:focus::-moz-placeholder {
+  color: #dddddd;
+}
+
+.inputDiscount:focus:-ms-input-placeholder {
+  color: #dddddd;
+}
+
+.inputDiscount:focus::-ms-input-placeholder {
+  color: #dddddd;
+}
+
+.inputDiscount:focus::placeholder {
+  color: #dddddd;
+}
+
+.getDiscount {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.btnGetDiscount {
+  background-color: #ffffff;
+  border: none;
+  margin: 1vh;
+  padding: 2vh;
+  border-radius: 6px;
+  color: #282828;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  cursor: pointer;
+}

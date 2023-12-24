@@ -3,46 +3,47 @@ import cart from "../../assets/images/cart.svg";
 import styles from "./index.module.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { green, back, black } from "../../utils/index";
 
 function Header() {
-  let [btnColorMainpage, changeBtnColorMainPage] = useState("black");
-  let [btnColorCategories, changeBtnColorCategories] = useState("black");
-  let [btnColorAllproducts, changeBtnColorAllproducts] = useState("black");
-  let [btnColorAllsales, changeBtnColorAllsales] = useState("black");
+  let [btnColorMainpage, changeBtnColorMainPage] = useState(black);
+  let [btnColorCategories, changeBtnColorCategories] = useState(black);
+  let [btnColorAllproducts, changeBtnColorAllproducts] = useState(black);
+  let [btnColorAllsales, changeBtnColorAllsales] = useState(black);
 
   function btnTurnGreenMainPage() {
-    changeBtnColorMainPage("green");
-    changeBtnColorCategories("black");
-    changeBtnColorAllproducts("black");
-    changeBtnColorAllsales("black");
+    changeBtnColorMainPage(green);
+    changeBtnColorCategories(black);
+    changeBtnColorAllproducts(black);
+    changeBtnColorAllsales(black);
   }
 
   function btnTurnGreenCategories() {
-    changeBtnColorMainPage("black");
-    changeBtnColorCategories("green");
-    changeBtnColorAllproducts("black");
-    changeBtnColorAllsales("black");
+    changeBtnColorMainPage(black);
+    changeBtnColorCategories(green);
+    changeBtnColorAllproducts(black);
+    changeBtnColorAllsales(black);
   }
 
   function btnTurnGreenAllproducts() {
-    changeBtnColorMainPage("black");
-    changeBtnColorCategories("black");
-    changeBtnColorAllproducts("green");
-    changeBtnColorAllsales("black");
+    changeBtnColorMainPage(black);
+    changeBtnColorCategories(black);
+    changeBtnColorAllproducts(green);
+    changeBtnColorAllsales(black);
   }
 
   function btnTurnGreenAllsales() {
-    changeBtnColorMainPage("black");
-    changeBtnColorCategories("black");
-    changeBtnColorAllproducts("black");
-    changeBtnColorAllsales("green");
+    changeBtnColorMainPage(black);
+    changeBtnColorCategories(black);
+    changeBtnColorAllproducts(black);
+    changeBtnColorAllsales(green);
   }
 
   function btnTurnBlackEverything() {
-    changeBtnColorMainPage("black");
-    changeBtnColorCategories("black");
-    changeBtnColorAllproducts("black");
-    changeBtnColorAllsales("black");
+    changeBtnColorMainPage(black);
+    changeBtnColorCategories(black);
+    changeBtnColorAllproducts(black);
+    changeBtnColorAllsales(black);
   }
 
   return (
