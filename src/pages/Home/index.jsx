@@ -1,18 +1,10 @@
 import styles from "./index.module.css";
-import { animateScroll } from "react-scroll";
 import { green, black, white } from "../../utils/index";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as handsImage } from "../../assets/images/hands.svg";
 
 function Home() {
-  const scrollToAnchor = () => {
-    animateScroll.scrollTo("anchor", {
-      smooth: true,
-      duration: 500,
-    });
-  };
-
   const [btnColorGreen, changeBtnColorGB] = useState(green);
 
   const [btnColorWhite, changeBtnColorWB] = useState(white);
@@ -22,8 +14,10 @@ function Home() {
     changeBtnColorGB(color);
   }
   function changeColorOfBtnBlackAndWhite(bgColor, color) {
-    changeBtnColorWB(bgColor);
-    changeBtnTextColor(color);
+    if (getADiscountBtn === "Get a discount") {
+      changeBtnColorWB(bgColor);
+      changeBtnTextColor(color);
+    }
   }
 
   const [categoriesFromServer, setCategoriesFromServer] = useState([]);
@@ -44,9 +38,46 @@ function Home() {
       });
   }, []);
 
+  const [getADiscountBtn, changeGetADiscountBtn] = useState("Get a discount");
+
   const [nameTitle, setNameTitle] = useState("");
   const [phoneTitle, setPhoneTitle] = useState("");
   const [emailTitle, setEmailTitle] = useState("");
+
+  const [errorAllFields, setErrorAllFields] = useState("none");
+
+  const [errorText, setErrorText] = useState("All fields must be filled!");
+
+  function changeTheTextBtnAndSendReq(color, bgColor) {
+    if (nameTitle !== "" && phoneTitle !== "" && emailTitle !== "") {
+      // if (typeof phoneTitle === "number") {
+      const obj = {
+        name: nameTitle,
+        phoneNumber: phoneTitle,
+        email: emailTitle,
+      };
+      fetch("http://localhost:3333", {
+        method: "POST",
+        body: JSON.stringify(obj),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      changeBtnTextColor(color);
+      changeBtnColorWB(bgColor);
+      changeGetADiscountBtn("Request Submitted");
+      setErrorAllFields("none");
+
+      setNameTitle("");
+      setPhoneTitle("");
+      setEmailTitle("");
+      // } else {
+      //   setErrorText("Phone number must contain numbers");
+      // }
+    } else {
+      setErrorAllFields("inline");
+    }
+  }
 
   return (
     <div>
@@ -59,14 +90,13 @@ function Home() {
           className={styles.checkOutBtn}
           onMouseEnter={() => changeColorOfBtnBlackAndGreen(black)}
           onMouseLeave={() => changeColorOfBtnBlackAndGreen(green)}
-          onClick={scrollToAnchor}
           style={{ backgroundColor: btnColorGreen }}
         >
           Check out
         </button>
       </div>
 
-      <div id="anchor" className={styles.categories}>
+      <div className={styles.categories}>
         <div className={styles.categoriesTitle}>
           <h2 className={styles.h2}>Categories</h2>
           <Link to="/categories">
@@ -75,7 +105,7 @@ function Home() {
             </button>
           </Link>
         </div>
-        <div className={styles.categoriesFourBlocks}>
+        <div className={styles.categoriesFiveBlocks}>
           {categoriesFromServer &&
             categoriesFromServer.map((el) => (
               <Link
@@ -127,16 +157,30 @@ function Home() {
               placeholder="Email"
               type="text"
             />
+            <p
+              className={styles.errorNotAllFieldsFilled}
+              style={{ display: errorAllFields }}
+            >
+              {errorText}
+            </p>
             <button
               style={{ backgroundColor: btnColorWhite, color: btnTextColor }}
               className={styles.btnGetDiscount}
               onMouseEnter={() => changeColorOfBtnBlackAndWhite(black, white)}
               onMouseLeave={() => changeColorOfBtnBlackAndWhite(white, black)}
+              onClick={() => changeTheTextBtnAndSendReq(green, white)}
             >
-              Get a discount
+              {getADiscountBtn}
             </button>
           </div>
         </div>
+      </div>
+
+      <div className={styles.saleTitle}>
+        <h2 className={styles.saleh2}>Sale</h2>
+        <Link to="/allsales">
+          <button className={styles.buttonAllSales}>All sales</button>
+        </Link>
       </div>
     </div>
   );

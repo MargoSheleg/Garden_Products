@@ -44,12 +44,7 @@ h1 {
 }
 
 h2 {
-  font: {
-    family: $fontMontserrat;
-    weight: 700;
-    size: 64px;
-  }
-  color: $thisBlackColor;
+  @include stylesForH;
 }
 
 .categoriesTitle {
@@ -67,7 +62,7 @@ h2 {
   @include stylesForGrayBtnBefore;
 }
 
-.categoriesFourBlocks {
+.categoriesFiveBlocks {
   display: flex;
   justify-content: space-between;
   padding: 4% 0 4% 0;
@@ -171,4 +166,34 @@ h2 {
     size: 20px;
   }
   cursor: pointer;
+}
+
+.errorNotAllFieldsFilled {
+  color: red;
+  background-color: $thisWhiteColor;
+  border-radius: 6px;
+  width: fit-content;
+  margin: 2vh;
+}
+
+//======================================Sale============================================================
+
+.buttonAllSales {
+  @include stylesForGrayBtn;
+}
+
+.buttonAllSales::before {
+  @include stylesForGrayBtnBefore;
+}
+
+.saleTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 4vh;
+}
+
+.saleh2 {
+  @include stylesForH;
 }

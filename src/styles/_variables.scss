@@ -43,6 +43,15 @@
   background-color: $thisGrayColor;
 }
 
+@mixin stylesForH {
+  font: {
+    family: $fontMontserrat;
+    weight: 700;
+    size: 64px;
+  }
+  color: $thisBlackColor;
+}
+
 $fontMontserrat: "Montserrat", sans-serif;
 
 $thisBlackColor: #282828;
