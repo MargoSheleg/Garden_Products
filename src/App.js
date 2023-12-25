@@ -6,6 +6,7 @@ import NotFound from "./pages/NotFound";
 import Categories from "./pages/Categories";
 import { useState, useEffect } from "react";
 import AllProducts from "./pages/AllProducts";
+import AllSales from "./pages/AllSales";
 
 function App() {
   const [categoriesFromServer, setCategoriesFromServer] = useState([]);
@@ -26,7 +27,23 @@ function App() {
       });
   }, []);
 
-  useEffect(() => {}, []);
+  const [productsFromServer, setProductsFromServer] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3333/products/all")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setProductsFromServer(data);
+      })
+      .catch((error) => {
+        console.log("Fetch error", error);
+      });
+  }, []);
 
   return (
     <>
@@ -34,15 +51,23 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Home categoriesFromServer={categoriesFromServer} />}
+          element={
+            <Home
+              categoriesFromServer={categoriesFromServer}
+              productsFromServer={productsFromServer}
+            />
+          }
         />
         <Route
           path="/categories"
           element={<Categories categoriesFromServer={categoriesFromServer} />}
         />
-        <Route path="/allproducts" element={<AllProducts />} />
+        <Route
+          path="/allproducts"
+          element={<AllProducts productsFromServer={productsFromServer} />}
+        />
 
-        {/* <Route path="/allsales" element={<AllSales />} /> */}
+        <Route path="/allsales" element={<AllSales />} />
 
         {/* {for(let i = 1; i < ){
 

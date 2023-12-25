@@ -5,21 +5,16 @@
           box-sizing: border-box;
 }
 
+.footer {
+  padding: 4vh;
+}
+
 .contactsInfo {
   display: -ms-grid;
   display: grid;
       grid-template-areas: "phone phone socials" "address address working-hours";
-  padding: 4vh;
+  padding: 4vh 0 4vh 0;
   gap: 4vh;
-}
-
-.contactsP {
-  padding-left: 4vh;
-  padding-right: 4vh;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 700;
-  font-size: 64px;
-  color: #282828;
 }
 
 .phone {
@@ -94,7 +89,5 @@
   border-radius: 10px;
   min-height: 350px;
   width: 100%;
-  padding-left: 4vh;
-  padding-right: 4vh;
-  padding-bottom: 4vh;
+  padding: 0 0 4vh 0;
 }

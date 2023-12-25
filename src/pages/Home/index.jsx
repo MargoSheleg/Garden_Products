@@ -1,10 +1,12 @@
 import styles from "./index.module.css";
 import { green, black, white } from "../../utils/index";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as handsImage } from "../../assets/images/hands.svg";
+import NavButton from "../../components/NavButton";
+import Title from "../../components/Title/index";
 
-function Home({ categoriesFromServer }) {
+function Home({ categoriesFromServer, productsFromServer }) {
   const [btnColorGreen, changeBtnColorGB] = useState(green);
 
   const [btnColorWhite, changeBtnColorWB] = useState(white);
@@ -37,7 +39,7 @@ function Home({ categoriesFromServer }) {
         phoneNumber: phoneTitle,
         email: emailTitle,
       };
-      fetch("http://localhost:3333", {
+      fetch("http://localhost:3333/sale/send", {
         method: "POST",
         body: JSON.stringify(obj),
         headers: {
@@ -76,12 +78,13 @@ function Home({ categoriesFromServer }) {
 
       <div className={styles.categories}>
         <div className={styles.categoriesTitle}>
-          <h2 className={styles.h2}>Categories</h2>
-          <Link to="/categories">
-            <button className={styles.buttonAllCategories}>
-              All categories
-            </button>
-          </Link>
+          <Title title={"Categories"} />
+
+          <NavButton
+            title={"All categories"}
+            color={black}
+            linkTo={"/categories"}
+          />
         </div>
         <div className={styles.categoriesFiveBlocks}>
           {categoriesFromServer &&
@@ -150,13 +153,11 @@ function Home({ categoriesFromServer }) {
       </div>
 
       <div className={styles.saleTitle}>
-        <h2 className={styles.saleh2}>Sale</h2>
-        <Link to="/allsales">
-          <button className={styles.buttonAllSales}>All sales</button>
-        </Link>
+        <Title title={"Sale"} />
+        <NavButton title={"All sales"} linkTo={"/allsales"} />
       </div>
 
-      <div className={styles.saleBlocksDiv}></div>
+      <div className={styles.saleBlocksDiv}>{}</div>
     </div>
   );
 }

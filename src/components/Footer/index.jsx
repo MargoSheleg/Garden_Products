@@ -3,11 +3,12 @@ import instagramLogo from "../../assets/images/instagramLogo.svg";
 import whatsappLogo from "../../assets/images/whatsappLogo.svg";
 import map from "../../assets/images/map.svg";
 import styles from "./index.module.css";
+import Title from "../../components/Title/index";
 
 function Footer() {
   return (
-    <footer>
-      <p className={styles.contactsP}>Contacts</p>
+    <footer className={styles.footer}>
+      <Title title={"Contacts"} />
       <div className={styles.contactsInfo}>
         <div className={styles.phone}>
           <p className={styles.phoneP}>Phone</p>

@@ -50,13 +50,6 @@ h1 {
   padding: 7vh 4vh 5vh 4vh;
 }
 
-h2 {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 700;
-  font-size: 64px;
-  color: #282828;
-}
-
 .categoriesTitle {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -68,31 +61,6 @@ h2 {
       -ms-flex-align: center;
           align-items: center;
   position: relative;
-}
-
-.buttonAllCategories {
-  position: relative;
-  border: 1px solid #dddddd;
-  border-radius: 6px;
-  padding: 0.5vh 1vw 0.5vh 1vw;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  color: #8b8b8b;
-  background-color: transparent;
-  white-space: nowrap;
-  cursor: pointer;
-}
-
-.buttonAllCategories::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 100%;
-  margin-top: -1px;
-  height: 1px;
-  background-color: #dddddd;
-  width: 68vw;
 }
 
 .categoriesFiveBlocks {

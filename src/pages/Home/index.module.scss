@@ -43,24 +43,11 @@ h1 {
   padding: 7vh 4vh 5vh 4vh;
 }
 
-h2 {
-  @include stylesForH;
-}
-
 .categoriesTitle {
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
-}
-
-.buttonAllCategories {
-  @include stylesForGrayBtn;
-}
-
-.buttonAllCategories::before {
-  @include stylesForGrayBtnBefore;
-  width: 68vw;
 }
 
 .categoriesFiveBlocks {
