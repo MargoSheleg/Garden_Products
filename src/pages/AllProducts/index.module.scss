@@ -1,0 +1,41 @@
+@import "../../styles/variables";
+
+.threeBtnContainer {
+  display: flex;
+  justify-content: flex-start;
+  gap: 3vh;
+  padding-bottom: 2vh;
+}
+
+.linkToMainPage {
+  text-decoration: none;
+}
+
+.btnToMainPage {
+  @include stylesForGrayBtn;
+}
+
+.btnToAllProducts {
+  @include stylesForGrayBtn;
+  color: $thisBlackColor;
+}
+
+.btnToAllProducts::before {
+  @include stylesForGrayBtnBefore;
+  width: 3vh;
+}
+
+.allProductsPage {
+  padding: 7vh 4vh 5vh 4vh;
+}
+
+.allProductsPageTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.pageAllProdH2 {
+  @include stylesForH;
+}

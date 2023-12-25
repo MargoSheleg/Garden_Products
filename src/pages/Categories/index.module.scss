@@ -1,29 +1,29 @@
 @import "../../styles/variables";
 
-.btnToMainPage {
-  @include stylesForGrayBtn;
-}
+// .btnToMainPage {
+//   @include stylesForGrayBtn;
+// }
 
-.btnToCategories {
-  @include stylesForGrayBtn;
-  color: $thisBlackColor;
-}
+// .btnToCategories {
+//   @include stylesForGrayBtn;
+//   color: $thisBlackColor;
+// }
 
-.btnToCategories::before {
-  @include stylesForGrayBtnBefore;
-  width: 3vh;
-}
+// .btnToCategories::before {
+//   @include stylesForGrayBtnBefore;
+//   width: 3vh;
+// }
 
-.linkToMainPage {
-  text-decoration: none;
-}
+// .linkToMainPage {
+//   text-decoration: none;
+// }
 
-.twoBtnContainer {
-  display: flex;
-  justify-content: flex-start;
-  gap: 3vh;
-  padding-bottom: 2vh;
-}
+// .twoBtnContainer {
+//   display: flex;
+//   justify-content: flex-start;
+//   gap: 3vh;
+//   padding-bottom: 2vh;
+// }
 
 .categoriesPage {
   padding: 7vh 4vh 5vh 4vh;

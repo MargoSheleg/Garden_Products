@@ -1,36 +1,14 @@
 import { useEffect, useState } from "react";
 import styles from "./index.module.css";
 import { Link } from "react-router-dom";
+import NavButtons from "../../components/NavButtons/index";
 
-function Categories() {
-  // ======================ПОВТОР ИЗ HOME, СДЕЛАТЬ ЕДИНУЮ ПАПКУ!!!=========================================================
-  const [categoriesFromServer, setCategoriesFromServer] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:3333/categories/all")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setCategoriesFromServer(data);
-      })
-      .catch((error) => {
-        console.log("Fetch error", error);
-      });
-  }, []);
-  // =============================================================================================================
+function Categories({ categoriesFromServer }) {
   return (
     <div className={styles.categoriesPage}>
       {/* ======================ПОВТОР ИЗ HOME, СДЕЛАТЬ ЕДИНУЮ ПАПКУ!!!==================================================== */}
-      <div className={styles.twoBtnContainer}>
-        <Link className={styles.linkToMainPage} to="/">
-          <button className={styles.btnToMainPage}>Main page</button>
-        </Link>
-        <button className={styles.btnToCategories}>Categories</button>
-      </div>
+
+      <NavButtons title={"Categories"} />
 
       <div className={styles.categoriesPageTitle}>
         <h2 className={styles.pageCatH2}>Categories</h2>

@@ -1,0 +1,11 @@
+@import "../../styles/variables";
+
+.btnTo {
+  @include stylesForGrayBtn;
+  color: $thisBlackColor;
+}
+
+.btnTo::before {
+  @include stylesForGrayBtnBefore;
+  width: 3vh;
+}

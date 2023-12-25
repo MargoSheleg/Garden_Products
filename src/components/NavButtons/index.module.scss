@@ -1,0 +1,16 @@
+@import "../../styles/variables";
+
+.btnsContainer {
+  display: flex;
+  justify-content: flex-start;
+  gap: 3vh;
+  padding-bottom: 2vh;
+}
+
+.linkToMainPage {
+  text-decoration: none;
+}
+
+.btnToMainPage {
+  @include stylesForGrayBtn;
+}

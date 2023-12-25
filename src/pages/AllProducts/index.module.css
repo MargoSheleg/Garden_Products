@@ -1,0 +1,78 @@
+.threeBtnContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  gap: 3vh;
+  padding-bottom: 2vh;
+}
+
+.linkToMainPage {
+  text-decoration: none;
+}
+
+.btnToMainPage {
+  position: relative;
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+  padding: 0.5vh 1vw 0.5vh 1vw;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #8b8b8b;
+  background-color: transparent;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.btnToAllProducts {
+  position: relative;
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+  padding: 0.5vh 1vw 0.5vh 1vw;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #8b8b8b;
+  background-color: transparent;
+  white-space: nowrap;
+  cursor: pointer;
+  color: #282828;
+}
+
+.btnToAllProducts::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -1px;
+  height: 1px;
+  background-color: #dddddd;
+  width: 3vh;
+}
+
+.allProductsPage {
+  padding: 7vh 4vh 5vh 4vh;
+}
+
+.allProductsPageTitle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+.pageAllProdH2 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 64px;
+  color: #282828;
+}

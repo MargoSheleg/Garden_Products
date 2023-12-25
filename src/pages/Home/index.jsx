@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as handsImage } from "../../assets/images/hands.svg";
 
-function Home() {
+function Home({ categoriesFromServer }) {
   const [btnColorGreen, changeBtnColorGB] = useState(green);
 
   const [btnColorWhite, changeBtnColorWB] = useState(white);
@@ -19,24 +19,6 @@ function Home() {
       changeBtnTextColor(color);
     }
   }
-
-  const [categoriesFromServer, setCategoriesFromServer] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:3333/categories/all")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setCategoriesFromServer(data);
-      })
-      .catch((error) => {
-        console.log("Fetch error", error);
-      });
-  }, []);
 
   const [getADiscountBtn, changeGetADiscountBtn] = useState("Get a discount");
 
