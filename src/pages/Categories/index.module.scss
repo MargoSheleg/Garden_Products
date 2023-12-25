@@ -1,0 +1,83 @@
+@import "../../styles/variables";
+
+.btnToMainPage {
+  @include stylesForGrayBtn;
+}
+
+.btnToCategories {
+  @include stylesForGrayBtn;
+  color: $thisBlackColor;
+}
+
+.btnToCategories::before {
+  @include stylesForGrayBtnBefore;
+  width: 3vh;
+}
+
+.linkToMainPage {
+  text-decoration: none;
+}
+
+.twoBtnContainer {
+  display: flex;
+  justify-content: flex-start;
+  gap: 3vh;
+  padding-bottom: 2vh;
+}
+
+.categoriesPage {
+  padding: 7vh 4vh 5vh 4vh;
+}
+
+.pageCatH2 {
+  @include stylesForH;
+}
+
+.categoriesPageTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.categoriesPageBlock {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 4vh;
+  white-space: wrap;
+  padding: 4% 0 4% 0;
+}
+
+.catLink {
+  text-decoration: none;
+  overflow: visible;
+  border-radius: 6px;
+}
+
+.catLink:hover {
+  box-shadow: 1px 2px 6px 2px $thisGrayColor;
+}
+
+.categoriesPageBlockDiv {
+  display: grid;
+  grid-template-rows: 3fr 1fr;
+  gap: 2vh;
+}
+
+.categoriesPageBlocksImg {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  border-radius: 6px 6px 0 0;
+}
+
+.categoriesPageBlocksP {
+  font: {
+    family: $fontMontserrat;
+    weight: 500;
+    size: 20px;
+  }
+  text-align: center;
+  color: $thisBlackColor;
+}

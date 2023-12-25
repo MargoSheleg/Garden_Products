@@ -46,11 +46,10 @@ function Home() {
 
   const [errorAllFields, setErrorAllFields] = useState("none");
 
-  const [errorText, setErrorText] = useState("All fields must be filled!");
+  const errorText = "All fields must be filled!";
 
   function changeTheTextBtnAndSendReq(color, bgColor) {
     if (nameTitle !== "" && phoneTitle !== "" && emailTitle !== "") {
-      // if (typeof phoneTitle === "number") {
       const obj = {
         name: nameTitle,
         phoneNumber: phoneTitle,
@@ -71,9 +70,6 @@ function Home() {
       setNameTitle("");
       setPhoneTitle("");
       setEmailTitle("");
-      // } else {
-      //   setErrorText("Phone number must contain numbers");
-      // }
     } else {
       setErrorAllFields("inline");
     }
@@ -119,12 +115,7 @@ function Home() {
                     src={"http://localhost:3333" + el.image}
                     alt={el.title}
                   />
-                  <p
-                    className={styles.categoriesBlocksP}
-                    to={`/categories/${el.id}`}
-                  >
-                    {el.title}
-                  </p>
+                  <p className={styles.categoriesBlocksP}>{el.title}</p>
                 </div>
               </Link>
             ))}
@@ -182,6 +173,8 @@ function Home() {
           <button className={styles.buttonAllSales}>All sales</button>
         </Link>
       </div>
+
+      <div className={styles.saleBlocksDiv}></div>
     </div>
   );
 }

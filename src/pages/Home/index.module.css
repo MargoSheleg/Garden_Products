@@ -21,7 +21,7 @@
           flex-direction: column;
   -webkit-box-align: start;
       -ms-flex-align: start;
-          align-items: start;
+          align-items: flex-start;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -90,9 +90,9 @@ h2 {
   top: 50%;
   right: 100%;
   margin-top: -1px;
-  width: 68vw;
   height: 1px;
   background-color: #dddddd;
+  width: 68vw;
 }
 
 .categoriesFiveBlocks {
@@ -272,7 +272,6 @@ h2 {
   top: 50%;
   right: 100%;
   margin-top: -1px;
-  width: 68vw;
   height: 1px;
   background-color: #dddddd;
 }
