@@ -4,12 +4,13 @@
   display: flex;
   justify-content: flex-start;
   gap: 3vh;
-  padding-bottom: 2vh;
-  padding: 7vh 4vh 5vh 4vh;
+  // padding-bottom: 2vh;
+  // padding: 7vh 4vh 5vh 0;
 }
 
 .linkToMainPage {
   text-decoration: none;
+  padding: 7vh 0 7vh 0;
 }
 
 .btnToMainPage {

@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import styles from "./index.module.css";
 import { Link } from "react-router-dom";
 import NavButtons from "../../components/NavButtons/index";
+import { black } from "../../utils/index";
 
 function Categories({ categoriesFromServer }) {
   return (
     <div className={styles.categoriesPage}>
       {/* ======================ПОВТОР ИЗ HOME, СДЕЛАТЬ ЕДИНУЮ ПАПКУ!!!==================================================== */}
 
-      <NavButtons title={"Categories"} />
+      <NavButtons title={"Categories"} linkTo={"/categories"} color={black} />
 
       <div className={styles.categoriesPageTitle}>
         <h2 className={styles.pageCatH2}>Categories</h2>

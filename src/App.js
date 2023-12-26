@@ -7,6 +7,7 @@ import Categories from "./pages/Categories";
 import { useState, useEffect } from "react";
 import AllProducts from "./pages/AllProducts";
 import AllSales from "./pages/AllSales";
+import OneProduct from "./pages/OneProduct";
 
 function App() {
   const [categoriesFromServer, setCategoriesFromServer] = useState([]);
@@ -66,13 +67,28 @@ function App() {
           path="/allproducts"
           element={<AllProducts productsFromServer={productsFromServer} />}
         />
-
         <Route path="/allsales" element={<AllSales />} />
 
-        {/* {for(let i = 1; i < ){
-
-      }
-      } */}
+        {productsFromServer &&
+          categoriesFromServer &&
+          productsFromServer.map((el) => (
+            <Route
+              key={el.id}
+              path={`/products/${el.id}`}
+              element={
+                <OneProduct
+                  productCategory={
+                    categoriesFromServer[el.categoryId - 1].title
+                  }
+                  title={el.title}
+                  productId={el.id}
+                  image={el.image}
+                  discountPrice={el.discont_price}
+                  price={el.price}
+                />
+              }
+            />
+          ))}
 
         <Route path="*" element={<NotFound />} />
       </Routes>

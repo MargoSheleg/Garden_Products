@@ -51,6 +51,21 @@
   color: $thisBlackColor;
 }
 
+@mixin stylesForDiscountBox {
+  background-color: $thisGreenColor;
+  border-radius: 6px;
+  padding: 1vh 2vh 1vh 2vh;
+  z-index: 4;
+  color: $thisWhiteColor;
+  position: absolute;
+  right: 0;
+  font: {
+    family: $fontMontserrat;
+    weight: 600;
+    size: 20px;
+  }
+}
+
 $fontMontserrat: "Montserrat", sans-serif;
 
 $thisBlackColor: #282828;

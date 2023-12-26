@@ -1,5 +1,9 @@
 @import "../../styles/variables";
 
+.btnContainer {
+  padding: 7vh 3vh 7vh 0;
+}
+
 .btnTo {
   @include stylesForGrayBtn;
   color: $thisBlackColor;

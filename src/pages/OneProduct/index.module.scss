@@ -1,0 +1,78 @@
+@import "../../styles/variables";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.oneProduct {
+  margin: 4vh;
+}
+
+.navButtonsDiv {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.oneProductDiv {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  justify-items: center;
+  max-height: 80vh;
+  overflow: hidden;
+}
+
+.divOfAllPrices {
+  margin: 4vh 0 4vh 0;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.oneProductImg {
+  height: 100%;
+  width: auto;
+  border-radius: 9px;
+}
+
+.blockOfPrices {
+  display: flex;
+  justify-content: flex-start;
+  gap: 2vh;
+  align-items: end;
+}
+
+.titleOfTheProduct {
+  font: {
+    family: $fontMontserrat;
+    weight: 700;
+    size: 40px;
+  }
+  color: $thisBlackColor;
+}
+
+.discountPrice {
+  font: {
+    family: $fontMontserrat;
+    weight: 700;
+    size: 64px;
+  }
+  color: $thisBlackColor;
+}
+
+.discountedPrice {
+  text-decoration: line-through;
+  color: $thidDarkGrayColor;
+  font: {
+    family: $fontMontserrat;
+    weight: 500;
+    size: 40px;
+  }
+}
+
+.priceBox {
+  @include stylesForDiscountBox;
+  right: 60%;
+  bottom: 55%;
+}

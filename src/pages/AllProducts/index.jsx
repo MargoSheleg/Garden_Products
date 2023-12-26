@@ -2,12 +2,16 @@ import styles from "./index.module.css";
 import NavButtons from "../../components/NavButtons/index";
 import Title from "../../components/Title/index";
 import { Link } from "react-router-dom";
+import { black } from "../../utils/index";
 
 function AllProducts({ productsFromServer }) {
-  console.log(productsFromServer);
   return (
     <div className={styles.allProductsPage}>
-      <NavButtons title={"All products"} linkTo={"/allproducts"} />
+      <NavButtons
+        title={"All products"}
+        linkTo={"/allproducts"}
+        color={black}
+      />
       <Title title={"All products"} />
 
       <div className={styles.filterProducts}></div>
@@ -22,7 +26,11 @@ function AllProducts({ productsFromServer }) {
             >
               <div className={styles.allProductsBlockDiv}>
                 {el.discont_price !== null && (
-                  <div className={styles.priceBox}></div>
+                  <div className={styles.discountBox}>
+                    {(((el.price - el.discont_price) * 100) / el.price).toFixed(
+                      0
+                    ) + "%"}
+                  </div>
                 )}
                 <img
                   className={styles.allProductsBlockImg}
@@ -31,12 +39,12 @@ function AllProducts({ productsFromServer }) {
                 />
                 <p className={styles.allProductsBlockP}>{el.title}</p>
                 {el.discont_price !== null ? (
-                  <>
-                    <p className={styles.discountPrice}>${el.discount_price}</p>
-                    <p className={styles.price}>${el.price}</p>
-                  </>
+                  <div className={styles.blockOfPrices}>
+                    <p className={styles.discountPrice}>${el.discont_price}</p>
+                    <p className={styles.discountedPrice}>${el.price}</p>
+                  </div>
                 ) : (
-                  <p className={styles.price}>${el.discountPrice}</p>
+                  <p className={styles.price}>${el.price}</p>
                 )}
               </div>
             </Link>

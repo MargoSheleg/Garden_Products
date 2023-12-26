@@ -1,3 +1,7 @@
+.btnContainer {
+  padding: 7vh 3vh 7vh 0;
+}
+
 .btnTo {
   position: relative;
   border: 1px solid #dddddd;
