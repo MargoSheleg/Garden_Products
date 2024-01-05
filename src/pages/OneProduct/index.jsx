@@ -1,7 +1,8 @@
 import styles from "./index.module.css";
 import NavButtons from "../../components/NavButtons";
 import NavButton from "../../components/NavButton";
-import { gray, black } from "../../utils/index";
+import { gray, black, green, white } from "../../utils/index";
+import { useState } from "react";
 
 function OneProduct({
   productCategory,
@@ -10,7 +11,42 @@ function OneProduct({
   image,
   discountPrice,
   price,
+  description,
 }) {
+  const [quantity, setQuantity] = useState(0);
+
+  function minus() {
+    if (quantity > 0) {
+      setQuantity(quantity - 1);
+    }
+  }
+
+  function plus() {
+    setQuantity(quantity + 1);
+  }
+
+  const [backGroundColor, setBackGroundColor] = useState(green);
+
+  const [border, addBorder] = useState("none");
+  const [btnTextColor, changeBtnTextColor] = useState(white);
+
+  const [addToCartBtn, setAddToCartBtn] = useState("Add to cart");
+
+  function onMouseEnterLeave(color) {
+    if (addToCartBtn === "Add to cart") {
+      setBackGroundColor(color);
+    }
+  }
+  function onClickFunc(bgColor, color) {
+    if (addToCartBtn === "Add to cart") {
+      addBorder("2px solid #8b8b8b");
+      setBackGroundColor(bgColor);
+      changeBtnTextColor(color);
+      setAddToCartBtn("Added");
+      setQuantity(quantity + 1);
+    }
+  }
+
   return (
     <div className={styles.oneProduct}>
       <div className={styles.navButtonsDiv}>
@@ -45,6 +81,35 @@ function OneProduct({
                 {(((price - discountPrice) * 100) / price).toFixed(0) + "%"}
               </div>
             )}
+          </div>
+          <div className={styles.buttonsOfProduct}>
+            <div className={styles.quantityButtonDiv}>
+              <button className={styles.minusBtn} onClick={minus}>
+                -
+              </button>
+              <p className={styles.quantity}>{quantity}</p>
+              <button className={styles.plusBtn} onClick={plus}>
+                +
+              </button>
+            </div>
+            <button
+              className={styles.addToCartBtn}
+              onMouseEnter={() => onMouseEnterLeave(black)}
+              onMouseLeave={() => onMouseEnterLeave(green)}
+              onClick={() => onClickFunc(white, black)}
+              style={{
+                backgroundColor: backGroundColor,
+                color: btnTextColor,
+                border: border,
+              }}
+            >
+              {addToCartBtn}
+            </button>
+          </div>
+
+          <div>
+            <p className={styles.descriptionP}>Description</p>
+            <div className={styles.description}>{description}</div>
           </div>
         </div>
       </div>

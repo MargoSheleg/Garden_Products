@@ -94,3 +94,72 @@
   right: 60%;
   bottom: 55%;
 }
+
+.buttonsOfProduct {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 4vh 2fr;
+  grid-template-columns: 1fr 2fr;
+  gap: 4vh;
+}
+
+.quantityButtonDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 7vh;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-top: 2px solid #dddddd;
+  border-bottom: 2px solid #dddddd;
+  border-radius: 9px;
+}
+
+.minusBtn,
+.plusBtn {
+  border: 2px solid #dddddd;
+  border-radius: 6px;
+  background-color: transparent;
+  width: 7vh;
+  height: 7vh;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #8b8b8b;
+  cursor: pointer;
+}
+
+.addToCartBtn {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #339933;
+}
+
+.quantity,
+.descriptionP {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #282828;
+}
+
+.description {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #282828;
+  text-align: start;
+}
+
+.descriptionP {
+  padding: 4vh 0 4vh 0;
+}

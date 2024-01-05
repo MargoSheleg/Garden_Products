@@ -80,3 +80,11 @@
 .discountBox {
   @include stylesForDiscountBox;
 }
+
+.addToCartBtn {
+  position: absolute;
+  bottom: 50%;
+  left: 25%;
+  @include stylesForGreenBtn;
+  padding: 2vh 4vh 2vh 4vh;
+}

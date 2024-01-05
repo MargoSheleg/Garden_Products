@@ -46,6 +46,26 @@ function App() {
       });
   }, []);
 
+  const [categorie1, setCategorie1] = useState({});
+
+  // useEffect(() => {
+  //   fetch("http://localhost:3333/categories/1")
+  //     .then((response) => {
+  //       if (!response.ok) {
+  //         throw new Error(`HTTP error! Status: ${response.status}`);
+  //       }
+  //       return response.json();
+  //     })
+  //     .then((data) => {
+  //       setCategorie1(data);
+  //     })
+  //     .catch((error) => {
+  //       console.log("Fetch error", error);
+  //     });
+  // }, []);
+
+  // console.log(categorie1);
+
   return (
     <>
       <Header />
@@ -85,6 +105,7 @@ function App() {
                   image={el.image}
                   discountPrice={el.discont_price}
                   price={el.price}
+                  description={el.description}
                 />
               }
             />

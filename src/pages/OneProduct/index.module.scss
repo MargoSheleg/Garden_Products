@@ -76,3 +76,64 @@
   right: 60%;
   bottom: 55%;
 }
+
+.buttonsOfProduct {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 4vh;
+}
+
+.quantityButtonDiv {
+  display: flex;
+  justify-content: space-between;
+  height: 7vh;
+  align-items: center;
+  border-top: 2px solid $thisGrayColor;
+  border-bottom: 2px solid $thisGrayColor;
+  border-radius: 9px;
+}
+
+.minusBtn,
+.plusBtn {
+  border: 2px solid $thisGrayColor;
+  border-radius: 6px;
+  background-color: transparent;
+  width: 7vh;
+  height: 7vh;
+  font: {
+    family: $fontMontserrat;
+    weight: 600;
+    size: 20px;
+  }
+  color: $thidDarkGrayColor;
+  cursor: pointer;
+}
+
+.addToCartBtn {
+  @include stylesForGreenBtn;
+  background-color: $thisGreenColor;
+}
+
+.quantity,
+.descriptionP {
+  font: {
+    family: $fontMontserrat;
+    weight: 600;
+    size: 20px;
+  }
+  color: $thisBlackColor;
+}
+
+.description {
+  font: {
+    family: $fontMontserrat;
+    weight: 600;
+    size: 16px;
+  }
+  color: $thisBlackColor;
+  text-align: start;
+}
+
+.descriptionP {
+  padding: 4vh 0 4vh 0;
+}
