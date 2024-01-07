@@ -1,0 +1,99 @@
+.allProductsLink {
+  text-decoration: none;
+}
+
+.allProductsBlockDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-radius: 9px;
+  border: #dddddd solid 2px;
+  position: relative;
+  height: 100%;
+}
+
+.allProductsBlockImg {
+  position: relative;
+  width: 100%;
+  height: 40vh;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 9px 9px 0 0;
+  border-bottom: #dddddd solid 2px;
+}
+
+.allProductsBlockP {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: #282828;
+  white-space: wrap;
+}
+
+.discountPrice,
+.price {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 40px;
+  color: #282828;
+}
+
+.discountedPrice {
+  color: #8b8b8b;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 26px;
+  text-decoration: line-through;
+}
+
+.allProductsBlockP,
+.discountPrice,
+.discountedPrice,
+.price {
+  padding: 2vh;
+  margin: 0;
+}
+
+.blockOfPrices {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: end;
+}
+
+.discountBox {
+  background-color: #339933;
+  border-radius: 6px;
+  padding: 1vh 2vh 1vh 2vh;
+  z-index: 4;
+  color: #ffffff;
+  position: absolute;
+  right: 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.addToCartBtn {
+  position: absolute;
+  bottom: 30%;
+  left: 0;
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 2vh 4vh 2vh 4vh;
+}

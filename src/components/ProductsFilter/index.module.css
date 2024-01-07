@@ -1,0 +1,140 @@
+@charset "UTF-8";
+.filterProducts {
+  padding: 4vh 0 4vh 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  gap: 4vh;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #282828;
+  max-height: 5vh;
+}
+
+.inputFilter,
+.checkbox {
+  padding: 0.5vh;
+  border: solid #dddddd 1px;
+  border-radius: 6px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  height: 3vh;
+}
+
+.filterBtn {
+  margin: 0 2vh 0 2vh;
+  padding: 0.5vh 1vh 0.5vh 1vh;
+  background-color: transparent;
+  border: solid #dddddd 1px;
+  border-radius: 6px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 3vh;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #282828;
+  cursor: pointer;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+
+.pointerImg {
+  -webkit-transition: -webkit-transform 1s ease;
+  transition: -webkit-transform 1s ease;
+  transition: transform 1s ease;
+  transition: transform 1s ease, -webkit-transform 1s ease;
+}
+
+.pointerImg.active {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Стилизация самого чекбокса (скрытие стандартного визуального отображения) */
+input[type=checkbox] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 24px;
+  height: 24px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Стилизация фона чекбокса при выделении (checked) */
+input[type=checkbox]:checked {
+  background-color: #339933;
+  border-color: #339933;
+}
+
+/* Стилизация индикатора чекбокса при выделении (checked) */
+input[type=checkbox]:checked::before {
+  content: "✓";
+  font-size: 15px;
+  color: white;
+}
+
+/* Опциональная стилизация при наведении на чекбокс */
+input[type=checkbox]:hover {
+  border-color: #8b8b8b;
+}
+
+.btnScrollDownDiv {
+  position: relative;
+}
+
+.scrollDown {
+  padding: 0.5vh 0 0.5vh 0;
+  position: absolute;
+  left: 12%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 0.5vh;
+  background-color: white;
+  padding: 1vh 1vh 1vh 1vh;
+  z-index: 999;
+}
+
+.byDefault,
+.newest,
+.priceHighLow,
+.priceLowHigh {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}

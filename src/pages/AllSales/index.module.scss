@@ -3,3 +3,13 @@
 .allSales {
   padding: 4vh 4vh 5vh 4vh;
 }
+
+.allSalesBlock {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+
+  white-space: nowrap;
+  align-items: center;
+  gap: 4vh;
+  padding: 4% 0 4% 0;
+}

@@ -1,3 +1,16 @@
 .allSales {
   padding: 4vh 4vh 5vh 4vh;
 }
+
+.allSalesBlock {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 4vh 1fr 4vh 1fr 4vh 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  white-space: nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 4vh;
+  padding: 4% 0 4% 0;
+}

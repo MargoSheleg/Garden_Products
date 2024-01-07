@@ -1,0 +1,138 @@
+@import "../../styles/variables";
+
+.filterProducts {
+  padding: 4vh 0 4vh 0;
+  display: flex;
+  justify-content: flex-start;
+  gap: 4vh;
+  text-align: center;
+
+  font: {
+    family: $fontMontserrat;
+    weight: 600;
+    size: 20px;
+  }
+  color: $thisBlackColor;
+  max-height: 5vh;
+}
+
+.inputFilter,
+.checkbox {
+  padding: 0.5vh;
+  border: solid $thisGrayColor 1px;
+  border-radius: 6px;
+  font: {
+    family: $fontMontserrat;
+    weight: 500;
+    size: 16px;
+  }
+  height: 3vh;
+}
+
+.filterBtn {
+  margin: 0 2vh 0 2vh;
+  padding: 0.5vh 1vh 0.5vh 1vh;
+  background-color: transparent;
+  border: solid $thisGrayColor 1px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3vh;
+  font: {
+    family: $fontMontserrat;
+    weight: 500;
+    size: 16px;
+  }
+  color: $thisBlackColor;
+  cursor: pointer;
+  width: max-content;
+}
+
+.pointerImg {
+  transition: transform 1s ease;
+}
+
+.pointerImg.active {
+  transform: rotate(180deg);
+}
+
+// .filterBtn::after {
+//   content: " ⌵ ";
+//   padding: 0 0vh 0 3vh;
+
+//   font-weight: 600;
+// }
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Стилизация самого чекбокса (скрытие стандартного визуального отображения) */
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  width: 24px;
+  height: 24px;
+  border: 1px solid $thisGrayColor;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Стилизация фона чекбокса при выделении (checked) */
+input[type="checkbox"]:checked {
+  background-color: $thisGreenColor;
+  border-color: $thisGreenColor;
+}
+
+/* Стилизация индикатора чекбокса при выделении (checked) */
+input[type="checkbox"]:checked::before {
+  content: "\2713";
+  font-size: 15px;
+  color: white;
+}
+
+/* Опциональная стилизация при наведении на чекбокс */
+input[type="checkbox"]:hover {
+  border-color: $thidDarkGrayColor;
+}
+
+.btnScrollDownDiv {
+  position: relative;
+}
+
+.scrollDown {
+  padding: 0.5vh 0 0.5vh 0;
+
+  position: absolute;
+  left: 12%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5vh;
+  background-color: white;
+  padding: 1vh 1vh 1vh 1vh;
+
+  z-index: 999;
+}
+
+.byDefault,
+.newest,
+.priceHighLow,
+.priceLowHigh {
+  font: {
+    family: $fontMontserrat;
+    weight: 500;
+    size: 16px;
+  }
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}

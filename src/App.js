@@ -66,9 +66,30 @@ function App() {
 
   // console.log(categorie1);
 
+  const [fromVal, setFromVal] = useState("");
+  const [toVal, setToVal] = useState("");
+  const [isDiscounted, setIsDiscounted] = useState(false);
+
+  const filteredProducts = productsFromServer.filter((el) => {
+    if (fromVal && toVal) {
+      return el.price >= fromVal && el.price <= toVal;
+    } else if (fromVal) {
+      return el.price >= fromVal;
+    } else if (toVal) {
+      return el.price <= toVal;
+    } else {
+      return productsFromServer;
+    }
+  });
+
+  const onlyDiscountedProducts = filteredProducts.filter((el) => {
+    return el.discont_price !== null;
+  });
+
   return (
     <>
       <Header />
+
       <Routes>
         <Route
           path="/"
@@ -85,9 +106,36 @@ function App() {
         />
         <Route
           path="/allproducts"
-          element={<AllProducts productsFromServer={productsFromServer} />}
+          element={
+            <AllProducts
+              productsFromServer={productsFromServer}
+              fromVal={fromVal}
+              setFromVal={setFromVal}
+              toVal={toVal}
+              setToVal={setToVal}
+              isDiscounted={isDiscounted}
+              setIsDiscounted={setIsDiscounted}
+              filteredProducts={filteredProducts}
+              onlyDiscountedProducts={onlyDiscountedProducts}
+            />
+          }
         />
-        <Route path="/allsales" element={<AllSales />} />
+        <Route
+          path="/allsales"
+          element={
+            <AllSales
+              productsFromServer={productsFromServer}
+              fromVal={fromVal}
+              setFromVal={setFromVal}
+              toVal={toVal}
+              setToVal={setToVal}
+              isDiscounted={isDiscounted}
+              setIsDiscounted={setIsDiscounted}
+              filteredProducts={filteredProducts}
+              onlyDiscountedProducts={onlyDiscountedProducts}
+            />
+          }
+        />
 
         {productsFromServer &&
           categoriesFromServer &&
