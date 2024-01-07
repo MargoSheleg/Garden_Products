@@ -12,6 +12,7 @@ function OneProduct({
   discountPrice,
   price,
   description,
+  categoryId,
 }) {
   const [quantity, setQuantity] = useState(0);
 
@@ -51,7 +52,11 @@ function OneProduct({
     <div className={styles.oneProduct}>
       <div className={styles.navButtonsDiv}>
         <NavButtons title={"Categories"} linkTo={"/categories"} color={gray} />
-        <NavButton title={productCategory} color={gray} linkTo={"/"} />
+        <NavButton
+          title={productCategory}
+          color={gray}
+          linkTo={`/categories/${categoryId}`}
+        />
         <NavButton
           title={title}
           color={black}
@@ -74,7 +79,7 @@ function OneProduct({
                 <p className={styles.discountedPrice}>${price}</p>
               </div>
             ) : (
-              <p className={styles.price}>${price}</p>
+              <p className={styles.discountPrice}>${price}</p>
             )}
             {discountPrice !== null && (
               <div className={styles.priceBox}>

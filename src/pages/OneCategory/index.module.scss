@@ -1,0 +1,26 @@
+@import "../../styles/variables";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.oneCategoryDiv {
+  margin: 4vh;
+}
+
+.navigationBtn {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.oneCategoryProductsBlock {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+
+  white-space: nowrap;
+  align-items: center;
+  gap: 4vh;
+  padding: 4vh 0 4vh 0;
+}

@@ -6,17 +6,27 @@ import ProductCard from "../../components/ProductCard";
 import { useState } from "react";
 import ProducstFilter from "../../components/ProductsFilter";
 
-function AllProducts({
-  productsFromServer,
-  fromVal,
-  setFromVal,
-  toVal,
-  setToVal,
-  isDiscounted,
-  setIsDiscounted,
-  filteredProducts,
-  onlyDiscountedProducts,
-}) {
+function AllProducts({ productsFromServer }) {
+  const [fromVal, setFromVal] = useState("");
+  const [toVal, setToVal] = useState("");
+  const [isDiscounted, setIsDiscounted] = useState(false);
+
+  const filteredProducts = productsFromServer.filter((el) => {
+    if (fromVal && toVal) {
+      return el.price >= fromVal && el.price <= toVal;
+    } else if (fromVal) {
+      return el.price >= fromVal;
+    } else if (toVal) {
+      return el.price <= toVal;
+    } else {
+      return productsFromServer;
+    }
+  });
+
+  const onlyDiscountedProducts = filteredProducts.filter((el) => {
+    return el.discont_price !== null;
+  });
+
   return (
     <div className={styles.allProductsPage}>
       <NavButtons

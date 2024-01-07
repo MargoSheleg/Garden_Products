@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import AllProducts from "./pages/AllProducts";
 import AllSales from "./pages/AllSales";
 import OneProduct from "./pages/OneProduct";
+import OneCategory from "./pages/OneCategory/index";
 
 function App() {
   const [categoriesFromServer, setCategoriesFromServer] = useState([]);
@@ -45,26 +46,6 @@ function App() {
         console.log("Fetch error", error);
       });
   }, []);
-
-  const [categorie1, setCategorie1] = useState({});
-
-  // useEffect(() => {
-  //   fetch("http://localhost:3333/categories/1")
-  //     .then((response) => {
-  //       if (!response.ok) {
-  //         throw new Error(`HTTP error! Status: ${response.status}`);
-  //       }
-  //       return response.json();
-  //     })
-  //     .then((data) => {
-  //       setCategorie1(data);
-  //     })
-  //     .catch((error) => {
-  //       console.log("Fetch error", error);
-  //     });
-  // }, []);
-
-  // console.log(categorie1);
 
   const [fromVal, setFromVal] = useState("");
   const [toVal, setToVal] = useState("");
@@ -106,36 +87,24 @@ function App() {
         />
         <Route
           path="/allproducts"
-          element={
-            <AllProducts
-              productsFromServer={productsFromServer}
-              fromVal={fromVal}
-              setFromVal={setFromVal}
-              toVal={toVal}
-              setToVal={setToVal}
-              isDiscounted={isDiscounted}
-              setIsDiscounted={setIsDiscounted}
-              filteredProducts={filteredProducts}
-              onlyDiscountedProducts={onlyDiscountedProducts}
-            />
-          }
+          element={<AllProducts productsFromServer={productsFromServer} />}
         />
         <Route
           path="/allsales"
-          element={
-            <AllSales
-              productsFromServer={productsFromServer}
-              fromVal={fromVal}
-              setFromVal={setFromVal}
-              toVal={toVal}
-              setToVal={setToVal}
-              isDiscounted={isDiscounted}
-              setIsDiscounted={setIsDiscounted}
-              filteredProducts={filteredProducts}
-              onlyDiscountedProducts={onlyDiscountedProducts}
-            />
-          }
+          element={<AllSales productsFromServer={productsFromServer} />}
         />
+        {categoriesFromServer.map((el) => (
+          <Route
+            path={`/categories/${el.id}`}
+            element={
+              <OneCategory
+                productsFromServer={productsFromServer}
+                productCategory={el.title}
+                categoryId={el.id}
+              />
+            }
+          />
+        ))}
 
         {productsFromServer &&
           categoriesFromServer &&
@@ -154,6 +123,7 @@ function App() {
                   discountPrice={el.discont_price}
                   price={el.price}
                   description={el.description}
+                  categoryId={el.categoryId}
                 />
               }
             />
