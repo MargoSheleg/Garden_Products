@@ -4,6 +4,7 @@ import styles from "./index.module.css";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { green, back, black } from "../../utils/index";
+import CongratulationsPopUp from "../CongratulationsPopUp";
 
 function Header({ cart }) {
   let [btnColorMainpage, changeBtnColorMainPage] = useState(black);
@@ -102,13 +103,15 @@ function Header({ cart }) {
           src={cartImg}
           onClick={() => {
             if (cart.length === 0) {
-              navigate("/cartZero");
+              navigate("/cartzero");
             } else {
               navigate("/cart");
             }
           }}
         />
       </div>
+
+      <CongratulationsPopUp />
     </header>
   );
 }
