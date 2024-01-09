@@ -1,0 +1,35 @@
+.cartZero {
+  margin: 4vh;
+}
+
+.titleOfCartDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.cartZeroP {
+  margin: 4vh 0 4vh 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 26px;
+  color: #282828;
+}
+
+.cartZeroBtn {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #339933;
+  padding: 2vh 5vh 2vh 5vh;
+}

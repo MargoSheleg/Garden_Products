@@ -1,0 +1,27 @@
+@import "../../styles/variables";
+
+.cartZero {
+  margin: 4vh;
+}
+
+.titleOfCartDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cartZeroP {
+  margin: 4vh 0 4vh 0;
+  font: {
+    family: $fontMontserrat;
+    weight: 500;
+    size: 26px;
+  }
+  color: $thisBlackColor;
+}
+
+.cartZeroBtn {
+  @include stylesForGreenBtn;
+  background-color: $thisGreenColor;
+  padding: 2vh 5vh 2vh 5vh;
+}

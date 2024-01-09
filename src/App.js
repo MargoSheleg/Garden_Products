@@ -9,9 +9,13 @@ import AllProducts from "./pages/AllProducts";
 import AllSales from "./pages/AllSales";
 import OneProduct from "./pages/OneProduct";
 import OneCategory from "./pages/OneCategory/index";
+import ShoppingCart from "./pages/ShoppingCart";
+import CartZero from "./pages/CartZero/index";
 
 function App() {
   const [categoriesFromServer, setCategoriesFromServer] = useState([]);
+
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:3333/categories/all")
@@ -69,7 +73,7 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header cart={cart} />
 
       <Routes>
         <Route
@@ -81,18 +85,29 @@ function App() {
             />
           }
         />
+
         <Route
           path="/categories"
           element={<Categories categoriesFromServer={categoriesFromServer} />}
         />
+
         <Route
           path="/allproducts"
           element={<AllProducts productsFromServer={productsFromServer} />}
         />
+
         <Route
           path="/allsales"
           element={<AllSales productsFromServer={productsFromServer} />}
         />
+
+        <Route
+          path="/cart"
+          element={<ShoppingCart cart={cart} setCart={setCart} />}
+        />
+
+        <Route path="/cartZero" element={<CartZero />} />
+
         {categoriesFromServer.map((el) => (
           <Route
             path={`/categories/${el.id}`}

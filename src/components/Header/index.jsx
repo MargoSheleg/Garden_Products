@@ -1,11 +1,11 @@
 import logo from "../../assets/images/logo.svg";
-import cart from "../../assets/images/cart.svg";
+import cartImg from "../../assets/images/cart.svg";
 import styles from "./index.module.css";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { green, back, black } from "../../utils/index";
 
-function Header() {
+function Header({ cart }) {
   let [btnColorMainpage, changeBtnColorMainPage] = useState(black);
   let [btnColorCategories, changeBtnColorCategories] = useState(black);
   let [btnColorAllproducts, changeBtnColorAllproducts] = useState(black);
@@ -45,6 +45,8 @@ function Header() {
     changeBtnColorAllproducts(black);
     changeBtnColorAllsales(black);
   }
+
+  const navigate = useNavigate();
 
   return (
     <header className={styles.Header}>
@@ -96,9 +98,16 @@ function Header() {
         </Link>
       </nav>
       <div>
-        <Link>
-          <img src={cart} />
-        </Link>
+        <img
+          src={cartImg}
+          onClick={() => {
+            if (cart.length === 0) {
+              navigate("/cartZero");
+            } else {
+              navigate("/cart");
+            }
+          }}
+        />
       </div>
     </header>
   );

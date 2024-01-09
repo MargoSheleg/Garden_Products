@@ -2,7 +2,7 @@ import styles from "./index.module.css";
 import NavButtons from "../../components/NavButtons";
 import NavButton from "../../components/NavButton";
 import { gray, black, green, white } from "../../utils/index";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function OneProduct({
   productCategory,
@@ -13,6 +13,9 @@ function OneProduct({
   price,
   description,
   categoryId,
+
+  cart,
+  addToCart,
 }) {
   const [quantity, setQuantity] = useState(0);
 
@@ -38,6 +41,7 @@ function OneProduct({
       setBackGroundColor(color);
     }
   }
+
   function onClickFunc(bgColor, color) {
     if (addToCartBtn === "Add to cart") {
       addBorder("2px solid #8b8b8b");

@@ -48,10 +48,8 @@ function AllProducts({ productsFromServer }) {
 
       <div className={styles.productsBlock}>
         {isDiscounted
-          ? onlyDiscountedProducts.map((el) => (
-              <ProductCard key={el.id} el={el} />
-            ))
-          : filteredProducts.map((el) => <ProductCard key={el.id} el={el} />)}
+          ? onlyDiscountedProducts.map((el) => <ProductCard el={el} />)
+          : filteredProducts.map((el) => <ProductCard el={el} />)}
       </div>
     </div>
   );

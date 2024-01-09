@@ -1,0 +1,92 @@
+.shoppingCart {
+  padding: 0 4vh 0 4vh;
+}
+
+.titleOfCartDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.ordersAndDetailsDiv {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1.7fr 1fr;
+  grid-template-columns: 1.7fr 1fr;
+}
+
+.orderDetailsDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 2vh;
+  background-color: #f1f3f4;
+  border-radius: 6px;
+  padding: 3vh;
+}
+
+.orderDetails {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  color: #282828;
+}
+
+.itemCounter,
+.total {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 52px;
+  color: #8b8b8b;
+}
+
+.totalDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.totalPrice {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 70.4px;
+  color: #282828;
+}
+
+.inputNameCart,
+.inputPhoneCart,
+.inputEmailCart {
+  padding: 3vh;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: #8b8b8b;
+  border-radius: 6px;
+  border: solid 1px #dddddd;
+}
+
+.orderBtnCart {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #339933;
+  padding: 2vh 0 2vh 0;
+  width: 100%;
+}
