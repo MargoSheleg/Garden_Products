@@ -1,0 +1,36 @@
+@import "../../styles/variables";
+
+.quantityButtonDiv {
+  display: flex;
+  justify-content: space-between;
+  height: 7vh;
+  align-items: center;
+  border-top: 2px solid $thisGrayColor;
+  border-bottom: 2px solid $thisGrayColor;
+  border-radius: 9px;
+}
+
+.minusBtn,
+.plusBtn {
+  border: 2px solid $thisGrayColor;
+  border-radius: 6px;
+  background-color: transparent;
+  width: 7vh;
+  height: 7vh;
+  font: {
+    family: $fontMontserrat;
+    weight: 600;
+    size: 20px;
+  }
+  color: $thisDarkGrayColor;
+  cursor: pointer;
+}
+
+.quantity {
+  font: {
+    family: $fontMontserrat;
+    weight: 600;
+    size: 20px;
+  }
+  color: $thisBlackColor;
+}

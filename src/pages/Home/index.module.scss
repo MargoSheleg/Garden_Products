@@ -54,6 +54,7 @@ h1 {
   display: flex;
   justify-content: space-between;
   padding: 4% 0 4% 0;
+  gap: 4vh;
 }
 
 .categoriesBlockDiv {
@@ -93,8 +94,7 @@ h1 {
 // =====================================Get discount===========================================
 
 .discount {
-  margin: 4vh;
-  padding: 3vh;
+  padding: 3vh 3vh 0 3vh;
   border-radius: 6px;
   background: linear-gradient(to left, $thisDarkGreenColor, $thisGreenColor);
   margin: 3vh;
@@ -184,4 +184,11 @@ h1 {
 
 .saleh2 {
   @include stylesForH;
+}
+
+.duscountedProdFour {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin: 0 4vh 0 4vh;
+  gap: 4vh;
 }

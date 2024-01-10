@@ -35,3 +35,32 @@ nav {
   font-family: "Montserrat", sans-serif;
   color: #282828;
 }
+
+.cartImgHeader {
+  cursor: pointer;
+}
+
+.cartLogoDiv {
+  position: relative;
+}
+
+.itemQuantity {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #ffffff;
+  position: absolute;
+  top: 5%;
+  left: 1%;
+  background-color: #339933;
+  padding: 14%;
+  border-radius: 50%;
+  width: 1.5em;
+  height: 1.5em;
+}

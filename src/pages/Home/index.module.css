@@ -71,6 +71,7 @@ h1 {
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding: 4% 0 4% 0;
+  gap: 4vh;
 }
 
 .categoriesBlockDiv {
@@ -111,8 +112,7 @@ h1 {
 }
 
 .discount {
-  margin: 4vh;
-  padding: 3vh;
+  padding: 3vh 3vh 0 3vh;
   border-radius: 6px;
   background: -webkit-gradient(linear, right top, left top, from(#0b710b), to(#339933));
   background: linear-gradient(to left, #0b710b, #339933);
@@ -263,4 +263,13 @@ h1 {
   font-weight: 700;
   font-size: 64px;
   color: #282828;
+}
+
+.duscountedProdFour {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 4vh 1fr 4vh 1fr 4vh 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin: 0 4vh 0 4vh;
+  gap: 4vh;
 }

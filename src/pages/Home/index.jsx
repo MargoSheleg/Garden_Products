@@ -2,11 +2,16 @@ import styles from "./index.module.css";
 import { green, black, white } from "../../utils/index";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ReactComponent as handsImage } from "../../assets/images/hands.svg";
+import handsRegistr from "../../assets/images/handsRegistr.svg";
 import NavButton from "../../components/NavButton";
 import Title from "../../components/Title/index";
+import ProductCard from "../../components/ProductCard";
 
-function Home({ categoriesFromServer, productsFromServer }) {
+function Home({
+  categoriesFromServer,
+  productsFromServer,
+  onlyDiscountedProducts,
+}) {
   const [btnColorGreen, changeBtnColorGB] = useState(green);
 
   const [btnColorWhite, changeBtnColorWB] = useState(white);
@@ -110,7 +115,7 @@ function Home({ categoriesFromServer, productsFromServer }) {
       <div className={styles.discount}>
         <p className={styles.discountText}>5% off on the first order</p>
         <div className={styles.photoAndInputs}>
-          <img src={handsImage} alt="Hands" />
+          <img src={handsRegistr} alt="Hands" />
           <div className={styles.getDiscount}>
             <input
               value={nameTitle}
@@ -156,8 +161,11 @@ function Home({ categoriesFromServer, productsFromServer }) {
         <Title title={"Sale"} />
         <NavButton title={"All sales"} linkTo={"/allsales"} />
       </div>
-
-      <div className={styles.saleBlocksDiv}>{}</div>
+      <div className={styles.duscountedProdFour}>
+        {onlyDiscountedProducts.slice(0, 4).map((el) => (
+          <ProductCard key={el.id} el={el} />
+        ))}
+      </div>
     </div>
   );
 }

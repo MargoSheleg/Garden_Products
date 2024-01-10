@@ -13,6 +13,7 @@
 .ordersAndDetailsDiv {
   display: grid;
   grid-template-columns: 1.7fr 1fr;
+  gap: 4vh;
 }
 
 .orderDetailsDiv {
@@ -40,7 +41,7 @@
     weight: 500;
     size: 52px;
   }
-  color: $thidDarkGrayColor;
+  color: $thisDarkGrayColor;
 }
 
 .totalDiv {
@@ -66,7 +67,7 @@
     weight: 500;
     size: 20px;
   }
-  color: $thidDarkGrayColor;
+  color: $thisDarkGrayColor;
   border-radius: 6px;
   border: solid 1px $thisGrayColor;
 }
@@ -76,4 +77,10 @@
   background-color: $thisGreenColor;
   padding: 2vh 0 2vh 0;
   width: 100%;
+}
+
+.itemsDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
 }

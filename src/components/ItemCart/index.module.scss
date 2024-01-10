@@ -1,0 +1,81 @@
+@import "../../styles/variables";
+
+.itemCart {
+  border: $thisGrayColor solid 1px;
+  border-radius: 9px;
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.itemImg {
+  max-width: 16vw;
+  border-radius: 9px 0 0 9px;
+  border-right: solid $thisGrayColor 1px;
+}
+
+.itemInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20%;
+  padding: 4vh;
+}
+
+.itemName {
+  font: {
+    family: $fontMontserrat;
+    weight: 500;
+    size: 20px;
+  }
+  color: $thisBlackColor;
+}
+
+.priceAndBtnDiv {
+  display: flex;
+  justify-content: flex-start;
+  gap: 4vh;
+}
+
+.pricesCart {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2vh;
+}
+
+.discontPriceCart {
+  font: {
+    family: $fontMontserrat;
+    weight: 600;
+    size: 40px;
+  }
+  color: $thisBlackColor;
+}
+
+.priceDCart {
+  font: {
+    family: $fontMontserrat;
+    weight: 500;
+    size: 20px;
+  }
+  color: $thisDarkGrayColor;
+  text-decoration: line-through;
+}
+
+.priceCart {
+  font: {
+    family: $fontMontserrat;
+    weight: 600;
+    size: 40px;
+  }
+  color: $thisBlackColor;
+}
+
+.xBlack {
+  position: absolute;
+  top: 3vh;
+  right: 3vh;
+  cursor: pointer;
+}

@@ -1,8 +1,4 @@
-.allProductsLink {
-  text-decoration: none;
-}
-
-.allProductsBlockDiv {
+.allProductsDiv {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -32,6 +28,7 @@
   font-size: 20px;
   color: #282828;
   white-space: wrap;
+  cursor: pointer;
 }
 
 .discountPrice,
@@ -81,6 +78,7 @@
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
   font-size: 20px;
+  position: absolute;
 }
 
 .addToCartBtn {

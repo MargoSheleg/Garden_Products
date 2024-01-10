@@ -3,6 +3,7 @@ import NavButtons from "../../components/NavButtons";
 import NavButton from "../../components/NavButton";
 import { gray, black, green, white } from "../../utils/index";
 import { useEffect, useState } from "react";
+import PlusMinusBtn from "../../components/PlusMinusBtn";
 
 function OneProduct({
   productCategory,
@@ -92,15 +93,7 @@ function OneProduct({
             )}
           </div>
           <div className={styles.buttonsOfProduct}>
-            <div className={styles.quantityButtonDiv}>
-              <button className={styles.minusBtn} onClick={minus}>
-                -
-              </button>
-              <p className={styles.quantity}>{quantity}</p>
-              <button className={styles.plusBtn} onClick={plus}>
-                +
-              </button>
-            </div>
+            <PlusMinusBtn />
             <button
               className={styles.addToCartBtn}
               onMouseEnter={() => onMouseEnterLeave(black)}

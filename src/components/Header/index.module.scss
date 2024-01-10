@@ -26,3 +26,26 @@ nav {
   font-family: $fontMontserrat;
   color: $thisBlackColor;
 }
+
+.cartImgHeader {
+  cursor: pointer;
+}
+
+.cartLogoDiv {
+  position: relative;
+}
+
+.itemQuantity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $thisWhiteColor;
+  position: absolute;
+  top: 5%;
+  left: 1%;
+  background-color: $thisGreenColor;
+  padding: 14%;
+  border-radius: 50%;
+  width: 1.5em;
+  height: 1.5em;
+}

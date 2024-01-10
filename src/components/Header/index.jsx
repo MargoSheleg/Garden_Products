@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { green, back, black } from "../../utils/index";
 import CongratulationsPopUp from "../CongratulationsPopUp";
 
-function Header({ cart }) {
+function Header({ cart, display, setDisplay }) {
   let [btnColorMainpage, changeBtnColorMainPage] = useState(black);
   let [btnColorCategories, changeBtnColorCategories] = useState(black);
   let [btnColorAllproducts, changeBtnColorAllproducts] = useState(black);
@@ -98,8 +98,9 @@ function Header({ cart }) {
           All sales
         </Link>
       </nav>
-      <div>
+      <div className={styles.cartLogoDiv}>
         <img
+          className={styles.cartImgHeader}
           src={cartImg}
           onClick={() => {
             if (cart.length === 0) {
@@ -109,9 +110,12 @@ function Header({ cart }) {
             }
           }}
         />
+        {cart.length >= 1 && (
+          <p className={styles.itemQuantity}>{cart.length}</p>
+        )}
       </div>
 
-      <CongratulationsPopUp />
+      <CongratulationsPopUp display={display} setDisplay={setDisplay} />
     </header>
   );
 }
