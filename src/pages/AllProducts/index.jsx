@@ -6,7 +6,7 @@ import ProductCard from "../../components/ProductCard";
 import { useState } from "react";
 import ProducstFilter from "../../components/ProductsFilter";
 
-function AllProducts({ productsFromServer }) {
+function AllProducts({ productsFromServer, cart, setCart }) {
   const [fromVal, setFromVal] = useState("");
   const [toVal, setToVal] = useState("");
   const [isDiscounted, setIsDiscounted] = useState(false);
@@ -48,8 +48,12 @@ function AllProducts({ productsFromServer }) {
 
       <div className={styles.productsBlock}>
         {isDiscounted
-          ? onlyDiscountedProducts.map((el) => <ProductCard el={el} />)
-          : filteredProducts.map((el) => <ProductCard el={el} />)}
+          ? onlyDiscountedProducts.map((el) => (
+              <ProductCard el={el} cart={cart} setCart={setCart} />
+            ))
+          : filteredProducts.map((el) => (
+              <ProductCard el={el} cart={cart} setCart={setCart} />
+            ))}
       </div>
     </div>
   );

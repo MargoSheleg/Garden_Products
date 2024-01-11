@@ -1,7 +1,7 @@
 import Title from "../../components/Title/index";
 import styles from "./index.module.css";
 import NavButton from "../../components/NavButton/index";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { eventWrapper } from "@testing-library/user-event/dist/utils";
 import ItemCart from "../../components/ItemCart";
 import { useNavigate } from "react-router-dom";
@@ -51,12 +51,13 @@ function ShoppingCart({ cart, setCart, display, setDisplay }) {
       localStorage.setItem("userCart", orderObj);
 
       setDisplay("flex");
-      setCart([]);
+
       navigate("/cartZero");
 
       setNameInput("");
       setPhoneInput("");
       setEmailInput("");
+      setCart([]);
     }
   }
 

@@ -7,27 +7,43 @@ import PlusMinusBtn from "../../components/PlusMinusBtn";
 
 function OneProduct({
   productCategory,
-  title,
-  productId,
-  image,
-  discountPrice,
-  price,
-  description,
-  categoryId,
+  el,
 
   cart,
-  addToCart,
+  setCart,
 }) {
   const [quantity, setQuantity] = useState(0);
 
   function minus() {
     if (quantity > 0) {
+      if (quantity === 1) {
+        addBorder("none");
+        setBackGroundColor(green);
+        changeBtnTextColor(white);
+        setAddToCartBtn("Add to cart");
+
+        if (cart.length > 1) {
+          setCart((prevCart) => {
+            prevCart.filter((obj) => {
+              return obj !== el;
+            });
+          });
+        } else {
+          setCart([]);
+        }
+      }
       setQuantity(quantity - 1);
     }
   }
 
   function plus() {
     setQuantity(quantity + 1);
+    onClickFunc(white, black, "Added");
+    // setCart((prevCart) => {
+    //   prevCart.map((obj) => {
+    //     obj.quantity;
+    //   });
+    // });
   }
 
   const [backGroundColor, setBackGroundColor] = useState(green);
@@ -43,13 +59,16 @@ function OneProduct({
     }
   }
 
-  function onClickFunc(bgColor, color) {
+  function onClickFunc(bgColor, color, text) {
     if (addToCartBtn === "Add to cart") {
       addBorder("2px solid #8b8b8b");
       setBackGroundColor(bgColor);
       changeBtnTextColor(color);
-      setAddToCartBtn("Added");
+      setAddToCartBtn(text);
       setQuantity(quantity + 1);
+      if (!cart.includes(el)) {
+        setCart((prevCart) => [...prevCart, el]);
+      }
     }
   }
 
@@ -60,45 +79,46 @@ function OneProduct({
         <NavButton
           title={productCategory}
           color={gray}
-          linkTo={`/categories/${categoryId}`}
+          linkTo={`/categories/${el.categoryId}`}
         />
         <NavButton
-          title={title}
+          title={el.title}
           color={black}
-          linkTo={`/products/${productId}`}
+          linkTo={`/products/${el.id}`}
         />
       </div>
 
       <div className={styles.oneProductDiv}>
         <img
           className={styles.oneProductImg}
-          src={"http://localhost:3333" + image}
-          alt={title}
+          src={"http://localhost:3333" + el.image}
+          alt={el.title}
         />
         <div className={styles.descriptionOfTheProductDiv}>
-          <h2 className={styles.titleOfTheProduct}>{title}</h2>
+          <h2 className={styles.titleOfTheProduct}>{el.title}</h2>
           <div className={styles.divOfAllPrices}>
-            {discountPrice !== null ? (
+            {el.discont_price !== null ? (
               <div className={styles.blockOfPrices}>
-                <p className={styles.discountPrice}>${discountPrice}</p>
-                <p className={styles.discountedPrice}>${price}</p>
+                <p className={styles.discountPrice}>${el.discont_price}</p>
+                <p className={styles.discountedPrice}>${el.price}</p>
               </div>
             ) : (
-              <p className={styles.discountPrice}>${price}</p>
+              <p className={styles.discountPrice}>${el.price}</p>
             )}
-            {discountPrice !== null && (
+            {el.discont_price !== null && (
               <div className={styles.priceBox}>
-                {(((price - discountPrice) * 100) / price).toFixed(0) + "%"}
+                {(((el.price - el.discont_price) * 100) / el.price).toFixed(0) +
+                  "%"}
               </div>
             )}
           </div>
           <div className={styles.buttonsOfProduct}>
-            <PlusMinusBtn />
+            <PlusMinusBtn plus={plus} minus={minus} quantity={quantity} />
             <button
               className={styles.addToCartBtn}
               onMouseEnter={() => onMouseEnterLeave(black)}
               onMouseLeave={() => onMouseEnterLeave(green)}
-              onClick={() => onClickFunc(white, black)}
+              onClick={() => onClickFunc(white, black, "Added")}
               style={{
                 backgroundColor: backGroundColor,
                 color: btnTextColor,
@@ -111,7 +131,7 @@ function OneProduct({
 
           <div>
             <p className={styles.descriptionP}>Description</p>
-            <div className={styles.description}>{description}</div>
+            <div className={styles.description}>{el.description}</div>
           </div>
         </div>
       </div>

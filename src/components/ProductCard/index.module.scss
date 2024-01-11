@@ -16,6 +16,7 @@
   object-fit: cover;
   border-radius: 9px 9px 0 0;
   border-bottom: $thisGrayColor solid 2px;
+  cursor: pointer;
 }
 
 .allProductsBlockP {
@@ -64,7 +65,18 @@
 }
 
 .discountBox {
-  @include stylesForDiscountBox;
+  background-color: $thisGreenColor;
+  border-radius: 6px;
+  padding: 1vh 2vh 1vh 2vh;
+  z-index: 4;
+  color: $thisWhiteColor;
+  top: 0;
+  right: 0;
+  font: {
+    family: $fontMontserrat;
+    weight: 600;
+    size: 20px;
+  }
   position: absolute;
 }
 

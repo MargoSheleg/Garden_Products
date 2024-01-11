@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from "./index.module.css";
 import { black, green, white } from "../../utils/index";
 
-function ProductCard({ el }) {
+function ProductCard({ el, cart, setCart }) {
   const navigate = useNavigate();
   const [display, setDisplay] = useState("none");
   const [backGroundColor, setBackGroundColor] = useState(green);
@@ -24,6 +24,8 @@ function ProductCard({ el }) {
       setBackGroundColor(bgColor);
       changeBtnTextColor(color);
       setAddToCartBtn("Added");
+
+      setCart((prevCart) => [...prevCart, el]);
     }
   }
 
