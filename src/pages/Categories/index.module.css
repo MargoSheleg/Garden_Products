@@ -1,15 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 .categoriesPage {
   padding: 4vh 4vh 5vh 4vh;
 }
-
-.pageCatH2 {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 700;
-  font-size: 64px;
-  color: #282828;
-}
-
-.categoriesPageTitle {
+.categoriesPage .categoriesPageTitle {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -21,8 +20,13 @@
           align-items: center;
   position: relative;
 }
-
-.categoriesPageBlock {
+.categoriesPage .categoriesPageTitle .pageCatH2 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 64px;
+  color: #282828;
+}
+.categoriesPage .categoriesPageBlock {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 4vh 1fr 4vh 1fr 4vh 1fr;
@@ -31,37 +35,32 @@
   white-space: wrap;
   padding: 4% 0 4% 0;
 }
-
-.catLink {
+.categoriesPage .categoriesPageBlock .catLink {
   text-decoration: none;
   overflow: visible;
   border-radius: 6px;
 }
-
-.catLink:hover {
-  -webkit-box-shadow: 1px 2px 6px 2px #dddddd;
-          box-shadow: 1px 2px 6px 2px #dddddd;
-}
-
-.categoriesPageBlockDiv {
+.categoriesPage .categoriesPageBlock .catLink .categoriesPageBlockDiv {
   display: -ms-grid;
   display: grid;
   -ms-grid-rows: 3fr 2vh 1fr;
   grid-template-rows: 3fr 1fr;
   gap: 2vh;
 }
-
-.categoriesPageBlocksImg {
+.categoriesPage .categoriesPageBlock .catLink .categoriesPageBlockDiv .categoriesPageBlockImg {
   position: relative;
   width: 100%;
   height: 100%;
   border-radius: 6px 6px 0 0;
 }
-
-.categoriesPageBlocksP {
+.categoriesPage .categoriesPageBlock .catLink .categoriesPageBlockDiv .categoriesPageBlocksP {
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
   font-size: 20px;
-  text-align: center;
   color: #282828;
+  text-align: center;
+}
+.categoriesPage .categoriesPageBlock .catLink:hover {
+  -webkit-box-shadow: 1px 2px 6px 2px #dddddd;
+          box-shadow: 1px 2px 6px 2px #dddddd;
 }

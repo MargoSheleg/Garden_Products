@@ -1,3 +1,10 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 .notFound {
   padding: 6%;
   display: -webkit-box;
@@ -11,31 +18,19 @@
       -ms-flex-align: center;
           align-items: center;
 }
-
-.btnGoHome {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 600;
-  font-size: 20px;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.pageNotFound {
-  color: #282828;
+.notFound .pageNotFound {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
   font-size: 64px;
+  color: #282828;
   margin: 2%;
 }
-
-.pOfTheError {
+.notFound .pOfTheError {
   margin: 2%;
-  color: #8b8b8b;
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
   font-size: 20px;
+  color: #8b8b8b;
   text-align: center;
 }
 

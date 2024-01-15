@@ -1,81 +1,74 @@
 @import "../../styles/variables";
 
+@include noStyles;
+
 .itemCart {
   border: $thisGrayColor solid 1px;
   border-radius: 9px;
   display: flex;
   justify-content: flex-start;
   position: relative;
-}
 
-.itemImg {
-  max-width: 16vw;
-  border-radius: 9px 0 0 9px;
-  border-right: solid $thisGrayColor 1px;
-}
-
-.itemInfo {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 20%;
-  padding: 4vh;
-}
-
-.itemName {
-  font: {
-    family: $fontMontserrat;
-    weight: 500;
-    size: 20px;
+  .itemImg {
+    max-width: 16vw;
+    border-radius: 9px 0 0 9px;
+    border-right: solid $thisGrayColor 1px;
   }
-  color: $thisBlackColor;
-}
 
-.priceAndBtnDiv {
-  display: flex;
-  justify-content: flex-start;
-  gap: 4vh;
-}
+  .itemInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20%;
+    padding: 4vh;
 
-.pricesCart {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 2vh;
-}
+    .itemName {
+      @include w500s20cBlack;
+    }
 
-.discontPriceCart {
-  font: {
-    family: $fontMontserrat;
-    weight: 600;
-    size: 40px;
+    .priceAndBtnDiv {
+      display: flex;
+      justify-content: flex-start;
+      gap: 4vh;
+
+      .pricesCart {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 2vh;
+
+        .discontPriceCart {
+          @include w600s40cBlack;
+        }
+
+        .priceDCart {
+          @include w500s20cDarkGray;
+          text-decoration: line-through;
+        }
+      }
+
+      .priceCart {
+        @include w600s40cBlack;
+      }
+    }
   }
-  color: $thisBlackColor;
-}
 
-.priceDCart {
-  font: {
-    family: $fontMontserrat;
-    weight: 500;
-    size: 20px;
+  .xBlack {
+    position: absolute;
+    top: 3vh;
+    right: 3vh;
+    cursor: pointer;
   }
-  color: $thisDarkGrayColor;
-  text-decoration: line-through;
 }
 
-.priceCart {
-  font: {
-    family: $fontMontserrat;
-    weight: 600;
-    size: 40px;
-  }
-  color: $thisBlackColor;
+@media (max-width: 400) {
 }
-
-.xBlack {
-  position: absolute;
-  top: 3vh;
-  right: 3vh;
-  cursor: pointer;
+@media (max-width: 768) {
+}
+@media (max-width: 1024) {
+}
+@media (max-width: 1440) {
+}
+@media (max-width: 1920) {
 }

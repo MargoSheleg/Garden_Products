@@ -1,10 +1,10 @@
-import logo from "../../assets/images/logo.svg";
-import cartImg from "../../assets/images/cart.svg";
-import styles from "./index.module.css";
+import CongratulationsPopUp from "../CongratulationsPopUp";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { green, back, black } from "../../utils/index";
-import CongratulationsPopUp from "../CongratulationsPopUp";
+import styles from "./index.module.css";
+import logo from "../../assets/images/logo.svg";
+import cartImg from "../../assets/images/cart.svg";
 
 function Header({ cart, display, setDisplay }) {
   let [btnColorMainpage, changeBtnColorMainPage] = useState(black);
@@ -51,11 +51,9 @@ function Header({ cart, display, setDisplay }) {
 
   return (
     <header className={styles.Header}>
-      <div>
-        <Link to="/">
-          <img src={logo} />
-        </Link>
-      </div>
+      <Link to="/">
+        <img src={logo} />
+      </Link>
       <nav className={styles.nav}>
         <Link
           to="/"

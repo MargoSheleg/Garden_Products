@@ -1,13 +1,20 @@
 import NavButtons from "../../components/NavButtons";
 import NavButton from "../../components/NavButton";
-import styles from "./index.module.css";
-import { gray, black } from "../../utils/index";
 import ProductCard from "../../components/ProductCard";
 import ProductsFilter from "../../components/ProductsFilter";
 import Title from "../../components/Title/index";
+import { gray } from "../../utils/index";
 import { useEffect, useState } from "react";
+import styles from "./index.module.css";
 
-function OneCategory({ productsFromServer, productCategory, categoryId }) {
+function OneCategory({
+  productsFromServer,
+  productCategory,
+  categoryId,
+  cart,
+  setCart,
+  compareByDateDescending,
+}) {
   const [oneCategoryFromServer, setOneCategoryFromServer] = useState([]);
 
   useEffect(() => {
@@ -21,6 +28,11 @@ function OneCategory({ productsFromServer, productCategory, categoryId }) {
   const [fromVal, setFromVal] = useState("");
   const [toVal, setToVal] = useState("");
   const [isDiscounted, setIsDiscounted] = useState(false);
+
+  const [showByDefault, setShowByDefault] = useState(true);
+  const [showNewest, setShowNewest] = useState(false);
+  const [showHighLow, setShowHighLow] = useState(false);
+  const [showLowHigh, setShowLowHigh] = useState(false);
 
   const filteredProducts = oneCategoryFromServer.filter((el) => {
     if (fromVal && toVal) {
@@ -59,14 +71,138 @@ function OneCategory({ productsFromServer, productCategory, categoryId }) {
         toVal={toVal}
         setToVal={setToVal}
         displayCheckBox={"flex"}
+        showByDefault={showByDefault}
+        setShowByDefault={setShowByDefault}
+        showNewest={showNewest}
+        setShowNewest={setShowNewest}
+        showHighLow={showHighLow}
+        setShowHighLow={setShowHighLow}
+        showLowHigh={showLowHigh}
+        setShowLowHigh={setShowLowHigh}
       />
 
       <div className={styles.oneCategoryProductsBlock}>
         {isDiscounted
-          ? onlyDiscountedProducts.map((el) => (
-              <ProductCard key={el.id} el={el} />
-            ))
-          : filteredProducts.map((el) => <ProductCard key={el.id} el={el} />)}
+          ? (showByDefault &&
+              onlyDiscountedProducts.map((el) => (
+                <ProductCard el={el} cart={cart} setCart={setCart} />
+              ))) ||
+            (showNewest &&
+              onlyDiscountedProducts
+                .sort(compareByDateDescending)
+                .map((el) => (
+                  <ProductCard el={el} cart={cart} setCart={setCart} />
+                ))) ||
+            (showHighLow &&
+              onlyDiscountedProducts
+                .sort(function (a, b) {
+                  if (a.discont_price === null && b.discont_price === null) {
+                    return b.price - a.price;
+                  } else if (
+                    a.discont_price !== null &&
+                    b.discont_price === null
+                  ) {
+                    return b.price - a.discont_price;
+                  } else if (
+                    a.discont_price === null &&
+                    b.discont_price !== null
+                  ) {
+                    return b.discont_price - a.price;
+                  } else if (
+                    a.discont_price !== null &&
+                    b.discont_price !== null
+                  ) {
+                    return b.discont_price - a.discont_price;
+                  }
+                })
+                .map((el) => (
+                  <ProductCard el={el} cart={cart} setCart={setCart} />
+                ))) ||
+            (showLowHigh &&
+              onlyDiscountedProducts
+                .sort(function (a, b) {
+                  if (a.discont_price === null && b.discont_price === null) {
+                    return a.price - b.price;
+                  } else if (
+                    a.discont_price !== null &&
+                    b.discont_price === null
+                  ) {
+                    return a.discont_price - b.price;
+                  } else if (
+                    a.discont_price === null &&
+                    b.discont_price !== null
+                  ) {
+                    return a.price - b.discont_price;
+                  } else if (
+                    a.discont_price !== null &&
+                    b.discont_price !== null
+                  ) {
+                    return a.discont_price - b.discont_price;
+                  }
+                })
+                .map((el) => (
+                  <ProductCard el={el} cart={cart} setCart={setCart} />
+                )))
+          : (showByDefault &&
+              filteredProducts.map((el) => (
+                <ProductCard el={el} cart={cart} setCart={setCart} />
+              ))) ||
+            (showNewest &&
+              filteredProducts
+                .sort(compareByDateDescending)
+                .map((el) => (
+                  <ProductCard el={el} cart={cart} setCart={setCart} />
+                ))) ||
+            (showHighLow &&
+              filteredProducts
+                .sort(function (a, b) {
+                  if (a.discont_price === null && b.discont_price === null) {
+                    return b.price - a.price;
+                  } else if (
+                    a.discont_price !== null &&
+                    b.discont_price === null
+                  ) {
+                    return b.price - a.discont_price;
+                  } else if (
+                    a.discont_price === null &&
+                    b.discont_price !== null
+                  ) {
+                    return b.discont_price - a.price;
+                  } else if (
+                    a.discont_price !== null &&
+                    b.discont_price !== null
+                  ) {
+                    return b.discont_price - a.discont_price;
+                  }
+                })
+                .map((el) => (
+                  <ProductCard el={el} cart={cart} setCart={setCart} />
+                ))) ||
+            (showLowHigh &&
+              filteredProducts
+                .sort(function (a, b) {
+                  if (a.discont_price === null && b.discont_price === null) {
+                    return a.price - b.price;
+                  } else if (
+                    a.discont_price !== null &&
+                    b.discont_price === null
+                  ) {
+                    return a.discont_price - b.price;
+                  } else if (
+                    a.discont_price === null &&
+                    b.discont_price !== null
+                  ) {
+                    return a.price - b.discont_price;
+                  } else if (
+                    a.discont_price !== null &&
+                    b.discont_price !== null
+                  ) {
+                    return a.discont_price - b.discont_price;
+                  }
+                })
+                .map((el) => (
+                  <ProductCard el={el} cart={cart} setCart={setCart} />
+                )))}
       </div>
     </div>
   );

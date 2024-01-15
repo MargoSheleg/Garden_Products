@@ -1,14 +1,11 @@
-import { useEffect, useState } from "react";
-import styles from "./index.module.css";
-import { Link } from "react-router-dom";
 import NavButtons from "../../components/NavButtons/index";
+import { Link } from "react-router-dom";
 import { black } from "../../utils/index";
+import styles from "./index.module.css";
 
 function Categories({ categoriesFromServer }) {
   return (
     <div className={styles.categoriesPage}>
-      {/* ======================ПОВТОР ИЗ HOME, СДЕЛАТЬ ЕДИНУЮ ПАПКУ!!!==================================================== */}
-
       <NavButtons title={"Categories"} linkTo={"/categories"} color={black} />
 
       <div className={styles.categoriesPageTitle}>
@@ -24,7 +21,7 @@ function Categories({ categoriesFromServer }) {
             >
               <div className={styles.categoriesPageBlockDiv}>
                 <img
-                  className={styles.categoriesPageBlocksImg}
+                  className={styles.categoriesPageBlockImg}
                   src={"http://localhost:3333" + el.image}
                   alt={el.title}
                 />
@@ -33,8 +30,6 @@ function Categories({ categoriesFromServer }) {
             </Link>
           ))}
       </div>
-
-      {/* ========================================================================================================== */}
     </div>
   );
 }

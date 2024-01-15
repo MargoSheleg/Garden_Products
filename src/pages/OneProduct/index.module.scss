@@ -1,26 +1,32 @@
 @import "../../styles/variables";
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@include noStyles;
 
 .oneProduct {
   margin: 4vh;
+
+  .navButtonsDiv {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .oneProductDiv {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    justify-items: center;
+    max-height: 80vh;
+    overflow: hidden;
+
+    .oneProductImg {
+      height: 100%;
+      width: auto;
+      border-radius: 9px;
+    }
+  }
 }
 
-.navButtonsDiv {
-  display: flex;
-  justify-content: flex-start;
-}
-
-.oneProductDiv {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  justify-items: center;
-  max-height: 80vh;
-  overflow: hidden;
+.titleOfTheProduct {
+  @include w700s40cBlack;
 }
 
 .divOfAllPrices {
@@ -28,83 +34,59 @@
   position: relative;
   display: flex;
   justify-content: flex-start;
-}
 
-.oneProductImg {
-  height: 100%;
-  width: auto;
-  border-radius: 9px;
-}
+  .blockOfPrices {
+    display: flex;
+    justify-content: flex-start;
+    gap: 2vh;
+    align-items: end;
 
-.blockOfPrices {
-  display: flex;
-  justify-content: flex-start;
-  gap: 2vh;
-  align-items: end;
-}
-
-.titleOfTheProduct {
-  font: {
-    family: $fontMontserrat;
-    weight: 700;
-    size: 40px;
+    .discountedPrice {
+      text-decoration: line-through;
+      @include w500s40cDarkGray;
+    }
   }
-  color: $thisBlackColor;
+
+  .priceBox {
+    right: 60%;
+    bottom: 55%;
+  }
 }
 
 .discountPrice {
-  font: {
-    family: $fontMontserrat;
-    weight: 700;
-    size: 64px;
-  }
-  color: $thisBlackColor;
-}
-
-.discountedPrice {
-  text-decoration: line-through;
-  color: $thisDarkGrayColor;
-  font: {
-    family: $fontMontserrat;
-    weight: 500;
-    size: 40px;
-  }
-}
-
-.priceBox {
-  @include stylesForDiscountBox;
-  right: 60%;
-  bottom: 55%;
+  @include w700s64cBlack;
 }
 
 .buttonsOfProduct {
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 4vh;
-}
 
-.addToCartBtn {
-  @include stylesForGreenBtn;
-  background-color: $thisGreenColor;
+  .addToCartBtn {
+    @include stylesForGreenBtn;
+    background-color: $thisGreenColor;
+  }
 }
 
 .quantity,
 .descriptionP {
-  font: {
-    family: $fontMontserrat;
-    weight: 600;
-    size: 20px;
-  }
-  color: $thisBlackColor;
   padding: 4vh 0 4vh 0;
+
+  @include w600s20cBlack;
 }
 
 .description {
-  font: {
-    family: $fontMontserrat;
-    weight: 600;
-    size: 16px;
-  }
-  color: $thisBlackColor;
+  @include w600s16cBlack;
   text-align: start;
+}
+
+@media (max-width: 400) {
+}
+@media (max-width: 768) {
+}
+@media (max-width: 1024) {
+}
+@media (max-width: 1440) {
+}
+@media (max-width: 1920) {
 }

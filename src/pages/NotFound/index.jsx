@@ -1,5 +1,5 @@
-import styles from "./index.module.css";
 import error from "../../assets/images/404.svg";
+import styles from "./index.module.css";
 import { black, green } from "../../utils/index";
 import { useState } from "react";
 import { Link } from "react-router-dom";

@@ -1,51 +1,55 @@
 @import "../../styles/variables";
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@include noStyles;
 
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 4vh;
-}
 
-nav {
-  display: flex;
-  justify-content: space-between;
-  gap: 4vh;
+  nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 4vh;
+  }
+
+  .cartLogoDiv {
+    position: relative;
+
+    .cartImgHeader {
+      cursor: pointer;
+    }
+
+    .itemQuantity {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $thisWhiteColor;
+      position: absolute;
+      top: 5%;
+      left: 1%;
+      background-color: $thisGreenColor;
+      padding: 14%;
+      border-radius: 50%;
+      width: 1.5em;
+      height: 1.5em;
+    }
+  }
 }
 
 .Link {
   text-decoration: none;
-  font-weight: 500;
-  font-size: 20px;
-  font-family: $fontMontserrat;
-  color: $thisBlackColor;
+  @include w500s20cBlack;
 }
 
-.cartImgHeader {
-  cursor: pointer;
+@media (max-width: 400) {
 }
-
-.cartLogoDiv {
-  position: relative;
+@media (max-width: 768) {
 }
-
-.itemQuantity {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: $thisWhiteColor;
-  position: absolute;
-  top: 5%;
-  left: 1%;
-  background-color: $thisGreenColor;
-  padding: 14%;
-  border-radius: 50%;
-  width: 1.5em;
-  height: 1.5em;
+@media (max-width: 1024) {
+}
+@media (max-width: 1440) {
+}
+@media (max-width: 1920) {
 }

@@ -1,18 +1,25 @@
 @import "../../styles/variables";
 
+@include noStyles;
+
 .btnsContainer {
   display: flex;
   justify-content: flex-start;
   gap: 3vh;
-  // padding-bottom: 2vh;
-  // padding: 7vh 4vh 5vh 0;
+
+  .btnToMainPage {
+    @include stylesForGrayBtn;
+    margin: 7vh 0 7vh 0;
+  }
 }
 
-.linkToMainPage {
-  text-decoration: none;
-  padding: 7vh 0 7vh 0;
+@media (max-width: 400) {
 }
-
-.btnToMainPage {
-  @include stylesForGrayBtn;
+@media (max-width: 768) {
+}
+@media (max-width: 1024) {
+}
+@media (max-width: 1440) {
+}
+@media (max-width: 1920) {
 }

@@ -1,9 +1,9 @@
-import styles from "./index.module.css";
 import NavButtons from "../../components/NavButtons";
 import NavButton from "../../components/NavButton";
-import { gray, black, green, white } from "../../utils/index";
-import { useEffect, useState } from "react";
 import PlusMinusBtn from "../../components/PlusMinusBtn";
+import { gray, black, green, white } from "../../utils/index";
+import { useState } from "react";
+import styles from "./index.module.css";
 
 function OneProduct({
   productCategory,
@@ -39,11 +39,6 @@ function OneProduct({
   function plus() {
     setQuantity(quantity + 1);
     onClickFunc(white, black, "Added");
-    // setCart((prevCart) => {
-    //   prevCart.map((obj) => {
-    //     obj.quantity;
-    //   });
-    // });
   }
 
   const [backGroundColor, setBackGroundColor] = useState(green);
@@ -129,10 +124,8 @@ function OneProduct({
             </button>
           </div>
 
-          <div>
-            <p className={styles.descriptionP}>Description</p>
-            <div className={styles.description}>{el.description}</div>
-          </div>
+          <p className={styles.descriptionP}>Description</p>
+          <div className={styles.description}>{el.description}</div>
         </div>
       </div>
     </div>

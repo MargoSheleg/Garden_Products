@@ -1,5 +1,7 @@
 @import "../../styles/variables";
 
+@include noStyles;
+
 .quantityButtonDiv {
   display: flex;
   justify-content: space-between;
@@ -8,29 +10,31 @@
   border-top: 2px solid $thisGrayColor;
   border-bottom: 2px solid $thisGrayColor;
   border-radius: 9px;
+
+  .minusBtn,
+  .plusBtn {
+    border: 2px solid $thisGrayColor;
+    border-radius: 6px;
+    background-color: transparent;
+    width: 7vh;
+    height: 7vh;
+    @include w600s20cDarkGray;
+    cursor: pointer;
+  }
+
+  .quantity {
+    @include w600s20cBlack;
+    padding: 0 2vh 0 2vh;
+  }
 }
 
-.minusBtn,
-.plusBtn {
-  border: 2px solid $thisGrayColor;
-  border-radius: 6px;
-  background-color: transparent;
-  width: 7vh;
-  height: 7vh;
-  font: {
-    family: $fontMontserrat;
-    weight: 600;
-    size: 20px;
-  }
-  color: $thisDarkGrayColor;
-  cursor: pointer;
+@media (max-width: 400) {
 }
-
-.quantity {
-  font: {
-    family: $fontMontserrat;
-    weight: 600;
-    size: 20px;
-  }
-  color: $thisBlackColor;
+@media (max-width: 768) {
+}
+@media (max-width: 1024) {
+}
+@media (max-width: 1440) {
+}
+@media (max-width: 1920) {
 }

@@ -1,5 +1,7 @@
 @import "../../styles/variables";
 
+@include noStyles;
+
 .congratulationsPopUpBlock {
   position: fixed;
   top: 0;
@@ -11,40 +13,42 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
 
-.popup {
-  padding: 4vh;
-  background-color: $thisGreenColor;
-  border-radius: 9px;
-  z-index: 99999;
-  height: max-content;
-  width: max-content;
-  position: relative;
-}
+  .popup {
+    padding: 4vh;
+    background-color: $thisGreenColor;
+    border-radius: 9px;
+    z-index: 99999;
+    height: max-content;
+    width: max-content;
+    position: relative;
 
-.popupText,
-.congratulations {
-  font: {
-    family: $fontMontserrat;
-    weight: 600;
+    .congratulations {
+      @include w600s44cWhite;
+      padding: 0 0 1vh 0;
+    }
+
+    .popupText {
+      @include w600s22cWhite;
+      padding: 1vh 0 1vh 0;
+    }
+
+    .escapeCross {
+      position: absolute;
+      top: 3vh;
+      right: 3vh;
+      cursor: pointer;
+    }
   }
-  color: $thisWhiteColor;
 }
 
-.congratulations {
-  font-size: 44px;
-  padding: 0 0 1vh 0;
+@media (max-width: 400) {
 }
-
-.popupText {
-  font-size: 22px;
-  padding: 1vh 0 1vh 0;
+@media (max-width: 768) {
 }
-
-.escapeCross {
-  position: absolute;
-  top: 3vh;
-  right: 3vh;
-  cursor: pointer;
+@media (max-width: 1024) {
+}
+@media (max-width: 1440) {
+}
+@media (max-width: 1920) {
 }

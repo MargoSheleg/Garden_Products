@@ -1,159 +1,147 @@
 @import "../../styles/variables";
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@include noStyles;
 
-// =============================Amazing Discounts=========================================================
+.home {
+  .amazingDiscountsDiv {
+    background-image: url(../../assets/images/gardenerAtWork.svg);
+    background-size: auto 100vh;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100vh;
 
-.amazingDiscountsDiv {
-  background-image: url(../../assets/images/gardenerAtWork.svg);
-  background-size: auto 100vh;
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 100vh;
+    padding: 4vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 4%;
 
-  padding: 4vh;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 4%;
-}
+    h1 {
+      @include w700s96cWhite;
+    }
 
-h1 {
-  font: {
-    family: $fontMontserrat;
-    weight: 700;
-    size: 96px;
+    .checkOutBtn {
+      @include stylesForGreenBtn;
+      padding: 1% 4% 1% 4%;
+    }
   }
-  color: white;
-}
 
-.checkOutBtn {
-  @include stylesForGreenBtn;
-  padding: 1% 4% 1% 4%;
-}
+  .categories {
+    padding: 7vh 4vh 5vh 4vh;
 
-// ============================Categories==================================================
+    .categoriesTitle {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
 
-.categories {
-  padding: 7vh 4vh 5vh 4vh;
-}
+    .categoriesFiveBlocks {
+      display: flex;
+      justify-content: space-between;
+      padding: 4% 0 4% 0;
+      gap: 4vh;
 
-.categoriesTitle {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-}
+      .link {
+        text-decoration: none;
+        overflow: visible;
+        border-radius: 6px;
 
-.categoriesFiveBlocks {
-  display: flex;
-  justify-content: space-between;
-  padding: 4% 0 4% 0;
-  gap: 4vh;
-}
+        .categoriesBlockDiv {
+          display: flex;
+          flex-direction: column;
+          gap: 2vh;
 
-.categoriesBlockDiv {
-  display: flex;
-  flex-direction: column;
-  gap: 2vh;
-}
+          .categoriesBlocksImg {
+            position: relative;
+            max-width: 310px;
+            height: 100%;
 
-.categoriesBlocksImg {
-  position: relative;
-  max-width: 310px;
-  height: 100%;
+            border-radius: 6px 6px 0 0;
+          }
 
-  border-radius: 6px 6px 0 0;
-}
+          .categoriesBlocksP {
+            @include w500s20cBlack;
+            text-align: center;
+          }
+        }
+      }
 
-.categoriesBlocksP {
-  font: {
-    family: $fontMontserrat;
-    weight: 500;
-    size: 20px;
+      .link:hover {
+        box-shadow: 1px 2px 6px 2px $thisGrayColor;
+      }
+    }
   }
-  text-align: center;
-  color: $thisBlackColor;
-}
 
-.link {
-  text-decoration: none;
-  overflow: visible;
-  border-radius: 6px;
-}
+  .discount {
+    padding: 3vh 3vh 0 3vh;
+    border-radius: 6px;
+    background: linear-gradient(to left, $thisDarkGreenColor, $thisGreenColor);
+    margin: 3vh;
 
-.link:hover {
-  box-shadow: 1px 2px 6px 2px $thisGrayColor;
-}
+    .discountText {
+      @include w700s64cWhite;
+      text-align: center;
+      padding: 1vh;
+    }
 
-// =====================================Get discount===========================================
+    .photoAndInputs {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
 
-.discount {
-  padding: 3vh 3vh 0 3vh;
-  border-radius: 6px;
-  background: linear-gradient(to left, $thisDarkGreenColor, $thisGreenColor);
-  margin: 3vh;
-}
+      .getDiscount {
+        display: flex;
+        flex-direction: column;
 
-.discountText {
-  font: {
-    family: $fontMontserrat;
-    weight: 700;
-    size: 64px;
+        .inputDiscount {
+          border-radius: 6px;
+          margin: 1vh;
+          padding: 1vh;
+          background: transparent;
+          border: 2px $thisWhiteColor solid;
+          color: $thisWhiteColor;
+          outline: none;
+          height: 6vh;
+          font-size: 27px;
+        }
+
+        .inputDiscount::placeholder {
+          color: $thisWhiteColor;
+        }
+
+        .inputDiscount:focus::placeholder {
+          color: $thisGrayColor;
+        }
+
+        .btnGetDiscount {
+          background-color: $thisWhiteColor;
+          border: none;
+          margin: 1vh;
+          padding: 2vh;
+          border-radius: 6px;
+
+          @include w600s20cBlack;
+          cursor: pointer;
+        }
+      }
+    }
   }
-  color: $thisWhiteColor;
-  text-align: center;
-  padding: 1vh;
-}
 
-.photoAndInputs {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-}
-
-.inputDiscount {
-  border-radius: 6px;
-  margin: 1vh;
-  padding: 1vh;
-  background: transparent;
-  border: 2px $thisWhiteColor solid;
-  color: $thisWhiteColor;
-  outline: none;
-  height: 6vh;
-  font-size: 27px;
-}
-
-.inputDiscount::placeholder {
-  color: $thisWhiteColor;
-}
-
-.inputDiscount:focus::placeholder {
-  color: $thisGrayColor;
-}
-
-.getDiscount {
-  display: flex;
-  flex-direction: column;
-}
-
-.btnGetDiscount {
-  background-color: $thisWhiteColor;
-  border: none;
-  margin: 1vh;
-  padding: 2vh;
-  border-radius: 6px;
-  color: $thisBlackColor;
-  font: {
-    family: $fontMontserrat;
-    weight: 600;
-    size: 20px;
+  .saleTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 4vh;
   }
-  cursor: pointer;
+
+  .duscountedProdFour {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin: 0 4vh 0 4vh;
+    gap: 4vh;
+  }
 }
 
 .errorNotAllFieldsFilled {
@@ -164,31 +152,13 @@ h1 {
   margin: 2vh;
 }
 
-//======================================Sale============================================================
-
-.buttonAllSales {
-  @include stylesForGrayBtn;
+@media (max-width: 400) {
 }
-
-.buttonAllSales::before {
-  @include stylesForGrayBtnBefore;
+@media (max-width: 768) {
 }
-
-.saleTitle {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  padding: 4vh;
+@media (max-width: 1024) {
 }
-
-.saleh2 {
-  @include stylesForH;
+@media (max-width: 1440) {
 }
-
-.duscountedProdFour {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  margin: 0 4vh 0 4vh;
-  gap: 4vh;
+@media (max-width: 1920) {
 }

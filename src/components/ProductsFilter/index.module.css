@@ -1,4 +1,11 @@
 @charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 .filterProducts {
   padding: 4vh 0 4vh 0;
   display: -webkit-box;

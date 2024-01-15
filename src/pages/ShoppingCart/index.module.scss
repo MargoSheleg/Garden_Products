@@ -1,86 +1,79 @@
 @import "../../styles/variables";
 
+@include noStyles;
+
 .shoppingCart {
   padding: 0 4vh 0 4vh;
-}
 
-.titleOfCartDiv {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.ordersAndDetailsDiv {
-  display: grid;
-  grid-template-columns: 1.7fr 1fr;
-  gap: 4vh;
-}
-
-.orderDetailsDiv {
-  display: flex;
-  flex-direction: column;
-  gap: 2vh;
-  background-color: #f1f3f4;
-  border-radius: 6px;
-  padding: 3vh;
-}
-
-.orderDetails {
-  font: {
-    family: $fontMontserrat;
-    weight: 700;
-    size: 40px;
+  .titleOfCartDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
-  color: $thisBlackColor;
+
+  .ordersAndDetailsDiv {
+    display: grid;
+    grid-template-columns: 1.7fr 1fr;
+    gap: 4vh;
+
+    .itemsDiv {
+      display: flex;
+      flex-direction: column;
+      gap: 2vh;
+    }
+
+    .orderDetailsDiv {
+      display: flex;
+      flex-direction: column;
+      gap: 2vh;
+      background-color: #f1f3f4;
+      border-radius: 6px;
+      padding: 3vh;
+
+      .orderDetails {
+        @include w700s40cBlack;
+      }
+
+      .totalDiv {
+        display: flex;
+        justify-content: space-between;
+
+        .totalPrice {
+          @include w700s704cBlack;
+        }
+      }
+
+      .inputNameCart,
+      .inputPhoneCart,
+      .inputEmailCart {
+        padding: 3vh;
+        @include w500s20cDarkGray;
+        border-radius: 6px;
+        border: solid 1px $thisGrayColor;
+      }
+
+      .orderBtnCart {
+        @include stylesForGreenBtn;
+        background-color: $thisGreenColor;
+        padding: 2vh 0 2vh 0;
+        width: 100%;
+      }
+    }
+  }
 }
 
 .itemCounter,
 .total {
-  font: {
-    family: $fontMontserrat;
-    weight: 500;
-    size: 52px;
-  }
-  color: $thisDarkGrayColor;
+  @include w500s52cDarkGray;
 }
 
-.totalDiv {
-  display: flex;
-  justify-content: space-between;
+@media (max-width: 400) {
 }
-
-.totalPrice {
-  font: {
-    family: $fontMontserrat;
-    weight: 700;
-    size: 70.4px;
-  }
-  color: $thisBlackColor;
+@media (max-width: 768) {
 }
-
-.inputNameCart,
-.inputPhoneCart,
-.inputEmailCart {
-  padding: 3vh;
-  font: {
-    family: $fontMontserrat;
-    weight: 500;
-    size: 20px;
-  }
-  color: $thisDarkGrayColor;
-  border-radius: 6px;
-  border: solid 1px $thisGrayColor;
+@media (max-width: 1024) {
 }
-
-.orderBtnCart {
-  @include stylesForGreenBtn;
-  background-color: $thisGreenColor;
-  padding: 2vh 0 2vh 0;
-  width: 100%;
+@media (max-width: 1440) {
 }
-
-.itemsDiv {
-  display: flex;
-  flex-direction: column;
-  gap: 2vh;
+@media (max-width: 1920) {
 }

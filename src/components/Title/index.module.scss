@@ -1,5 +1,18 @@
 @import "../../styles/variables";
 
+@include noStyles;
+
 h2 {
-  @include stylesForH;
+  @include w700s64cBlack;
+}
+
+@media (max-width: 400) {
+}
+@media (max-width: 768) {
+}
+@media (max-width: 1024) {
+}
+@media (max-width: 1440) {
+}
+@media (max-width: 1920) {
 }

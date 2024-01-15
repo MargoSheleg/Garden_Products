@@ -1,3 +1,10 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 .quantityButtonDiv {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -13,9 +20,8 @@
   border-bottom: 2px solid #dddddd;
   border-radius: 9px;
 }
-
-.minusBtn,
-.plusBtn {
+.quantityButtonDiv .minusBtn,
+.quantityButtonDiv .plusBtn {
   border: 2px solid #dddddd;
   border-radius: 6px;
   background-color: transparent;
@@ -27,10 +33,10 @@
   color: #8b8b8b;
   cursor: pointer;
 }
-
-.quantity {
+.quantityButtonDiv .quantity {
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
   font-size: 20px;
   color: #282828;
+  padding: 0 2vh 0 2vh;
 }

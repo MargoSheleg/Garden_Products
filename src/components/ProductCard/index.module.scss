@@ -1,52 +1,66 @@
 @import "../../styles/variables";
 
-.allProductsDiv {
+@include noStyles;
+
+.allProductsBlockDiv {
   display: flex;
   flex-direction: column;
   border-radius: 9px;
   border: $thisGrayColor solid 2px;
   position: relative;
   height: 100%;
-}
 
-.allProductsBlockImg {
-  position: relative;
-  width: 100%;
-  height: 40vh;
-  object-fit: cover;
-  border-radius: 9px 9px 0 0;
-  border-bottom: $thisGrayColor solid 2px;
-  cursor: pointer;
-}
+  .discountBox {
+    background-color: $thisGreenColor;
+    border-radius: 6px;
+    padding: 1vh 2vh 1vh 2vh;
+    z-index: 4;
 
-.allProductsBlockP {
-  font: {
-    family: $fontMontserrat;
-    weight: 500;
-    size: 20px;
+    top: 0;
+    right: 0;
+    @include w600s20cWhite;
+    position: absolute;
   }
-  color: $thisBlackColor;
-  white-space: wrap;
-  cursor: pointer;
+
+  .allProductsBlockImg {
+    width: 100%;
+    height: 40vh;
+    object-fit: cover;
+    border-radius: 9px 9px 0 0;
+    border-bottom: $thisGrayColor solid 2px;
+    cursor: pointer;
+  }
+
+  .addToCartBtn {
+    position: absolute;
+    z-index: 999;
+    bottom: 30%;
+    left: 0;
+    width: 100%;
+    @include stylesForGreenBtn;
+    padding: 2vh 4vh 2vh 4vh;
+  }
+
+  .allProductsBlockP {
+    @include w500s20cBlack;
+    white-space: wrap;
+    cursor: pointer;
+  }
+
+  .blockOfPrices {
+    display: flex;
+    justify-content: flex-start;
+    align-items: end;
+  }
 }
 
 .discountPrice,
 .price {
-  font: {
-    family: $fontMontserrat;
-    weight: 600;
-    size: 40px;
-  }
-  color: $thisBlackColor;
+  @include w600s40cBlack;
 }
 
 .discountedPrice {
-  color: #8b8b8b;
-  font: {
-    family: $fontMontserrat;
-    weight: 500;
-    size: 26px;
-  }
+  @include w500s26cDarkGray;
   text-decoration: line-through;
 }
 
@@ -58,33 +72,13 @@
   margin: 0;
 }
 
-.blockOfPrices {
-  display: flex;
-  justify-content: flex-start;
-  align-items: end;
+@media (max-width: 400) {
 }
-
-.discountBox {
-  background-color: $thisGreenColor;
-  border-radius: 6px;
-  padding: 1vh 2vh 1vh 2vh;
-  z-index: 4;
-  color: $thisWhiteColor;
-  top: 0;
-  right: 0;
-  font: {
-    family: $fontMontserrat;
-    weight: 600;
-    size: 20px;
-  }
-  position: absolute;
+@media (max-width: 768) {
 }
-
-.addToCartBtn {
-  position: absolute;
-  bottom: 30%;
-  left: 0;
-  width: 100%;
-  @include stylesForGreenBtn;
-  padding: 2vh 4vh 2vh 4vh;
+@media (max-width: 1024) {
+}
+@media (max-width: 1440) {
+}
+@media (max-width: 1920) {
 }

@@ -1,68 +1,61 @@
 @import "../../styles/variables";
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@include noStyles;
 
 .footer {
   padding: 4vh;
-}
 
-.contactsInfo {
-  display: grid;
-  grid-template-areas:
-    "phone phone socials"
-    "address address working-hours";
-  padding: 4vh 0 4vh 0;
+  .contactsInfo {
+    display: grid;
+    grid-template-areas:
+      "phone phone socials"
+      "address address working-hours";
+    padding: 4vh 0 4vh 0;
 
-  gap: 4vh;
-}
+    gap: 4vh;
 
-.phone {
-  grid-area: phone;
+    .phone {
+      grid-area: phone;
 
-  @include grayRound;
-}
+      @include grayRound;
+    }
 
-.socials {
-  grid-area: socials;
-  @include grayRound;
-}
+    .socials {
+      grid-area: socials;
+      @include grayRound;
+    }
 
-.address {
-  grid-area: address;
-  @include grayRound;
-}
+    .address {
+      grid-area: address;
+      @include grayRound;
+    }
 
-.workingHours {
-  grid-area: working-hours;
-  @include grayRound;
+    .workingHours {
+      grid-area: working-hours;
+      @include grayRound;
+    }
+  }
+
+  .map {
+    border-radius: 10px;
+    min-height: 350px;
+    width: 100%;
+    padding: 0 0 4vh 0;
+  }
 }
 
 .phoneP,
 .socialsP,
 .addressP,
 .workingHoursP {
-  font: {
-    family: $fontMontserrat;
-    weight: 500;
-    size: 20px;
-  }
-  color: #8b8b8b;
+  @include w500s20cDarkGray;
   padding-bottom: 2vh;
 }
 
 .phoneText,
 .addressText,
 .workingHoursText {
-  font: {
-    family: $fontMontserrat;
-    weight: 600;
-    size: 40px;
-  }
-  color: $thisBlackColor;
+  @include w600s40cBlack;
 }
 
 .twoIconsInSocials {
@@ -71,9 +64,13 @@
   gap: 2vh;
 }
 
-.map {
-  border-radius: 10px;
-  min-height: 350px;
-  width: 100%;
-  padding: 0 0 4vh 0;
+@media (max-width: 400) {
+}
+@media (max-width: 768) {
+}
+@media (max-width: 1024) {
+}
+@media (max-width: 1440) {
+}
+@media (max-width: 1920) {
 }

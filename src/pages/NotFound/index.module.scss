@@ -1,35 +1,24 @@
 @import "../../styles/variables";
 
+@include noStyles;
+
 .notFound {
   padding: 6%;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
 
-.btnGoHome {
-  @include stylesForGreenBtn;
-}
-
-.pageNotFound {
-  color: $thisBlackColor;
-  font: {
-    family: $fontMontserrat;
-    weight: 700;
-    size: 64px;
+  .pageNotFound {
+    @include w700s64cBlack;
+    margin: 2%;
   }
-  margin: 2%;
-}
 
-.pOfTheError {
-  margin: 2%;
-  color: $thisDarkGrayColor;
-  font: {
-    family: $fontMontserrat;
-    weight: 500;
-    size: 20px;
+  .pOfTheError {
+    margin: 2%;
+
+    @include w500s20cDarkGray;
+    text-align: center;
   }
-  text-align: center;
 }
 
 .btnGoHome {
@@ -37,4 +26,15 @@
   padding: 2vh 4vw 2vh 4vw;
   margin: 2%;
   white-space: nowrap;
+}
+
+@media (max-width: 400) {
+}
+@media (max-width: 768) {
+}
+@media (max-width: 1024) {
+}
+@media (max-width: 1440) {
+}
+@media (max-width: 1920) {
 }

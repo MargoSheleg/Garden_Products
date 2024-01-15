@@ -1,6 +1,5 @@
 import styles from "./index.module.css";
 import ix from "../../assets/images/x.svg";
-import { useState } from "react";
 
 function CongratulationsPopUp({ display, setDisplay }) {
   function removePopup() {

@@ -1,8 +1,26 @@
 import PlusMinusBtn from "../PlusMinusBtn";
+import { useState } from "react";
 import styles from "./index.module.css";
 import xBlack from "../../assets/images/xBlack.svg";
 
 function ItemCart({ el, cart, setCart }) {
+  function deleteItem() {
+    setCart((prevCart) => {
+      return prevCart.filter((item) => item !== el);
+    });
+  }
+
+  function plus() {
+    setQuantity(quantity + 1);
+  }
+
+  function minus() {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  }
+  const [quantity, setQuantity] = useState(1);
+
   return (
     <div className={styles.itemCart}>
       <img
@@ -12,7 +30,7 @@ function ItemCart({ el, cart, setCart }) {
       <div className={styles.itemInfo}>
         <p className={styles.itemName}>{el.title}</p>
         <div className={styles.priceAndBtnDiv}>
-          <PlusMinusBtn />
+          <PlusMinusBtn plus={plus} minus={minus} quantity={quantity} />
 
           {el.discont_price !== null ? (
             <div className={styles.pricesCart}>
@@ -24,7 +42,7 @@ function ItemCart({ el, cart, setCart }) {
           )}
         </div>
       </div>
-      <img className={styles.xBlack} src={xBlack} />
+      <img className={styles.xBlack} src={xBlack} onClick={deleteItem} />
     </div>
   );
 }

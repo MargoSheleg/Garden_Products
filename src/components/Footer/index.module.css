@@ -8,16 +8,14 @@
 .footer {
   padding: 4vh;
 }
-
-.contactsInfo {
+.footer .contactsInfo {
   display: -ms-grid;
   display: grid;
       grid-template-areas: "phone phone socials" "address address working-hours";
   padding: 4vh 0 4vh 0;
   gap: 4vh;
 }
-
-.phone {
+.footer .contactsInfo .phone {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   -ms-grid-column-span: 3;
@@ -26,8 +24,7 @@
   border-radius: 10px;
   padding: 3vh;
 }
-
-.socials {
+.footer .contactsInfo .socials {
   -ms-grid-row: 1;
   -ms-grid-column: 5;
   grid-area: socials;
@@ -35,8 +32,7 @@
   border-radius: 10px;
   padding: 3vh;
 }
-
-.address {
+.footer .contactsInfo .address {
   -ms-grid-row: 3;
   -ms-grid-column: 1;
   -ms-grid-column-span: 3;
@@ -45,14 +41,19 @@
   border-radius: 10px;
   padding: 3vh;
 }
-
-.workingHours {
+.footer .contactsInfo .workingHours {
   -ms-grid-row: 3;
   -ms-grid-column: 5;
   grid-area: working-hours;
   background-color: #f1f3f4;
   border-radius: 10px;
   padding: 3vh;
+}
+.footer .map {
+  border-radius: 10px;
+  min-height: 350px;
+  width: 100%;
+  padding: 0 0 4vh 0;
 }
 
 .phoneP,
@@ -83,11 +84,4 @@
       -ms-flex-pack: start;
           justify-content: flex-start;
   gap: 2vh;
-}
-
-.map {
-  border-radius: 10px;
-  min-height: 350px;
-  width: 100%;
-  padding: 0 0 4vh 0;
 }

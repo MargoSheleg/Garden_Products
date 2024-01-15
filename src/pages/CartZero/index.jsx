@@ -1,7 +1,7 @@
-import styles from "./index.module.css";
 import NavButton from "../../components/NavButton";
 import Title from "../../components/Title";
 import { useNavigate } from "react-router-dom";
+import styles from "./index.module.css";
 
 function CartZero() {
   const navigate = useNavigate();
@@ -14,7 +14,10 @@ function CartZero() {
       <p className={styles.cartZeroP}>
         Looks like you have no items in your basket currently.
       </p>
-      <button onClick={() => navigate("/")} className={styles.cartZeroBtn}>
+      <button
+        onClick={() => navigate("/categories")}
+        className={styles.cartZeroBtn}
+      >
         Continue Shopping
       </button>
     </div>

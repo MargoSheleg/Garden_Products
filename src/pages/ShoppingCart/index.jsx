@@ -1,14 +1,11 @@
 import Title from "../../components/Title/index";
 import styles from "./index.module.css";
 import NavButton from "../../components/NavButton/index";
-import { useEffect, useState, useSyncExternalStore } from "react";
-import { eventWrapper } from "@testing-library/user-event/dist/utils";
 import ItemCart from "../../components/ItemCart";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function ShoppingCart({ cart, setCart, display, setDisplay }) {
-  const [totalPrice, setTotalPrice] = useState(0);
-
   const navigate = useNavigate();
 
   const [nameInput, setNameInput] = useState();
@@ -30,6 +27,8 @@ function ShoppingCart({ cart, setCart, display, setDisplay }) {
         cart,
       });
 
+      localStorage.setItem("userCart", JSON.stringify(orderObj));
+
       fetch("http://localhost:3333/order/send", {
         method: "POST",
         headers: {
@@ -47,8 +46,6 @@ function ShoppingCart({ cart, setCart, display, setDisplay }) {
           console.error("Fetch error", error);
           throw error;
         });
-
-      localStorage.setItem("userCart", orderObj);
 
       setDisplay("flex");
 
@@ -86,10 +83,9 @@ function ShoppingCart({ cart, setCart, display, setDisplay }) {
             <p className={styles.total}>Total</p>
             <p className={styles.totalPrice}>
               $
-              {cart.reduce(
-                (acc, el) => acc + (el.discont_price || el.price),
-                0
-              )}
+              {cart
+                .reduce((acc, el) => acc + (el.discont_price || el.price), 0)
+                .toFixed(2)}
             </p>
           </div>
           <input

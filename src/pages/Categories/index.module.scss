@@ -1,57 +1,67 @@
 @import "../../styles/variables";
+
+@include noStyles;
+
 .categoriesPage {
   padding: 4vh 4vh 5vh 4vh;
-}
 
-.pageCatH2 {
-  @include stylesForH;
-}
+  .categoriesPageTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
 
-.categoriesPageTitle {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-}
-
-.categoriesPageBlock {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 4vh;
-  white-space: wrap;
-  padding: 4% 0 4% 0;
-}
-
-.catLink {
-  text-decoration: none;
-  overflow: visible;
-  border-radius: 6px;
-}
-
-.catLink:hover {
-  box-shadow: 1px 2px 6px 2px $thisGrayColor;
-}
-
-.categoriesPageBlockDiv {
-  display: grid;
-  grid-template-rows: 3fr 1fr;
-  gap: 2vh;
-}
-
-.categoriesPageBlocksImg {
-  position: relative;
-  width: 100%;
-  height: 100%;
-
-  border-radius: 6px 6px 0 0;
-}
-
-.categoriesPageBlocksP {
-  font: {
-    family: $fontMontserrat;
-    weight: 500;
-    size: 20px;
+    .pageCatH2 {
+      @include w700s64cBlack;
+    }
   }
-  text-align: center;
-  color: $thisBlackColor;
+
+  .categoriesPageBlock {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    gap: 4vh;
+    white-space: wrap;
+    padding: 4% 0 4% 0;
+
+    .catLink {
+      text-decoration: none;
+      overflow: visible;
+      border-radius: 6px;
+
+      .categoriesPageBlockDiv {
+        display: grid;
+        grid-template-rows: 3fr 1fr;
+        gap: 2vh;
+
+        .categoriesPageBlockImg {
+          position: relative;
+          width: 100%;
+          height: 100%;
+
+          border-radius: 6px 6px 0 0;
+        }
+
+        .categoriesPageBlocksP {
+          @include w500s20cBlack;
+          text-align: center;
+        }
+      }
+    }
+
+    .catLink:hover {
+      box-shadow: 1px 2px 6px 2px $thisGrayColor;
+    }
+  }
+}
+
+@media (max-width: 400) {
+}
+@media (max-width: 768) {
+}
+@media (max-width: 1024) {
+}
+@media (max-width: 1440) {
+}
+@media (max-width: 1920) {
 }

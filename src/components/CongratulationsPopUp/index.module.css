@@ -1,3 +1,10 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 .congratulationsPopUpBlock {
   position: fixed;
   top: 0;
@@ -16,8 +23,7 @@
       -ms-flex-align: center;
           align-items: center;
 }
-
-.popup {
+.congratulationsPopUpBlock .popup {
   padding: 4vh;
   background-color: #339933;
   border-radius: 9px;
@@ -30,25 +36,21 @@
   width: max-content;
   position: relative;
 }
-
-.popupText,
-.congratulations {
+.congratulationsPopUpBlock .popup .congratulations {
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
-  color: #ffffff;
-}
-
-.congratulations {
   font-size: 44px;
+  color: #ffffff;
   padding: 0 0 1vh 0;
 }
-
-.popupText {
+.congratulationsPopUpBlock .popup .popupText {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
   font-size: 22px;
+  color: #ffffff;
   padding: 1vh 0 1vh 0;
 }
-
-.escapeCross {
+.congratulationsPopUpBlock .popup .escapeCross {
   position: absolute;
   top: 3vh;
   right: 3vh;

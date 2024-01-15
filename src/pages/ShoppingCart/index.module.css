@@ -1,8 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 .shoppingCart {
   padding: 0 4vh 0 4vh;
 }
-
-.titleOfCartDiv {
+.shoppingCart .titleOfCartDiv {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -13,16 +19,24 @@
       -ms-flex-align: center;
           align-items: center;
 }
-
-.ordersAndDetailsDiv {
+.shoppingCart .ordersAndDetailsDiv {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1.7fr 4vh 1fr;
   grid-template-columns: 1.7fr 1fr;
   gap: 4vh;
 }
-
-.orderDetailsDiv {
+.shoppingCart .ordersAndDetailsDiv .itemsDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 2vh;
+}
+.shoppingCart .ordersAndDetailsDiv .orderDetailsDiv {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -35,23 +49,13 @@
   border-radius: 6px;
   padding: 3vh;
 }
-
-.orderDetails {
+.shoppingCart .ordersAndDetailsDiv .orderDetailsDiv .orderDetails {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
   font-size: 40px;
   color: #282828;
 }
-
-.itemCounter,
-.total {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 500;
-  font-size: 52px;
-  color: #8b8b8b;
-}
-
-.totalDiv {
+.shoppingCart .ordersAndDetailsDiv .orderDetailsDiv .totalDiv {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -59,17 +63,15 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
-
-.totalPrice {
+.shoppingCart .ordersAndDetailsDiv .orderDetailsDiv .totalDiv .totalPrice {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
   font-size: 70.4px;
   color: #282828;
 }
-
-.inputNameCart,
-.inputPhoneCart,
-.inputEmailCart {
+.shoppingCart .ordersAndDetailsDiv .orderDetailsDiv .inputNameCart,
+.shoppingCart .ordersAndDetailsDiv .orderDetailsDiv .inputPhoneCart,
+.shoppingCart .ordersAndDetailsDiv .orderDetailsDiv .inputEmailCart {
   padding: 3vh;
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
@@ -78,8 +80,7 @@
   border-radius: 6px;
   border: solid 1px #dddddd;
 }
-
-.orderBtnCart {
+.shoppingCart .ordersAndDetailsDiv .orderDetailsDiv .orderBtnCart {
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
   font-size: 20px;
@@ -92,13 +93,10 @@
   width: 100%;
 }
 
-.itemsDiv {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  gap: 2vh;
+.itemCounter,
+.total {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 52px;
+  color: #8b8b8b;
 }

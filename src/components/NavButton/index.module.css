@@ -1,8 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 .btnContainer {
   padding: 7vh 3vh 7vh 0;
 }
-
-.btnTo {
+.btnContainer .btnTo {
   position: relative;
   border: 1px solid #dddddd;
   border-radius: 6px;

@@ -5,7 +5,7 @@
           box-sizing: border-box;
 }
 
-.amazingDiscountsDiv {
+.home .amazingDiscountsDiv {
   background-image: url(../../assets/images/gardenerAtWork.svg);
   background-size: auto 100vh;
   background-repeat: no-repeat;
@@ -27,15 +27,13 @@
           justify-content: center;
   gap: 4%;
 }
-
-h1 {
+.home .amazingDiscountsDiv h1 {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
   font-size: 96px;
   color: white;
 }
-
-.checkOutBtn {
+.home .amazingDiscountsDiv .checkOutBtn {
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
   font-size: 20px;
@@ -45,12 +43,10 @@ h1 {
   cursor: pointer;
   padding: 1% 4% 1% 4%;
 }
-
-.categories {
+.home .categories {
   padding: 7vh 4vh 5vh 4vh;
 }
-
-.categoriesTitle {
+.home .categories .categoriesTitle {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -62,8 +58,7 @@ h1 {
           align-items: center;
   position: relative;
 }
-
-.categoriesFiveBlocks {
+.home .categories .categoriesFiveBlocks {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -73,8 +68,12 @@ h1 {
   padding: 4% 0 4% 0;
   gap: 4vh;
 }
-
-.categoriesBlockDiv {
+.home .categories .categoriesFiveBlocks .link {
+  text-decoration: none;
+  overflow: visible;
+  border-radius: 6px;
+}
+.home .categories .categoriesFiveBlocks .link .categoriesBlockDiv {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -84,42 +83,31 @@ h1 {
           flex-direction: column;
   gap: 2vh;
 }
-
-.categoriesBlocksImg {
+.home .categories .categoriesFiveBlocks .link .categoriesBlockDiv .categoriesBlocksImg {
   position: relative;
   max-width: 310px;
   height: 100%;
   border-radius: 6px 6px 0 0;
 }
-
-.categoriesBlocksP {
+.home .categories .categoriesFiveBlocks .link .categoriesBlockDiv .categoriesBlocksP {
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
   font-size: 20px;
-  text-align: center;
   color: #282828;
+  text-align: center;
 }
-
-.link {
-  text-decoration: none;
-  overflow: visible;
-  border-radius: 6px;
-}
-
-.link:hover {
+.home .categories .categoriesFiveBlocks .link:hover {
   -webkit-box-shadow: 1px 2px 6px 2px #dddddd;
           box-shadow: 1px 2px 6px 2px #dddddd;
 }
-
-.discount {
+.home .discount {
   padding: 3vh 3vh 0 3vh;
   border-radius: 6px;
   background: -webkit-gradient(linear, right top, left top, from(#0b710b), to(#339933));
   background: linear-gradient(to left, #0b710b, #339933);
   margin: 3vh;
 }
-
-.discountText {
+.home .discount .discountText {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
   font-size: 64px;
@@ -127,15 +115,22 @@ h1 {
   text-align: center;
   padding: 1vh;
 }
-
-.photoAndInputs {
+.home .discount .photoAndInputs {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1.4fr 1fr;
   grid-template-columns: 1.4fr 1fr;
 }
-
-.inputDiscount {
+.home .discount .photoAndInputs .getDiscount {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.home .discount .photoAndInputs .getDiscount .inputDiscount {
   border-radius: 6px;
   margin: 1vh;
   padding: 1vh;
@@ -146,105 +141,49 @@ h1 {
   height: 6vh;
   font-size: 27px;
 }
-
-.inputDiscount::-webkit-input-placeholder {
+.home .discount .photoAndInputs .getDiscount .inputDiscount::-webkit-input-placeholder {
   color: #ffffff;
 }
-
-.inputDiscount::-moz-placeholder {
+.home .discount .photoAndInputs .getDiscount .inputDiscount::-moz-placeholder {
   color: #ffffff;
 }
-
-.inputDiscount:-ms-input-placeholder {
+.home .discount .photoAndInputs .getDiscount .inputDiscount:-ms-input-placeholder {
   color: #ffffff;
 }
-
-.inputDiscount::-ms-input-placeholder {
+.home .discount .photoAndInputs .getDiscount .inputDiscount::-ms-input-placeholder {
   color: #ffffff;
 }
-
-.inputDiscount::placeholder {
+.home .discount .photoAndInputs .getDiscount .inputDiscount::placeholder {
   color: #ffffff;
 }
-
-.inputDiscount:focus::-webkit-input-placeholder {
+.home .discount .photoAndInputs .getDiscount .inputDiscount:focus::-webkit-input-placeholder {
   color: #dddddd;
 }
-
-.inputDiscount:focus::-moz-placeholder {
+.home .discount .photoAndInputs .getDiscount .inputDiscount:focus::-moz-placeholder {
   color: #dddddd;
 }
-
-.inputDiscount:focus:-ms-input-placeholder {
+.home .discount .photoAndInputs .getDiscount .inputDiscount:focus:-ms-input-placeholder {
   color: #dddddd;
 }
-
-.inputDiscount:focus::-ms-input-placeholder {
+.home .discount .photoAndInputs .getDiscount .inputDiscount:focus::-ms-input-placeholder {
   color: #dddddd;
 }
-
-.inputDiscount:focus::placeholder {
+.home .discount .photoAndInputs .getDiscount .inputDiscount:focus::placeholder {
   color: #dddddd;
 }
-
-.getDiscount {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.btnGetDiscount {
+.home .discount .photoAndInputs .getDiscount .btnGetDiscount {
   background-color: #ffffff;
   border: none;
   margin: 1vh;
   padding: 2vh;
   border-radius: 6px;
-  color: #282828;
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
   font-size: 20px;
+  color: #282828;
   cursor: pointer;
 }
-
-.errorNotAllFieldsFilled {
-  color: red;
-  background-color: #ffffff;
-  border-radius: 6px;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  margin: 2vh;
-}
-
-.buttonAllSales {
-  position: relative;
-  border: 1px solid #dddddd;
-  border-radius: 6px;
-  padding: 0.5vh 1vw 0.5vh 1vw;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  color: #8b8b8b;
-  background-color: transparent;
-  white-space: nowrap;
-  cursor: pointer;
-}
-
-.buttonAllSales::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 100%;
-  margin-top: -1px;
-  height: 1px;
-  background-color: #dddddd;
-}
-
-.saleTitle {
+.home .saleTitle {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -257,19 +196,21 @@ h1 {
   position: relative;
   padding: 4vh;
 }
-
-.saleh2 {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 700;
-  font-size: 64px;
-  color: #282828;
-}
-
-.duscountedProdFour {
+.home .duscountedProdFour {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 4vh 1fr 4vh 1fr 4vh 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   margin: 0 4vh 0 4vh;
   gap: 4vh;
+}
+
+.errorNotAllFieldsFilled {
+  color: red;
+  background-color: #ffffff;
+  border-radius: 6px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 2vh;
 }

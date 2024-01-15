@@ -1,31 +1,21 @@
 import Header from "./components/Header";
-import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home/index";
-import Footer from "./components/Footer/index";
-import NotFound from "./pages/NotFound";
 import Categories from "./pages/Categories";
-import { useState, useEffect } from "react";
+import NotFound from "./pages/NotFound";
 import AllProducts from "./pages/AllProducts";
 import AllSales from "./pages/AllSales";
 import OneProduct from "./pages/OneProduct";
 import OneCategory from "./pages/OneCategory/index";
 import ShoppingCart from "./pages/ShoppingCart";
 import CartZero from "./pages/CartZero/index";
+import Footer from "./components/Footer/index";
+import { Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 function App() {
   const [categoriesFromServer, setCategoriesFromServer] = useState([]);
 
   const [cart, setCart] = useState([]);
-
-  // useEffect(() => {
-  //   if (cart.length !== 0) {
-  //     setCart((prevCart) => {
-  //       prevCart.map((obj) => {
-  //         obj.quantity = 1;
-  //       });
-  //     });
-  //   }
-  // }, [cart]);
 
   const [display, setDisplay] = useState("none");
 
@@ -83,6 +73,13 @@ function App() {
     return el.discont_price !== null;
   });
 
+  function compareByDateDescending(a, b) {
+    const dateA = Date.parse(a.createdAt);
+    const dateB = Date.parse(b.createdAt);
+
+    return dateB - dateA;
+  }
+
   return (
     <>
       <Header cart={cart} display={display} setDisplay={setDisplay} />
@@ -95,6 +92,8 @@ function App() {
               categoriesFromServer={categoriesFromServer}
               productsFromServer={productsFromServer}
               onlyDiscountedProducts={onlyDiscountedProducts}
+              cart={cart}
+              setCart={setCart}
             />
           }
         />
@@ -111,13 +110,21 @@ function App() {
               productsFromServer={productsFromServer}
               cart={cart}
               setCart={setCart}
+              compareByDateDescending={compareByDateDescending}
             />
           }
         />
 
         <Route
           path="/allsales"
-          element={<AllSales productsFromServer={productsFromServer} />}
+          element={
+            <AllSales
+              productsFromServer={productsFromServer}
+              cart={cart}
+              setCart={setCart}
+              compareByDateDescending={compareByDateDescending}
+            />
+          }
         />
 
         <Route
@@ -142,6 +149,9 @@ function App() {
                 productsFromServer={productsFromServer}
                 productCategory={el.title}
                 categoryId={el.id}
+                cart={cart}
+                setCart={setCart}
+                compareByDateDescending={compareByDateDescending}
               />
             }
           />

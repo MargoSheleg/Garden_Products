@@ -1,5 +1,5 @@
-import styles from "./index.module.css";
 import { useState } from "react";
+import styles from "./index.module.css";
 import downPointingTriange from "../../assets/images/downPointingTriange.svg";
 
 function ProductsFilter({
@@ -10,6 +10,15 @@ function ProductsFilter({
   toVal,
   setToVal,
   displayCheckBox,
+
+  showByDefault,
+  setShowByDefault,
+  showNewest,
+  setShowNewest,
+  showHighLow,
+  setShowHighLow,
+  showLowHigh,
+  setShowLowHigh,
 }) {
   function showOnlyDiscountedItems() {
     if (isDiscounted === false) {
@@ -39,6 +48,11 @@ function ProductsFilter({
     setColorOfNewest("#8B8B8B");
     setColorOfPriceHighLow("#8B8B8B");
     setColorOfPriceLowHigh("#8B8B8B");
+
+    setShowByDefault(true);
+    setShowNewest(false);
+    setShowHighLow(false);
+    setShowLowHigh(false);
   }
 
   function changeColorNewest() {
@@ -48,6 +62,11 @@ function ProductsFilter({
     setColorOfBydefault("#8B8B8B");
     setColorOfPriceHighLow("#8B8B8B");
     setColorOfPriceLowHigh("#8B8B8B");
+
+    setShowByDefault(false);
+    setShowNewest(true);
+    setShowHighLow(false);
+    setShowLowHigh(false);
   }
 
   function changeColorPriceHighLow() {
@@ -57,6 +76,11 @@ function ProductsFilter({
     setColorOfNewest("#8B8B8B");
     setColorOfBydefault("#8B8B8B");
     setColorOfPriceLowHigh("#8B8B8B");
+
+    setShowByDefault(false);
+    setShowNewest(false);
+    setShowHighLow(true);
+    setShowLowHigh(false);
   }
 
   function changeColorPriceLowHigh() {
@@ -66,6 +90,11 @@ function ProductsFilter({
     setColorOfPriceHighLow("#8B8B8B");
     setColorOfNewest("#8B8B8B");
     setColorOfBydefault("#8B8B8B");
+
+    setShowByDefault(false);
+    setShowNewest(false);
+    setShowHighLow(false);
+    setShowLowHigh(true);
   }
 
   return (

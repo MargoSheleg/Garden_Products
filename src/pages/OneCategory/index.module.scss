@@ -1,26 +1,33 @@
 @import "../../styles/variables";
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@include noStyles;
 
 .oneCategoryDiv {
   margin: 4vh;
+
+  .navigationBtn {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .oneCategoryProductsBlock {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    white-space: nowrap;
+    align-items: center;
+    gap: 4vh;
+    padding: 4vh 0 4vh 0;
+  }
 }
 
-.navigationBtn {
-  display: flex;
-  justify-content: flex-start;
+@media (max-width: 400) {
 }
-
-.oneCategoryProductsBlock {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-
-  white-space: nowrap;
-  align-items: center;
-  gap: 4vh;
-  padding: 4vh 0 4vh 0;
+@media (max-width: 768) {
+}
+@media (max-width: 1024) {
+}
+@media (max-width: 1440) {
+}
+@media (max-width: 1920) {
 }

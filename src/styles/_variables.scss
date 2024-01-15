@@ -1,3 +1,11 @@
+@mixin noStyles {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
+
 @mixin grayRound {
   background-color: #f1f3f4;
   border-radius: 10px;
@@ -42,7 +50,63 @@
   background-color: $thisGrayColor;
 }
 
-@mixin stylesForH {
+// @mixin stylesForH {
+//   font: {
+//     family: $fontMontserrat;
+//     weight: 700;
+//     size: 64px;
+//   }
+//   color: $thisBlackColor;
+// }
+
+//---------------
+
+@mixin w700s40cBlack {
+  font: {
+    family: $fontMontserrat;
+    weight: 700;
+    size: 40px;
+  }
+  color: $thisBlackColor;
+}
+
+@mixin w500s52cDarkGray {
+  font: {
+    family: $fontMontserrat;
+    weight: 500;
+    size: 52px;
+  }
+  color: $thisDarkGrayColor;
+}
+
+@mixin w700s704cBlack {
+  font: {
+    family: $fontMontserrat;
+    weight: 700;
+    size: 70.4px;
+  }
+  color: $thisBlackColor;
+}
+
+@mixin w500s20cDarkGray {
+  font: {
+    family: $fontMontserrat;
+    weight: 500;
+    size: 20px;
+  }
+  color: $thisDarkGrayColor;
+}
+
+@mixin w500s40cDarkGray {
+  font: {
+    family: $fontMontserrat;
+    weight: 500;
+    size: 40px;
+  }
+  color: $thisDarkGrayColor;
+}
+
+@mixin w700s64cBlack {
   font: {
     family: $fontMontserrat;
     weight: 700;
@@ -51,8 +115,124 @@
   color: $thisBlackColor;
 }
 
-$fontMontserrat: "Montserrat", sans-serif;
+@mixin w600s20cBlack {
+  font: {
+    family: $fontMontserrat;
+    weight: 600;
+    size: 20px;
+  }
+  color: $thisBlackColor;
+}
 
+@mixin w600s16cBlack {
+  font: {
+    family: $fontMontserrat;
+    weight: 600;
+    size: 16px;
+  }
+  color: $thisBlackColor;
+}
+
+@mixin w700s96cWhite {
+  font: {
+    family: $fontMontserrat;
+    weight: 700;
+    size: 96px;
+  }
+  color: white;
+}
+
+@mixin w700s64cWhite {
+  font: {
+    family: $fontMontserrat;
+    weight: 700;
+    size: 64px;
+  }
+  color: $thisWhiteColor;
+}
+
+@mixin w500s20cBlack {
+  font: {
+    family: $fontMontserrat;
+    weight: 500;
+    size: 20px;
+  }
+  color: $thisBlackColor;
+}
+
+@mixin w500s26cBlack {
+  font: {
+    family: $fontMontserrat;
+    weight: 500;
+    size: 26px;
+  }
+  color: $thisBlackColor;
+}
+
+@mixin w500s16cBlack {
+  font: {
+    family: $fontMontserrat;
+    weight: 500;
+    size: 16px;
+  }
+  color: $thisBlackColor;
+}
+
+@mixin w600s40cBlack {
+  font: {
+    family: $fontMontserrat;
+    weight: 600;
+    size: 40px;
+  }
+  color: $thisBlackColor;
+}
+
+@mixin w500s26cDarkGray {
+  font: {
+    family: $fontMontserrat;
+    weight: 500;
+    size: 26px;
+  }
+  color: #8b8b8b;
+}
+
+@mixin w600s20cWhite {
+  font: {
+    family: $fontMontserrat;
+    weight: 600;
+    size: 20px;
+  }
+  color: $thisWhiteColor;
+}
+
+@mixin w600s20cDarkGray {
+  font: {
+    family: $fontMontserrat;
+    weight: 600;
+    size: 20px;
+  }
+  color: $thisDarkGrayColor;
+}
+
+@mixin w600s44cWhite {
+  font: {
+    family: $fontMontserrat;
+    weight: 600;
+    size: 44px;
+  }
+  color: $thisWhiteColor;
+}
+
+@mixin w600s22cWhite {
+  font: {
+    family: $fontMontserrat;
+    weight: 600;
+    size: 22px;
+  }
+  color: $thisWhiteColor;
+}
+
+$fontMontserrat: "Montserrat", sans-serif;
 $thisBlackColor: #282828;
 $thisGreenColor: #339933;
 $thisGrayColor: #dddddd;

@@ -1,15 +1,28 @@
 @import "../../styles/variables";
 
+@include noStyles;
+
 .btnContainer {
   padding: 7vh 3vh 7vh 0;
-}
 
-.btnTo {
-  @include stylesForGrayBtn;
-  color: $thisBlackColor;
+  .btnTo {
+    @include stylesForGrayBtn;
+    color: $thisBlackColor;
+  }
 }
 
 .btnTo::before {
   @include stylesForGrayBtnBefore;
   width: 3vh;
+}
+
+@media (max-width: 400) {
+}
+@media (max-width: 768) {
+}
+@media (max-width: 1024) {
+}
+@media (max-width: 1440) {
+}
+@media (max-width: 1920) {
 }

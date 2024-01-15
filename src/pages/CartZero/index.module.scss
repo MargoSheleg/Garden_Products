@@ -1,27 +1,35 @@
 @import "../../styles/variables";
 
+@include noStyles;
+
 .cartZero {
   margin: 4vh;
-}
 
-.titleOfCartDiv {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.cartZeroP {
-  margin: 4vh 0 4vh 0;
-  font: {
-    family: $fontMontserrat;
-    weight: 500;
-    size: 26px;
+  .titleOfCartDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
-  color: $thisBlackColor;
+
+  .cartZeroP {
+    margin: 4vh 0 4vh 0;
+    @include w500s26cBlack;
+  }
+
+  .cartZeroBtn {
+    @include stylesForGreenBtn;
+    background-color: $thisGreenColor;
+    padding: 2vh 5vh 2vh 5vh;
+  }
 }
 
-.cartZeroBtn {
-  @include stylesForGreenBtn;
-  background-color: $thisGreenColor;
-  padding: 2vh 5vh 2vh 5vh;
+@media (max-width: 400) {
+}
+@media (max-width: 768) {
+}
+@media (max-width: 1024) {
+}
+@media (max-width: 1440) {
+}
+@media (max-width: 1920) {
 }

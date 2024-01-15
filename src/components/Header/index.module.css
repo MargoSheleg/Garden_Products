@@ -17,8 +17,7 @@ header {
           align-items: center;
   padding: 4vh;
 }
-
-nav {
+header nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -27,24 +26,13 @@ nav {
           justify-content: space-between;
   gap: 4vh;
 }
-
-.Link {
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 20px;
-  font-family: "Montserrat", sans-serif;
-  color: #282828;
-}
-
-.cartImgHeader {
-  cursor: pointer;
-}
-
-.cartLogoDiv {
+header .cartLogoDiv {
   position: relative;
 }
-
-.itemQuantity {
+header .cartLogoDiv .cartImgHeader {
+  cursor: pointer;
+}
+header .cartLogoDiv .itemQuantity {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -63,4 +51,12 @@ nav {
   border-radius: 50%;
   width: 1.5em;
   height: 1.5em;
+}
+
+.Link {
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: #282828;
 }

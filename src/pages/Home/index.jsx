@@ -1,16 +1,18 @@
-import styles from "./index.module.css";
-import { green, black, white } from "../../utils/index";
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import handsRegistr from "../../assets/images/handsRegistr.svg";
 import NavButton from "../../components/NavButton";
 import Title from "../../components/Title/index";
 import ProductCard from "../../components/ProductCard";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import styles from "./index.module.css";
+import { green, black, white } from "../../utils/index";
+import handsRegistr from "../../assets/images/handsRegistr.svg";
 
 function Home({
   categoriesFromServer,
   productsFromServer,
   onlyDiscountedProducts,
+  cart,
+  setCart,
 }) {
   const [btnColorGreen, changeBtnColorGB] = useState(green);
 
@@ -65,7 +67,7 @@ function Home({
   }
 
   return (
-    <div>
+    <div className={styles.home}>
       <div className={styles.amazingDiscountsDiv}>
         <h1 className={styles.h1}>
           Amazing Discounts
@@ -161,9 +163,10 @@ function Home({
         <Title title={"Sale"} />
         <NavButton title={"All sales"} linkTo={"/allsales"} />
       </div>
+
       <div className={styles.duscountedProdFour}>
         {onlyDiscountedProducts.slice(0, 4).map((el) => (
-          <ProductCard key={el.id} el={el} />
+          <ProductCard key={el.id} el={el} cart={cart} setCart={setCart} />
         ))}
       </div>
     </div>

@@ -1,9 +1,9 @@
+import Title from "../../components/Title/index";
+import styles from "./index.module.css";
 import "./index.module.css";
+import map from "../../assets/images/map.svg";
 import instagramLogo from "../../assets/images/instagramLogo.svg";
 import whatsappLogo from "../../assets/images/whatsappLogo.svg";
-import map from "../../assets/images/map.svg";
-import styles from "./index.module.css";
-import Title from "../../components/Title/index";
 
 function Footer() {
   return (

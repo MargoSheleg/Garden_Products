@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import styles from "./index.module.css";
+import { useNavigate } from "react-router-dom";
 import { black, green, white } from "../../utils/index";
+import styles from "./index.module.css";
 
 function ProductCard({ el, cart, setCart }) {
   const navigate = useNavigate();
@@ -24,13 +24,20 @@ function ProductCard({ el, cart, setCart }) {
       setBackGroundColor(bgColor);
       changeBtnTextColor(color);
       setAddToCartBtn("Added");
-
-      setCart((prevCart) => [...prevCart, el]);
+      if (!cart.includes(el)) {
+        setCart((prevCart) => [...prevCart, el]);
+      }
     }
   }
 
   function makeBtnVisibleUnvisible(display) {
     setDisplay(display);
+    if (cart.includes(el)) {
+      addBorder("2px solid #8b8b8b");
+      setBackGroundColor(white);
+      changeBtnTextColor(black);
+      setAddToCartBtn("Added");
+    }
   }
 
   return (
@@ -73,6 +80,7 @@ function ProductCard({ el, cart, setCart }) {
       >
         {el.title}
       </p>
+
       {el.discont_price !== null ? (
         <div className={styles.blockOfPrices}>
           <p className={styles.discountPrice}>${el.discont_price}</p>
