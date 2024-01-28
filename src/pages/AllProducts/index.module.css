@@ -20,3 +20,15 @@
   gap: 4vh;
   padding: 4vh 0 4vh 0;
 }
+.allProductsPage .productsBlock .productsLoading {
+  font-family: "Montserrat", sans-serif;
+  font-size: 96;
+  font-weight: 600;
+  color: #282828;
+}
+.allProductsPage .productsBlock .productsError {
+  font-family: "Montserrat", sans-serif;
+  font-size: 96;
+  font-weight: 600;
+  color: red;
+}

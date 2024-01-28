@@ -2,15 +2,20 @@ import Title from "../../components/Title/index";
 import NavButtons from "../../components/NavButtons";
 import ProductsFilter from "../../components/ProductsFilter";
 import ProductCard from "../../components/ProductCard";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./index.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllProducts } from "../../store/slices/productSlice";
 
-function AllSales({
-  productsFromServer,
-  cart,
-  setCart,
-  compareByDateDescending,
-}) {
+function AllSales({ cart, setCart, compareByDateDescending }) {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchAllProducts);
+  }, []);
+  const productsList = useSelector(
+    (state) => state.products.productsFromServer
+  );
+
   const [fromVal, setFromVal] = useState("");
   const [toVal, setToVal] = useState("");
   const [isDiscounted, setIsDiscounted] = useState(false);
@@ -20,7 +25,7 @@ function AllSales({
   const [showHighLow, setShowHighLow] = useState(false);
   const [showLowHigh, setShowLowHigh] = useState(false);
 
-  const filteredProducts = productsFromServer.filter((el) => {
+  const filteredProducts = productsList.filter((el) => {
     if (fromVal && toVal) {
       return el.price >= fromVal && el.price <= toVal;
     } else if (fromVal) {
@@ -28,7 +33,7 @@ function AllSales({
     } else if (toVal) {
       return el.price <= toVal;
     } else {
-      return productsFromServer;
+      return productsList;
     }
   });
 

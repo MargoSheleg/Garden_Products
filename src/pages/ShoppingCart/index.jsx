@@ -2,7 +2,7 @@ import Title from "../../components/Title/index";
 import styles from "./index.module.css";
 import NavButton from "../../components/NavButton/index";
 import ItemCart from "../../components/ItemCart";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function ShoppingCart({ cart, setCart, display, setDisplay }) {
@@ -18,16 +18,22 @@ function ShoppingCart({ cart, setCart, display, setDisplay }) {
 
   function makeAnOrder() {
     if (nameInput && phoneInput && emailInput) {
-      setOrderObj({
+      const orderObj1 = {
         user: {
           name: nameInput,
           phone: phoneInput,
           email: emailInput,
         },
         cart,
-      });
+      };
 
-      localStorage.setItem("userCart", JSON.stringify(orderObj));
+      setOrderObj(orderObj1);
+    }
+  }
+
+  useEffect(() => {
+    if (orderObj.user && orderObj.cart) {
+      // localStorage.setItem("userCart", JSON.stringify(orderObj));
 
       fetch("http://localhost:3333/order/send", {
         method: "POST",
@@ -56,7 +62,7 @@ function ShoppingCart({ cart, setCart, display, setDisplay }) {
       setEmailInput("");
       setCart([]);
     }
-  }
+  }, [orderObj]);
 
   function changeColor(color) {
     setColorOfBtn(color);

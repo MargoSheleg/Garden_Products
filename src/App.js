@@ -11,53 +11,35 @@ import CartZero from "./pages/CartZero/index";
 import Footer from "./components/Footer/index";
 import { Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllProducts } from "./store/slices/productSlice";
+import { fetchAllCategories } from "./store/slices/categorySlice";
 
 function App() {
-  const [categoriesFromServer, setCategoriesFromServer] = useState([]);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAllProducts);
+    dispatch(fetchAllCategories);
+  }, []);
+
+  const productsList = useSelector(
+    (store) => store.products.productsFromServer
+  );
+
+  const categoriesList = useSelector(
+    (store) => store.categories.categoriesFromServer
+  );
 
   const [cart, setCart] = useState([]);
 
   const [display, setDisplay] = useState("none");
 
-  useEffect(() => {
-    fetch("http://localhost:3333/categories/all")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setCategoriesFromServer(data);
-      })
-      .catch((error) => {
-        console.log("Fetch error", error);
-      });
-  }, []);
-
-  const [productsFromServer, setProductsFromServer] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:3333/products/all")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setProductsFromServer(data);
-      })
-      .catch((error) => {
-        console.log("Fetch error", error);
-      });
-  }, []);
-
   const [fromVal, setFromVal] = useState("");
   const [toVal, setToVal] = useState("");
   const [isDiscounted, setIsDiscounted] = useState(false);
 
-  const filteredProducts = productsFromServer.filter((el) => {
+  const filteredProducts = productsList.filter((el) => {
     if (fromVal && toVal) {
       return el.price >= fromVal && el.price <= toVal;
     } else if (fromVal) {
@@ -65,7 +47,7 @@ function App() {
     } else if (toVal) {
       return el.price <= toVal;
     } else {
-      return productsFromServer;
+      return productsList;
     }
   });
 
@@ -89,8 +71,6 @@ function App() {
           path="/"
           element={
             <Home
-              categoriesFromServer={categoriesFromServer}
-              productsFromServer={productsFromServer}
               onlyDiscountedProducts={onlyDiscountedProducts}
               cart={cart}
               setCart={setCart}
@@ -98,16 +78,12 @@ function App() {
           }
         />
 
-        <Route
-          path="/categories"
-          element={<Categories categoriesFromServer={categoriesFromServer} />}
-        />
+        <Route path="/categories" element={<Categories />} />
 
         <Route
           path="/allproducts"
           element={
             <AllProducts
-              productsFromServer={productsFromServer}
               cart={cart}
               setCart={setCart}
               compareByDateDescending={compareByDateDescending}
@@ -119,7 +95,6 @@ function App() {
           path="/allsales"
           element={
             <AllSales
-              productsFromServer={productsFromServer}
               cart={cart}
               setCart={setCart}
               compareByDateDescending={compareByDateDescending}
@@ -141,12 +116,12 @@ function App() {
 
         <Route path="/cartZero" element={<CartZero />} />
 
-        {categoriesFromServer.map((el) => (
+        {categoriesList.map((el) => (
           <Route
+            key={el.id}
             path={`/categories/${el.id}`}
             element={
               <OneCategory
-                productsFromServer={productsFromServer}
                 productCategory={el.title}
                 categoryId={el.id}
                 cart={cart}
@@ -157,17 +132,15 @@ function App() {
           />
         ))}
 
-        {productsFromServer &&
-          categoriesFromServer &&
-          productsFromServer.map((el) => (
+        {productsList &&
+          categoriesList &&
+          productsList.map((el) => (
             <Route
               key={el.id}
               path={`/products/${el.id}`}
               element={
                 <OneProduct
-                  productCategory={
-                    categoriesFromServer[el.categoryId - 1].title
-                  }
+                  productCategory={categoriesList[el.categoryId - 1].title}
                   el={el}
                   cart={cart}
                   setCart={setCart}

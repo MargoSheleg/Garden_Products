@@ -2,16 +2,23 @@ import NavButtons from "../../components/NavButtons/index";
 import Title from "../../components/Title/index";
 import ProducstFilter from "../../components/ProductsFilter";
 import ProductCard from "../../components/ProductCard";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { black } from "../../utils/index";
 import styles from "./index.module.css";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchAllProducts } from "../../store/slices/productSlice";
 
-function AllProducts({
-  productsFromServer,
-  cart,
-  setCart,
-  compareByDateDescending,
-}) {
+function AllProducts({ cart, setCart, compareByDateDescending }) {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAllProducts);
+  }, []);
+
+  const productsList = useSelector(
+    (store) => store.products.productsFromServer
+  );
+
   const [fromVal, setFromVal] = useState("");
   const [toVal, setToVal] = useState("");
   const [isDiscounted, setIsDiscounted] = useState(false);
@@ -21,7 +28,7 @@ function AllProducts({
   const [showHighLow, setShowHighLow] = useState(false);
   const [showLowHigh, setShowLowHigh] = useState(false);
 
-  const filteredProducts = productsFromServer.filter((el) => {
+  const filteredProducts = productsList.filter((el) => {
     if (fromVal && toVal) {
       return el.price >= fromVal && el.price <= toVal;
     } else if (fromVal) {
@@ -29,7 +36,7 @@ function AllProducts({
     } else if (toVal) {
       return el.price <= toVal;
     } else {
-      return productsFromServer;
+      return productsList;
     }
   });
 
@@ -37,6 +44,8 @@ function AllProducts({
     return el.discont_price !== null;
   });
 
+  const statusOfProduct = useSelector((store) => store.products.status);
+  console.log(statusOfProduct);
   return (
     <div className={styles.allProductsPage}>
       <NavButtons
@@ -65,127 +74,134 @@ function AllProducts({
       />
 
       <div className={styles.productsBlock}>
-        {isDiscounted
-          ? (showByDefault &&
-              onlyDiscountedProducts.map((el) => (
-                <ProductCard el={el} cart={cart} setCart={setCart} />
-              ))) ||
-            (showNewest &&
-              onlyDiscountedProducts
-                .sort(compareByDateDescending)
-                .map((el) => (
+        {statusOfProduct === "fulfilled" &&
+          (isDiscounted
+            ? (showByDefault &&
+                onlyDiscountedProducts.map((el) => (
                   <ProductCard el={el} cart={cart} setCart={setCart} />
                 ))) ||
-            (showHighLow &&
-              onlyDiscountedProducts
-                .sort(function (a, b) {
-                  if (a.discont_price === null && b.discont_price === null) {
-                    return b.price - a.price;
-                  } else if (
-                    a.discont_price !== null &&
-                    b.discont_price === null
-                  ) {
-                    return b.price - a.discont_price;
-                  } else if (
-                    a.discont_price === null &&
-                    b.discont_price !== null
-                  ) {
-                    return b.discont_price - a.price;
-                  } else if (
-                    a.discont_price !== null &&
-                    b.discont_price !== null
-                  ) {
-                    return b.discont_price - a.discont_price;
-                  }
-                })
-                .map((el) => (
+              (showNewest &&
+                onlyDiscountedProducts
+                  .sort(compareByDateDescending)
+                  .map((el) => (
+                    <ProductCard el={el} cart={cart} setCart={setCart} />
+                  ))) ||
+              (showHighLow &&
+                onlyDiscountedProducts
+                  .sort(function (a, b) {
+                    if (a.discont_price === null && b.discont_price === null) {
+                      return b.price - a.price;
+                    } else if (
+                      a.discont_price !== null &&
+                      b.discont_price === null
+                    ) {
+                      return b.price - a.discont_price;
+                    } else if (
+                      a.discont_price === null &&
+                      b.discont_price !== null
+                    ) {
+                      return b.discont_price - a.price;
+                    } else if (
+                      a.discont_price !== null &&
+                      b.discont_price !== null
+                    ) {
+                      return b.discont_price - a.discont_price;
+                    }
+                  })
+                  .map((el) => (
+                    <ProductCard el={el} cart={cart} setCart={setCart} />
+                  ))) ||
+              (showLowHigh &&
+                onlyDiscountedProducts
+                  .sort(function (a, b) {
+                    if (a.discont_price === null && b.discont_price === null) {
+                      return a.price - b.price;
+                    } else if (
+                      a.discont_price !== null &&
+                      b.discont_price === null
+                    ) {
+                      return a.discont_price - b.price;
+                    } else if (
+                      a.discont_price === null &&
+                      b.discont_price !== null
+                    ) {
+                      return a.price - b.discont_price;
+                    } else if (
+                      a.discont_price !== null &&
+                      b.discont_price !== null
+                    ) {
+                      return a.discont_price - b.discont_price;
+                    }
+                  })
+                  .map((el) => (
+                    <ProductCard el={el} cart={cart} setCart={setCart} />
+                  )))
+            : (showByDefault &&
+                filteredProducts.map((el) => (
                   <ProductCard el={el} cart={cart} setCart={setCart} />
                 ))) ||
-            (showLowHigh &&
-              onlyDiscountedProducts
-                .sort(function (a, b) {
-                  if (a.discont_price === null && b.discont_price === null) {
-                    return a.price - b.price;
-                  } else if (
-                    a.discont_price !== null &&
-                    b.discont_price === null
-                  ) {
-                    return a.discont_price - b.price;
-                  } else if (
-                    a.discont_price === null &&
-                    b.discont_price !== null
-                  ) {
-                    return a.price - b.discont_price;
-                  } else if (
-                    a.discont_price !== null &&
-                    b.discont_price !== null
-                  ) {
-                    return a.discont_price - b.discont_price;
-                  }
-                })
-                .map((el) => (
-                  <ProductCard el={el} cart={cart} setCart={setCart} />
-                )))
-          : (showByDefault &&
-              filteredProducts.map((el) => (
-                <ProductCard el={el} cart={cart} setCart={setCart} />
-              ))) ||
-            (showNewest &&
-              filteredProducts
-                .sort(compareByDateDescending)
-                .map((el) => (
-                  <ProductCard el={el} cart={cart} setCart={setCart} />
-                ))) ||
-            (showHighLow &&
-              filteredProducts
-                .sort(function (a, b) {
-                  if (a.discont_price === null && b.discont_price === null) {
-                    return b.price - a.price;
-                  } else if (
-                    a.discont_price !== null &&
-                    b.discont_price === null
-                  ) {
-                    return b.price - a.discont_price;
-                  } else if (
-                    a.discont_price === null &&
-                    b.discont_price !== null
-                  ) {
-                    return b.discont_price - a.price;
-                  } else if (
-                    a.discont_price !== null &&
-                    b.discont_price !== null
-                  ) {
-                    return b.discont_price - a.discont_price;
-                  }
-                })
-                .map((el) => (
-                  <ProductCard el={el} cart={cart} setCart={setCart} />
-                ))) ||
-            (showLowHigh &&
-              filteredProducts
-                .sort(function (a, b) {
-                  if (a.discont_price === null && b.discont_price === null) {
-                    return a.price - b.price;
-                  } else if (
-                    a.discont_price !== null &&
-                    b.discont_price === null
-                  ) {
-                    return a.discont_price - b.price;
-                  } else if (
-                    a.discont_price === null &&
-                    b.discont_price !== null
-                  ) {
-                    return a.price - b.discont_price;
-                  } else if (
-                    a.discont_price !== null &&
-                    b.discont_price !== null
-                  ) {
-                    return a.discont_price - b.discont_price;
-                  }
-                })
-                .map((el) => (
-                  <ProductCard el={el} cart={cart} setCart={setCart} />
-                )))}
+              (showNewest &&
+                filteredProducts
+                  .sort(compareByDateDescending)
+                  .map((el) => (
+                    <ProductCard el={el} cart={cart} setCart={setCart} />
+                  ))) ||
+              (showHighLow &&
+                filteredProducts
+                  .sort(function (a, b) {
+                    if (a.discont_price === null && b.discont_price === null) {
+                      return b.price - a.price;
+                    } else if (
+                      a.discont_price !== null &&
+                      b.discont_price === null
+                    ) {
+                      return b.price - a.discont_price;
+                    } else if (
+                      a.discont_price === null &&
+                      b.discont_price !== null
+                    ) {
+                      return b.discont_price - a.price;
+                    } else if (
+                      a.discont_price !== null &&
+                      b.discont_price !== null
+                    ) {
+                      return b.discont_price - a.discont_price;
+                    }
+                  })
+                  .map((el) => (
+                    <ProductCard el={el} cart={cart} setCart={setCart} />
+                  ))) ||
+              (showLowHigh &&
+                filteredProducts
+                  .sort(function (a, b) {
+                    if (a.discont_price === null && b.discont_price === null) {
+                      return a.price - b.price;
+                    } else if (
+                      a.discont_price !== null &&
+                      b.discont_price === null
+                    ) {
+                      return a.discont_price - b.price;
+                    } else if (
+                      a.discont_price === null &&
+                      b.discont_price !== null
+                    ) {
+                      return a.price - b.discont_price;
+                    } else if (
+                      a.discont_price !== null &&
+                      b.discont_price !== null
+                    ) {
+                      return a.discont_price - b.discont_price;
+                    }
+                  })
+                  .map((el) => (
+                    <ProductCard el={el} cart={cart} setCart={setCart} />
+                  ))))}
+        {statusOfProduct === "pending" && (
+          <p className={styles.productsLoading}>Loading...</p>
+        )}
+        {statusOfProduct === "rejected" && (
+          <p className={styles.productsError}>Server Error</p>
+        )}
       </div>
     </div>
   );

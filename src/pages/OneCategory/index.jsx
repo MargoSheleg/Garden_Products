@@ -6,24 +6,33 @@ import Title from "../../components/Title/index";
 import { gray } from "../../utils/index";
 import { useEffect, useState } from "react";
 import styles from "./index.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllProducts } from "../../store/slices/productSlice";
 
 function OneCategory({
-  productsFromServer,
   productCategory,
   categoryId,
   cart,
   setCart,
   compareByDateDescending,
 }) {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchAllProducts);
+  }, []);
+  const productsList = useSelector(
+    (store) => store.products.productsFromServer
+  );
+
   const [oneCategoryFromServer, setOneCategoryFromServer] = useState([]);
 
   useEffect(() => {
     setOneCategoryFromServer(
-      productsFromServer.filter((el) => {
+      productsList.filter((el) => {
         return el.categoryId === categoryId;
       })
     );
-  }, [productsFromServer, categoryId]);
+  }, [productsList, categoryId]);
 
   const [fromVal, setFromVal] = useState("");
   const [toVal, setToVal] = useState("");

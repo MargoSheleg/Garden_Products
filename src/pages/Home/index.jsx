@@ -1,19 +1,23 @@
 import NavButton from "../../components/NavButton";
 import Title from "../../components/Title/index";
 import ProductCard from "../../components/ProductCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./index.module.css";
 import { green, black, white } from "../../utils/index";
 import handsRegistr from "../../assets/images/handsRegistr.svg";
+import { UseSelector, useDispatch, useSelector } from "react-redux";
+import { fetchAllCategories } from "../../store/slices/categorySlice";
 
-function Home({
-  categoriesFromServer,
-  productsFromServer,
-  onlyDiscountedProducts,
-  cart,
-  setCart,
-}) {
+function Home({ onlyDiscountedProducts, cart, setCart }) {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchAllCategories);
+  }, []);
+  const categoriesList = useSelector(
+    (store) => store.categories.categoriesFromServer
+  );
+
   const [btnColorGreen, changeBtnColorGB] = useState(green);
 
   const [btnColorWhite, changeBtnColorWB] = useState(white);
@@ -94,8 +98,8 @@ function Home({
           />
         </div>
         <div className={styles.categoriesFiveBlocks}>
-          {categoriesFromServer &&
-            categoriesFromServer.map((el) => (
+          {categoriesList &&
+            categoriesList.map((el) => (
               <Link
                 className={styles.link}
                 to={`/categories/${el.id}`}

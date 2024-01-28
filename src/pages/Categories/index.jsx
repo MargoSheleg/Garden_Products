@@ -2,8 +2,13 @@ import NavButtons from "../../components/NavButtons/index";
 import { Link } from "react-router-dom";
 import { black } from "../../utils/index";
 import styles from "./index.module.css";
+import { useSelector } from "react-redux";
 
-function Categories({ categoriesFromServer }) {
+function Categories() {
+  const categoriesList = useSelector(
+    (store) => store.categories.categoriesFromServer
+  );
+
   return (
     <div className={styles.categoriesPage}>
       <NavButtons title={"Categories"} linkTo={"/categories"} color={black} />
@@ -12,8 +17,8 @@ function Categories({ categoriesFromServer }) {
         <h2 className={styles.pageCatH2}>Categories</h2>
       </div>
       <div className={styles.categoriesPageBlock}>
-        {categoriesFromServer &&
-          categoriesFromServer.map((el) => (
+        {categoriesList &&
+          categoriesList.map((el) => (
             <Link
               className={styles.catLink}
               to={`/categories/${el.id}`}
