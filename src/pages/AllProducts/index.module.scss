@@ -13,24 +13,6 @@
     align-items: center;
     gap: 4vh;
     padding: 4vh 0 4vh 0;
-
-    .productsLoading {
-      font: {
-        family: $fontMontserrat;
-        size: 96;
-        weight: 600;
-      }
-      color: $thisBlackColor;
-    }
-
-    .productsError {
-      font: {
-        family: $fontMontserrat;
-        size: 96;
-        weight: 600;
-      }
-      color: red;
-    }
   }
 }
 

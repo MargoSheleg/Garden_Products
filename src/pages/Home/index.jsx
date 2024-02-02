@@ -9,10 +9,10 @@ import handsRegistr from "../../assets/images/handsRegistr.svg";
 import { UseSelector, useDispatch, useSelector } from "react-redux";
 import { fetchAllCategories } from "../../store/slices/categorySlice";
 
-function Home({ onlyDiscountedProducts, cart, setCart }) {
+function Home({ onlyDiscountedProducts }) {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchAllCategories);
+    dispatch(fetchAllCategories());
   }, []);
   const categoriesList = useSelector(
     (store) => store.categories.categoriesFromServer
@@ -69,6 +69,10 @@ function Home({ onlyDiscountedProducts, cart, setCart }) {
       setErrorAllFields("inline");
     }
   }
+
+  const categoryStatus = useSelector((store) => store.categories.status);
+
+  // const productStatus = useSelector((store) => store.categories.status);
 
   return (
     <div className={styles.home}>
@@ -170,7 +174,7 @@ function Home({ onlyDiscountedProducts, cart, setCart }) {
 
       <div className={styles.duscountedProdFour}>
         {onlyDiscountedProducts.slice(0, 4).map((el) => (
-          <ProductCard key={el.id} el={el} cart={cart} setCart={setCart} />
+          <ProductCard key={el.id} el={el} />
         ))}
       </div>
     </div>

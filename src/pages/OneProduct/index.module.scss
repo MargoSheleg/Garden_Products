@@ -50,6 +50,12 @@
   .priceBox {
     right: 60%;
     bottom: 55%;
+    background-color: $thisGreenColor;
+    color: $thisWhiteColor;
+    border-radius: 6px;
+    padding: 1vh 2vh 1vh 2vh;
+    position: absolute;
+    @include w600s20cWhite;
   }
 }
 

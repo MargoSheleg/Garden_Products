@@ -14,13 +14,18 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllProducts } from "./store/slices/productSlice";
 import { fetchAllCategories } from "./store/slices/categorySlice";
+import {
+  getCartFromLocalStorage,
+  saveCartAtLocalStorage,
+} from "./store/slices/cartSlice";
 
 function App() {
+  let cart = useSelector((state) => state.cart.cart);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchAllProducts);
-    dispatch(fetchAllCategories);
+    dispatch(fetchAllProducts());
+    dispatch(fetchAllCategories());
   }, []);
 
   const productsList = useSelector(
@@ -31,7 +36,7 @@ function App() {
     (store) => store.categories.categoriesFromServer
   );
 
-  const [cart, setCart] = useState([]);
+  const categoriesStatus = useSelector((store) => store.categories.status);
 
   const [display, setDisplay] = useState("none");
 
@@ -47,7 +52,7 @@ function App() {
     } else if (toVal) {
       return el.price <= toVal;
     } else {
-      return productsList;
+      return true;
     }
   });
 
@@ -62,20 +67,26 @@ function App() {
     return dateB - dateA;
   }
 
+  useEffect(() => {
+    if (
+      !localStorage.getItem("cart") !== null &&
+      !localStorage.getItem("cart") !== undefined
+    )
+      dispatch(getCartFromLocalStorage());
+  }, []);
+
+  useEffect(() => {
+    dispatch(saveCartAtLocalStorage());
+  }, [cart]);
+
   return (
     <>
-      <Header cart={cart} display={display} setDisplay={setDisplay} />
+      <Header display={display} setDisplay={setDisplay} />
 
       <Routes>
         <Route
           path="/"
-          element={
-            <Home
-              onlyDiscountedProducts={onlyDiscountedProducts}
-              cart={cart}
-              setCart={setCart}
-            />
-          }
+          element={<Home onlyDiscountedProducts={onlyDiscountedProducts} />}
         />
 
         <Route path="/categories" element={<Categories />} />
@@ -83,54 +94,38 @@ function App() {
         <Route
           path="/allproducts"
           element={
-            <AllProducts
-              cart={cart}
-              setCart={setCart}
-              compareByDateDescending={compareByDateDescending}
-            />
+            <AllProducts compareByDateDescending={compareByDateDescending} />
           }
         />
 
         <Route
           path="/allsales"
           element={
-            <AllSales
-              cart={cart}
-              setCart={setCart}
-              compareByDateDescending={compareByDateDescending}
-            />
+            <AllSales compareByDateDescending={compareByDateDescending} />
           }
         />
 
         <Route
           path="/cart"
-          element={
-            <ShoppingCart
-              cart={cart}
-              setCart={setCart}
-              display={display}
-              setDisplay={setDisplay}
-            />
-          }
+          element={<ShoppingCart setDisplay={setDisplay} />}
         />
 
         <Route path="/cartZero" element={<CartZero />} />
 
-        {categoriesList.map((el) => (
-          <Route
-            key={el.id}
-            path={`/categories/${el.id}`}
-            element={
-              <OneCategory
-                productCategory={el.title}
-                categoryId={el.id}
-                cart={cart}
-                setCart={setCart}
-                compareByDateDescending={compareByDateDescending}
-              />
-            }
-          />
-        ))}
+        {categoriesList &&
+          categoriesList.map((el) => (
+            <Route
+              key={el.id}
+              path={`/categories/${el.id}`}
+              element={
+                <OneCategory
+                  productCategory={el.title}
+                  categoryId={el.id}
+                  compareByDateDescending={compareByDateDescending}
+                />
+              }
+            />
+          ))}
 
         {productsList &&
           categoriesList &&
@@ -140,10 +135,8 @@ function App() {
               path={`/products/${el.id}`}
               element={
                 <OneProduct
-                  productCategory={categoriesList[el.categoryId - 1].title}
+                  productCategory={categoriesList[el.categoryId - 1]?.title}
                   el={el}
-                  cart={cart}
-                  setCart={setCart}
                 />
               }
             />

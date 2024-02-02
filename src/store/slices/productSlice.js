@@ -1,5 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const fetchAllProducts = createAsyncThunk(
   "fetchAllProducts",
@@ -20,14 +19,14 @@ export const productSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchAllProducts.pending, (state) => {
-        state.status = "pending";
-      })
       .addCase(fetchAllProducts.fulfilled, (state, action) => {
         state.status = "fulfilled";
         state.productsFromServer = action.payload;
       })
-      .addCase(fetchAllProducts.rejected, (state) => {
+      .addCase(fetchAllProducts.pending, (state, action) => {
+        state.status = "pending";
+      })
+      .addCase(fetchAllProducts.rejected, (state, action) => {
         state.status = "rejected";
       });
   },

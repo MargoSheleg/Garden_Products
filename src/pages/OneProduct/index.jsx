@@ -2,16 +2,20 @@ import NavButtons from "../../components/NavButtons";
 import NavButton from "../../components/NavButton";
 import PlusMinusBtn from "../../components/PlusMinusBtn";
 import { gray, black, green, white } from "../../utils/index";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./index.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  pushToCart,
+  makeCartEmpty,
+  removeFromCart,
+} from "../../store/slices/cartSlice";
 
-function OneProduct({
-  productCategory,
-  el,
+function OneProduct({ productCategory, el }) {
+  let cart = useSelector((state) => state.cart.cart);
 
-  cart,
-  setCart,
-}) {
+  const dispatch = useDispatch();
+
   const [quantity, setQuantity] = useState(0);
 
   function minus() {
@@ -23,16 +27,12 @@ function OneProduct({
         setAddToCartBtn("Add to cart");
 
         if (cart.length > 1) {
-          setCart((prevCart) => {
-            prevCart.filter((obj) => {
-              return obj !== el;
-            });
-          });
+          dispatch(removeFromCart(el));
         } else {
-          setCart([]);
+          dispatch(makeCartEmpty());
         }
       }
-      setQuantity(quantity - 1);
+      setQuantity((prevQuantity) => prevQuantity - 1);
     }
   }
 
@@ -62,10 +62,20 @@ function OneProduct({
       setAddToCartBtn(text);
       setQuantity(quantity + 1);
       if (!cart.includes(el)) {
-        setCart((prevCart) => [...prevCart, el]);
+        dispatch(pushToCart(el));
       }
     }
   }
+
+  useEffect(() => {
+    if (cart.includes(el)) {
+      setAddToCartBtn("Added");
+      setQuantity(1);
+      setBackGroundColor(white);
+      changeBtnTextColor(black);
+      addBorder("2px solid #8b8b8b");
+    }
+  }, []);
 
   return (
     <div className={styles.oneProduct}>
@@ -100,6 +110,7 @@ function OneProduct({
             ) : (
               <p className={styles.discountPrice}>${el.price}</p>
             )}
+
             {el.discont_price !== null && (
               <div className={styles.priceBox}>
                 {(((el.price - el.discont_price) * 100) / el.price).toFixed(0) +

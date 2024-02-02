@@ -2,9 +2,17 @@ import NavButtons from "../../components/NavButtons/index";
 import { Link } from "react-router-dom";
 import { black } from "../../utils/index";
 import styles from "./index.module.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchAllCategories } from "../../store/slices/categorySlice";
 
 function Categories() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAllCategories());
+  }, []);
+
   const categoriesList = useSelector(
     (store) => store.categories.categoriesFromServer
   );

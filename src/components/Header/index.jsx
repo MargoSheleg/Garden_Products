@@ -5,8 +5,11 @@ import { green, back, black } from "../../utils/index";
 import styles from "./index.module.css";
 import logo from "../../assets/images/logo.svg";
 import cartImg from "../../assets/images/cart.svg";
+import { useSelector } from "react-redux";
 
-function Header({ cart, display, setDisplay }) {
+function Header({ display, setDisplay }) {
+  let cart = useSelector((state) => state.cart.cart);
+
   let [btnColorMainpage, changeBtnColorMainPage] = useState(black);
   let [btnColorCategories, changeBtnColorCategories] = useState(black);
   let [btnColorAllproducts, changeBtnColorAllproducts] = useState(black);

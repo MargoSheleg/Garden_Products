@@ -1,9 +1,14 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { black, green, white } from "../../utils/index";
 import styles from "./index.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { pushToCart } from "../../store/slices/cartSlice";
 
-function ProductCard({ el, cart, setCart }) {
+function ProductCard({ el }) {
+  let cart = useSelector((state) => state.cart.cart);
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
   const [display, setDisplay] = useState("none");
   const [backGroundColor, setBackGroundColor] = useState(green);
@@ -25,7 +30,7 @@ function ProductCard({ el, cart, setCart }) {
       changeBtnTextColor(color);
       setAddToCartBtn("Added");
       if (!cart.includes(el)) {
-        setCart((prevCart) => [...prevCart, el]);
+        dispatch(pushToCart(el));
       }
     }
   }

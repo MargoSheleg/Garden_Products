@@ -7,10 +7,10 @@ import styles from "./index.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllProducts } from "../../store/slices/productSlice";
 
-function AllSales({ cart, setCart, compareByDateDescending }) {
+function AllSales({ compareByDateDescending }) {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchAllProducts);
+    dispatch(fetchAllProducts());
   }, []);
   const productsList = useSelector(
     (state) => state.products.productsFromServer
@@ -65,15 +65,11 @@ function AllSales({ cart, setCart, compareByDateDescending }) {
 
       <div className={styles.allSalesBlock}>
         {(showByDefault &&
-          onlyDiscountedProducts.map((el) => (
-            <ProductCard el={el} cart={cart} setCart={setCart} />
-          ))) ||
+          onlyDiscountedProducts.map((el) => <ProductCard el={el} />)) ||
           (showNewest &&
             onlyDiscountedProducts
               .sort(compareByDateDescending)
-              .map((el) => (
-                <ProductCard el={el} cart={cart} setCart={setCart} />
-              ))) ||
+              .map((el) => <ProductCard el={el} />)) ||
           (showHighLow &&
             onlyDiscountedProducts
               .sort(function (a, b) {
@@ -96,9 +92,7 @@ function AllSales({ cart, setCart, compareByDateDescending }) {
                   return b.discont_price - a.discont_price;
                 }
               })
-              .map((el) => (
-                <ProductCard el={el} cart={cart} setCart={setCart} />
-              ))) ||
+              .map((el) => <ProductCard el={el} />)) ||
           (showLowHigh &&
             onlyDiscountedProducts
               .sort(function (a, b) {
@@ -121,9 +115,7 @@ function AllSales({ cart, setCart, compareByDateDescending }) {
                   return a.discont_price - b.discont_price;
                 }
               })
-              .map((el) => (
-                <ProductCard el={el} cart={cart} setCart={setCart} />
-              )))}
+              .map((el) => <ProductCard el={el} />))}
       </div>
     </div>
   );

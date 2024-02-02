@@ -9,17 +9,13 @@ import styles from "./index.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllProducts } from "../../store/slices/productSlice";
 
-function OneCategory({
-  productCategory,
-  categoryId,
-  cart,
-  setCart,
-  compareByDateDescending,
-}) {
+function OneCategory({ productCategory, categoryId, compareByDateDescending }) {
   const dispatch = useDispatch();
+
   useEffect(() => {
-    dispatch(fetchAllProducts);
+    dispatch(fetchAllProducts());
   }, []);
+
   const productsList = useSelector(
     (store) => store.products.productsFromServer
   );
@@ -94,14 +90,12 @@ function OneCategory({
         {isDiscounted
           ? (showByDefault &&
               onlyDiscountedProducts.map((el) => (
-                <ProductCard el={el} cart={cart} setCart={setCart} />
+                <ProductCard key={el.id} el={el} />
               ))) ||
             (showNewest &&
               onlyDiscountedProducts
                 .sort(compareByDateDescending)
-                .map((el) => (
-                  <ProductCard el={el} cart={cart} setCart={setCart} />
-                ))) ||
+                .map((el) => <ProductCard key={el.id} el={el} />)) ||
             (showHighLow &&
               onlyDiscountedProducts
                 .sort(function (a, b) {
@@ -124,9 +118,7 @@ function OneCategory({
                     return b.discont_price - a.discont_price;
                   }
                 })
-                .map((el) => (
-                  <ProductCard el={el} cart={cart} setCart={setCart} />
-                ))) ||
+                .map((el) => <ProductCard key={el.id} el={el} />)) ||
             (showLowHigh &&
               onlyDiscountedProducts
                 .sort(function (a, b) {
@@ -149,19 +141,15 @@ function OneCategory({
                     return a.discont_price - b.discont_price;
                   }
                 })
-                .map((el) => (
-                  <ProductCard el={el} cart={cart} setCart={setCart} />
-                )))
+                .map((el) => <ProductCard key={el.id} el={el} />))
           : (showByDefault &&
               filteredProducts.map((el) => (
-                <ProductCard el={el} cart={cart} setCart={setCart} />
+                <ProductCard key={el.id} el={el} />
               ))) ||
             (showNewest &&
               filteredProducts
                 .sort(compareByDateDescending)
-                .map((el) => (
-                  <ProductCard el={el} cart={cart} setCart={setCart} />
-                ))) ||
+                .map((el) => <ProductCard key={el.id} el={el} />)) ||
             (showHighLow &&
               filteredProducts
                 .sort(function (a, b) {
@@ -184,9 +172,7 @@ function OneCategory({
                     return b.discont_price - a.discont_price;
                   }
                 })
-                .map((el) => (
-                  <ProductCard el={el} cart={cart} setCart={setCart} />
-                ))) ||
+                .map((el) => <ProductCard key={el.id} el={el} />)) ||
             (showLowHigh &&
               filteredProducts
                 .sort(function (a, b) {
@@ -209,9 +195,7 @@ function OneCategory({
                     return a.discont_price - b.discont_price;
                   }
                 })
-                .map((el) => (
-                  <ProductCard el={el} cart={cart} setCart={setCart} />
-                )))}
+                .map((el) => <ProductCard key={el.id} el={el} />))}
       </div>
     </div>
   );

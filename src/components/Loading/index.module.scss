@@ -1,0 +1,10 @@
+@import "../../styles/variables";
+.loading {
+  font: {
+    family: $fontMontserrat;
+    size: 50px;
+    weight: 600;
+  }
+  color: $thisBlackColor;
+  padding: 10vh 40vw 10vh 40vw;
+}

@@ -1,0 +1,10 @@
+@import "../../styles/variables";
+.error {
+  font: {
+    family: $fontMontserrat;
+    size: 50px;
+    weight: 600;
+  }
+  color: red;
+  padding: 30vh 40vw 30vh 40vw;
+}

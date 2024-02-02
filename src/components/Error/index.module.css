@@ -1,0 +1,7 @@
+.error {
+  font-family: "Montserrat", sans-serif;
+  font-size: 50px;
+  font-weight: 600;
+  color: red;
+  padding: 30vh 40vw 30vh 40vw;
+}

@@ -2,12 +2,14 @@ import PlusMinusBtn from "../PlusMinusBtn";
 import { useState } from "react";
 import styles from "./index.module.css";
 import xBlack from "../../assets/images/xBlack.svg";
+import { useDispatch } from "react-redux";
+import { removeFromCart } from "../../store/slices/cartSlice";
 
-function ItemCart({ el, cart, setCart }) {
-  function deleteItem() {
-    setCart((prevCart) => {
-      return prevCart.filter((item) => item !== el);
-    });
+function ItemCart({ el }) {
+  const dispatch = useDispatch();
+
+  function deleteItem(el) {
+    dispatch(removeFromCart(el));
   }
 
   function plus() {
@@ -42,7 +44,11 @@ function ItemCart({ el, cart, setCart }) {
           )}
         </div>
       </div>
-      <img className={styles.xBlack} src={xBlack} onClick={deleteItem} />
+      <img
+        className={styles.xBlack}
+        src={xBlack}
+        onClick={() => deleteItem(el)}
+      />
     </div>
   );
 }

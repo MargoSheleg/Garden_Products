@@ -1,4 +1,5 @@
 import NavButtons from "../../components/NavButtons/index";
+import Error from "../../components/Error";
 import Title from "../../components/Title/index";
 import ProducstFilter from "../../components/ProductsFilter";
 import ProductCard from "../../components/ProductCard";
@@ -7,12 +8,13 @@ import { black } from "../../utils/index";
 import styles from "./index.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchAllProducts } from "../../store/slices/productSlice";
+import Loading from "../../components/Loading";
 
-function AllProducts({ cart, setCart, compareByDateDescending }) {
+function AllProducts({ compareByDateDescending }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchAllProducts);
+    dispatch(fetchAllProducts());
   }, []);
 
   const productsList = useSelector(
@@ -36,7 +38,7 @@ function AllProducts({ cart, setCart, compareByDateDescending }) {
     } else if (toVal) {
       return el.price <= toVal;
     } else {
-      return productsList;
+      return true;
     }
   });
 
@@ -78,14 +80,12 @@ function AllProducts({ cart, setCart, compareByDateDescending }) {
           (isDiscounted
             ? (showByDefault &&
                 onlyDiscountedProducts.map((el) => (
-                  <ProductCard el={el} cart={cart} setCart={setCart} />
+                  <ProductCard key={el.id} el={el} />
                 ))) ||
               (showNewest &&
                 onlyDiscountedProducts
                   .sort(compareByDateDescending)
-                  .map((el) => (
-                    <ProductCard el={el} cart={cart} setCart={setCart} />
-                  ))) ||
+                  .map((el) => <ProductCard key={el.id} el={el} />)) ||
               (showHighLow &&
                 onlyDiscountedProducts
                   .sort(function (a, b) {
@@ -108,9 +108,7 @@ function AllProducts({ cart, setCart, compareByDateDescending }) {
                       return b.discont_price - a.discont_price;
                     }
                   })
-                  .map((el) => (
-                    <ProductCard el={el} cart={cart} setCart={setCart} />
-                  ))) ||
+                  .map((el) => <ProductCard key={el.id} el={el} />)) ||
               (showLowHigh &&
                 onlyDiscountedProducts
                   .sort(function (a, b) {
@@ -133,19 +131,15 @@ function AllProducts({ cart, setCart, compareByDateDescending }) {
                       return a.discont_price - b.discont_price;
                     }
                   })
-                  .map((el) => (
-                    <ProductCard el={el} cart={cart} setCart={setCart} />
-                  )))
+                  .map((el) => <ProductCard key={el.id} el={el} />))
             : (showByDefault &&
                 filteredProducts.map((el) => (
-                  <ProductCard el={el} cart={cart} setCart={setCart} />
+                  <ProductCard key={el.id} el={el} />
                 ))) ||
               (showNewest &&
                 filteredProducts
                   .sort(compareByDateDescending)
-                  .map((el) => (
-                    <ProductCard el={el} cart={cart} setCart={setCart} />
-                  ))) ||
+                  .map((el) => <ProductCard key={el.id} el={el} />)) ||
               (showHighLow &&
                 filteredProducts
                   .sort(function (a, b) {
@@ -168,9 +162,7 @@ function AllProducts({ cart, setCart, compareByDateDescending }) {
                       return b.discont_price - a.discont_price;
                     }
                   })
-                  .map((el) => (
-                    <ProductCard el={el} cart={cart} setCart={setCart} />
-                  ))) ||
+                  .map((el) => <ProductCard key={el.id} el={el} />)) ||
               (showLowHigh &&
                 filteredProducts
                   .sort(function (a, b) {
@@ -193,15 +185,9 @@ function AllProducts({ cart, setCart, compareByDateDescending }) {
                       return a.discont_price - b.discont_price;
                     }
                   })
-                  .map((el) => (
-                    <ProductCard el={el} cart={cart} setCart={setCart} />
-                  ))))}
-        {statusOfProduct === "pending" && (
-          <p className={styles.productsLoading}>Loading...</p>
-        )}
-        {statusOfProduct === "rejected" && (
-          <p className={styles.productsError}>Server Error</p>
-        )}
+                  .map((el) => <ProductCard key={el.id} el={el} />)))}
+        {statusOfProduct === "pending" && <Loading />}
+        {statusOfProduct === "rejected" && <Error />}
       </div>
     </div>
   );

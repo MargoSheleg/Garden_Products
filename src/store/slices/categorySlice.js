@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const fetchAllCategories = createAsyncThunk(
   "fetchAllCategories",
   async () => {
-    const response = await fetch("");
+    const response = await fetch("http://localhost:3333/categories/all");
     const data = await response.json();
 
     return data;
@@ -31,3 +31,5 @@ export const categorySlice = createSlice({
       });
   },
 });
+
+export default categorySlice.reducer;

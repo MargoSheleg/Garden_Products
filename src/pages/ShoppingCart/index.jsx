@@ -4,13 +4,18 @@ import NavButton from "../../components/NavButton/index";
 import ItemCart from "../../components/ItemCart";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { makeCartEmpty } from "../../store/slices/cartSlice";
 
-function ShoppingCart({ cart, setCart, display, setDisplay }) {
+function ShoppingCart({ setDisplay }) {
+  let cart = useSelector((state) => state.cart.cart);
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
 
-  const [nameInput, setNameInput] = useState();
-  const [phoneInput, setPhoneInput] = useState();
-  const [emailInput, setEmailInput] = useState();
+  const [nameInput, setNameInput] = useState("");
+  const [phoneInput, setPhoneInput] = useState("");
+  const [emailInput, setEmailInput] = useState("");
 
   const [colorOfBtn, setColorOfBtn] = useState("#339933");
 
@@ -33,8 +38,6 @@ function ShoppingCart({ cart, setCart, display, setDisplay }) {
 
   useEffect(() => {
     if (orderObj.user && orderObj.cart) {
-      // localStorage.setItem("userCart", JSON.stringify(orderObj));
-
       fetch("http://localhost:3333/order/send", {
         method: "POST",
         headers: {
@@ -60,7 +63,7 @@ function ShoppingCart({ cart, setCart, display, setDisplay }) {
       setNameInput("");
       setPhoneInput("");
       setEmailInput("");
-      setCart([]);
+      dispatch(makeCartEmpty());
     }
   }, [orderObj]);
 
@@ -78,7 +81,7 @@ function ShoppingCart({ cart, setCart, display, setDisplay }) {
       <div className={styles.ordersAndDetailsDiv}>
         <div className={styles.itemsDiv}>
           {cart.map((el) => (
-            <ItemCart el={el} cart={cart} setCart={setCart} />
+            <ItemCart key={el.id} el={el} />
           ))}
         </div>
 
