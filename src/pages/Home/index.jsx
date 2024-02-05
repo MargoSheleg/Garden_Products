@@ -9,6 +9,12 @@ import handsRegistr from "../../assets/images/handsRegistr.svg";
 import { UseSelector, useDispatch, useSelector } from "react-redux";
 import { fetchAllCategories } from "../../store/slices/categorySlice";
 
+import React, { useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import { Navigation } from "swiper/modules";
+
 function Home({ onlyDiscountedProducts }) {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -101,25 +107,31 @@ function Home({ onlyDiscountedProducts }) {
             linkTo={"/categories"}
           />
         </div>
-        <div className={styles.categoriesFiveBlocks}>
+        <Swiper
+          navigation={true}
+          modules={[Navigation]}
+          className={styles.categoriesFiveBlocks}
+        >
           {categoriesList &&
             categoriesList.map((el) => (
-              <Link
-                className={styles.link}
-                to={`/categories/${el.id}`}
-                key={el.id}
-              >
-                <div className={styles.categoriesBlockDiv}>
-                  <img
-                    className={styles.categoriesBlocksImg}
-                    src={"http://localhost:3333" + el.image}
-                    alt={el.title}
-                  />
-                  <p className={styles.categoriesBlocksP}>{el.title}</p>
-                </div>
-              </Link>
+              <SwiperSlide className={styles.swiperSlideCategories}>
+                <Link
+                  className={styles.link}
+                  to={`/categories/${el.id}`}
+                  key={el.id}
+                >
+                  <div className={styles.categoriesBlockDiv}>
+                    <img
+                      className={styles.categoriesBlocksImg}
+                      src={"http://localhost:3333" + el.image}
+                      alt={el.title}
+                    />
+                    <p className={styles.categoriesBlocksP}>{el.title}</p>
+                  </div>
+                </Link>
+              </SwiperSlide>
             ))}
-        </div>
+        </Swiper>
       </div>
 
       <div className={styles.discount}>
@@ -172,11 +184,17 @@ function Home({ onlyDiscountedProducts }) {
         <NavButton title={"All sales"} linkTo={"/allsales"} />
       </div>
 
-      <div className={styles.duscountedProdFour}>
+      <Swiper
+        navigation={true}
+        modules={[Navigation]}
+        className={styles.discountedProdFourSwiper}
+      >
         {onlyDiscountedProducts.slice(0, 4).map((el) => (
-          <ProductCard key={el.id} el={el} />
+          <SwiperSlide className={styles.saleProdSwiperSlide}>
+            <ProductCard key={el.id} el={el} />
+          </SwiperSlide>
         ))}
-      </div>
+      </Swiper>
     </div>
   );
 }

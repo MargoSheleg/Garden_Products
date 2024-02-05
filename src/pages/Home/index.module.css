@@ -5,6 +5,10 @@
           box-sizing: border-box;
 }
 
+.home {
+  height: 100%;
+  position: relative;
+}
 .home .amazingDiscountsDiv {
   background-image: url(../../assets/images/gardenerAtWork.svg);
   background-size: auto 100vh;
@@ -59,14 +63,17 @@
   position: relative;
 }
 .home .categories .categoriesFiveBlocks {
+  margin: 0 15vw 0 15vw;
+  padding: 0 10vw 0 10vw;
+}
+.home .categories .categoriesFiveBlocks .swiperSlideCategories {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding: 4% 0 4% 0;
-  gap: 4vh;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 4vh;
 }
 .home .categories .categoriesFiveBlocks .link {
   text-decoration: none;
@@ -82,10 +89,11 @@
       -ms-flex-direction: column;
           flex-direction: column;
   gap: 2vh;
+  padding: 0 0 4vh 0;
 }
 .home .categories .categoriesFiveBlocks .link .categoriesBlockDiv .categoriesBlocksImg {
   position: relative;
-  max-width: 310px;
+  width: 50vh;
   height: 100%;
   border-radius: 6px 6px 0 0;
 }
@@ -196,13 +204,18 @@
   position: relative;
   padding: 4vh;
 }
-.home .duscountedProdFour {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 4vh 1fr 4vh 1fr 4vh 1fr;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  margin: 0 4vh 0 4vh;
-  gap: 4vh;
+.home .discountedProdFourSwiper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0 15vw 0 15vw;
+  padding: 0 10vw 0 10vw;
+}
+.home .discountedProdFourSwiper .saleProdSwiperSlide {
+  padding: 0 22vh 0 22vh;
 }
 
 .errorNotAllFieldsFilled {

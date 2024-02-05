@@ -4,6 +4,7 @@
 
 .categoriesPage {
   padding: 4vh 4vh 5vh 4vh;
+  position: relative;
 
   .categoriesPageTitle {
     display: flex;
@@ -17,40 +18,57 @@
   }
 
   .categoriesPageBlock {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 100%;
+    height: 100%;
 
     gap: 4vh;
     white-space: wrap;
     padding: 4% 0 4% 0;
 
-    .catLink {
-      text-decoration: none;
-      overflow: visible;
-      border-radius: 6px;
+    .swiperSlideCat {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-      .categoriesPageBlockDiv {
-        display: grid;
-        grid-template-rows: 3fr 1fr;
-        gap: 2vh;
+      .catLink {
+        text-decoration: none;
+        overflow: visible;
+        border-radius: 6px;
 
-        .categoriesPageBlockImg {
-          position: relative;
-          width: 100%;
-          height: 100%;
+        .categoriesPageBlockDiv {
+          display: grid;
+          grid-template-rows: 3fr 1fr;
+          gap: 4vh;
+          width: 30vw;
+          height: 30vw;
 
-          border-radius: 6px 6px 0 0;
-        }
+          .categoriesPageBlockImg {
+            position: relative;
+            width: 100%;
+            height: 100%;
 
-        .categoriesPageBlocksP {
-          @include w500s20cBlack;
-          text-align: center;
+            border-radius: 6px 6px 0 0;
+
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+
+          .categoriesPageBlocksP {
+            @include w500s20cBlack;
+            text-align: center;
+          }
+          .categoriesPageBlocksP:hover {
+            color: $thisGreenColor;
+          }
         }
       }
-    }
 
-    .catLink:hover {
-      box-shadow: 1px 2px 6px 2px $thisGrayColor;
+      .catLink:hover {
+        box-shadow: 1px 2px 6px 2px $thisGrayColor;
+      }
     }
   }
 }

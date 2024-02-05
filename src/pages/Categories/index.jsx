@@ -6,6 +6,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchAllCategories } from "../../store/slices/categorySlice";
 
+import React, { useRef, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Pagination } from "swiper/modules";
+
 function Categories() {
   const dispatch = useDispatch();
 
@@ -24,25 +30,35 @@ function Categories() {
       <div className={styles.categoriesPageTitle}>
         <h2 className={styles.pageCatH2}>Categories</h2>
       </div>
-      <div className={styles.categoriesPageBlock}>
+      <Swiper
+        slidesPerView={3}
+        spaceBetween={30}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[Pagination]}
+        className={styles.categoriesPageBlock}
+      >
         {categoriesList &&
           categoriesList.map((el) => (
-            <Link
-              className={styles.catLink}
-              to={`/categories/${el.id}`}
-              key={el.id}
-            >
-              <div className={styles.categoriesPageBlockDiv}>
-                <img
-                  className={styles.categoriesPageBlockImg}
-                  src={"http://localhost:3333" + el.image}
-                  alt={el.title}
-                />
-                <p className={styles.categoriesPageBlocksP}>{el.title}</p>
-              </div>
-            </Link>
+            <SwiperSlide className={styles.swiperSlideCat}>
+              <Link
+                className={styles.catLink}
+                to={`/categories/${el.id}`}
+                key={el.id}
+              >
+                <div className={styles.categoriesPageBlockDiv}>
+                  <img
+                    className={styles.categoriesPageBlockImg}
+                    src={"http://localhost:3333" + el.image}
+                    alt={el.title}
+                  />
+                  <p className={styles.categoriesPageBlocksP}>{el.title}</p>
+                </div>
+              </Link>
+            </SwiperSlide>
           ))}
-      </div>
+      </Swiper>
     </div>
   );
 }

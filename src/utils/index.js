@@ -1,6 +1,11 @@
-export { green, black, white, gray };
-
-const green = "#339933";
-const black = "#282828";
-const white = "#ffffff";
-const gray = "#8B8B8B";
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.gray = exports.white = exports.black = exports.green = void 0;
+var green = "#339933";
+exports.green = green;
+var black = "#282828";
+exports.black = black;
+var white = "#ffffff";
+exports.white = white;
+var gray = "#8B8B8B";
+exports.gray = gray;

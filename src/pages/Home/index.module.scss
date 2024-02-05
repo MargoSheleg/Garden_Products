@@ -3,6 +3,8 @@
 @include noStyles;
 
 .home {
+  height: 100%;
+  position: relative;
   .amazingDiscountsDiv {
     background-image: url(../../assets/images/gardenerAtWork.svg);
     background-size: auto 100vh;
@@ -38,10 +40,14 @@
     }
 
     .categoriesFiveBlocks {
-      display: flex;
-      justify-content: space-between;
-      padding: 4% 0 4% 0;
-      gap: 4vh;
+      margin: 0 15vw 0 15vw;
+      padding: 0 10vw 0 10vw;
+
+      .swiperSlideCategories {
+        display: flex;
+        justify-content: center;
+        padding: 4vh;
+      }
 
       .link {
         text-decoration: none;
@@ -52,10 +58,10 @@
           display: flex;
           flex-direction: column;
           gap: 2vh;
-
+          padding: 0 0 4vh 0;
           .categoriesBlocksImg {
             position: relative;
-            max-width: 310px;
+            width: 50vh;
             height: 100%;
 
             border-radius: 6px 6px 0 0;
@@ -136,11 +142,14 @@
     padding: 4vh;
   }
 
-  .duscountedProdFour {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    margin: 0 4vh 0 4vh;
-    gap: 4vh;
+  .discountedProdFourSwiper {
+    display: flex;
+    justify-content: center;
+    margin: 0 15vw 0 15vw;
+    padding: 0 10vw 0 10vw;
+    .saleProdSwiperSlide {
+      padding: 0 22vh 0 22vh;
+    }
   }
 }
 

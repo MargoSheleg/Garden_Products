@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { black, green, white } from "../../utils/index";
 import styles from "./index.module.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,6 +12,15 @@ function ProductCard({ el }) {
   const navigate = useNavigate();
   const [display, setDisplay] = useState("none");
   const [backGroundColor, setBackGroundColor] = useState(green);
+
+  useEffect(() => {
+    if (cart.includes(el)) {
+      setAddToCartBtn("Added");
+      setBackGroundColor(white);
+      changeBtnTextColor(black);
+      addBorder("2px solid #8b8b8b");
+    }
+  }, []);
 
   const [border, addBorder] = useState("none");
   const [btnTextColor, changeBtnTextColor] = useState(white);
