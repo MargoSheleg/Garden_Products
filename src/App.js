@@ -17,17 +17,13 @@ import { fetchAllCategories } from "./store/slices/categorySlice";
 import {
   getCartFromLocalStorage,
   saveCartAtLocalStorage,
+  addQuantityKeyToCart,
 } from "./store/slices/cartSlice";
+import { getOnlyDiscountedProducts } from "./store/slices/productSlice";
 
 function App() {
   let cart = useSelector((state) => state.cart.cart);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchAllProducts());
-    dispatch(fetchAllCategories());
-  }, []);
-
   const productsList = useSelector(
     (store) => store.products.productsFromServer
   );
@@ -36,74 +32,39 @@ function App() {
     (store) => store.categories.categoriesFromServer
   );
 
-  const categoriesStatus = useSelector((store) => store.categories.status);
-
-  const [display, setDisplay] = useState("none");
-
-  const [fromVal, setFromVal] = useState("");
-  const [toVal, setToVal] = useState("");
-  const [isDiscounted, setIsDiscounted] = useState(false);
-
-  const filteredProducts = productsList.filter((el) => {
-    if (fromVal && toVal) {
-      return el.price >= fromVal && el.price <= toVal;
-    } else if (fromVal) {
-      return el.price >= fromVal;
-    } else if (toVal) {
-      return el.price <= toVal;
-    } else {
-      return true;
-    }
-  });
-
-  const onlyDiscountedProducts = filteredProducts.filter((el) => {
-    return el.discont_price !== null;
-  });
-
-  function compareByDateDescending(a, b) {
-    const dateA = Date.parse(a.createdAt);
-    const dateB = Date.parse(b.createdAt);
-
-    return dateB - dateA;
-  }
-
   useEffect(() => {
+    dispatch(fetchAllProducts());
+    dispatch(fetchAllCategories());
+    dispatch(getOnlyDiscountedProducts());
     if (
       !localStorage.getItem("cart") !== null &&
       !localStorage.getItem("cart") !== undefined
-    )
+    ) {
       dispatch(getCartFromLocalStorage());
+    }
   }, []);
 
   useEffect(() => {
+    // if (!cart.some((item) => "quantity" in item)) {
+    //   dispatch(addQuantityKeyToCart());
+    // }
     dispatch(saveCartAtLocalStorage());
   }, [cart]);
+
+  const [display, setDisplay] = useState("none");
 
   return (
     <>
       <Header display={display} setDisplay={setDisplay} />
 
       <Routes>
-        <Route
-          path="/"
-          element={<Home onlyDiscountedProducts={onlyDiscountedProducts} />}
-        />
+        <Route path="/" element={<Home />} />
 
         <Route path="/categories" element={<Categories />} />
 
-        <Route
-          path="/allproducts"
-          element={
-            <AllProducts compareByDateDescending={compareByDateDescending} />
-          }
-        />
+        <Route path="/allproducts" element={<AllProducts />} />
 
-        <Route
-          path="/allsales"
-          element={
-            <AllSales compareByDateDescending={compareByDateDescending} />
-          }
-        />
+        <Route path="/allsales" element={<AllSales />} />
 
         <Route
           path="/cart"
@@ -118,11 +79,7 @@ function App() {
               key={el.id}
               path={`/categories/${el.id}`}
               element={
-                <OneCategory
-                  productCategory={el.title}
-                  categoryId={el.id}
-                  compareByDateDescending={compareByDateDescending}
-                />
+                <OneCategory productCategory={el.title} categoryId={el.id} />
               }
             />
           ))}

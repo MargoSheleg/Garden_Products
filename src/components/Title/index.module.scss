@@ -6,7 +6,12 @@ h2 {
   @include w700s64cBlack;
 }
 
-@media (max-width: 400) {
+@media (max-width: 400px) {
+  h2 {
+    font: {
+      size: 30px;
+    }
+  }
 }
 @media (max-width: 768) {
 }

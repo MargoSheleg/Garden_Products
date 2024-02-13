@@ -25,7 +25,8 @@
 
     .checkOutBtn {
       @include stylesForGreenBtn;
-      padding: 1% 4% 1% 4%;
+      padding: 2vh 4vh;
+      white-space: nowrap;
     }
   }
 
@@ -161,7 +162,7 @@
   margin: 2vh;
 }
 
-@media (max-width: 400) {
+@media (max-width: 400px) {
 }
 @media (max-width: 768) {
 }

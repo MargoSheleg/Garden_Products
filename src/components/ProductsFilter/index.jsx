@@ -1,30 +1,27 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { assignFromVal, assignToVal } from "../../store/slices/filterSlice";
+import { useDispatch } from "react-redux";
+import {
+  changeIsDiscounted,
+  changeShowByDefault,
+  changeShowHighLow,
+  changeShowLowHigh,
+} from "../../store/slices/filterSlice";
 import styles from "./index.module.css";
 import downPointingTriange from "../../assets/images/downPointingTriange.svg";
 
-function ProductsFilter({
-  isDiscounted,
-  setIsDiscounted,
-  fromVal,
-  setFromVal,
-  toVal,
-  setToVal,
-  displayCheckBox,
+function ProductsFilter({ displayCheckBox }) {
+  const fromVal = useSelector((store) => store.filter.fromVal);
+  const toVal = useSelector((store) => store.filter.toVal);
+  const isDiscounted = useSelector((store) => store.filter.isDiscounted);
+  const dispatch = useDispatch();
 
-  showByDefault,
-  setShowByDefault,
-  showNewest,
-  setShowNewest,
-  showHighLow,
-  setShowHighLow,
-  showLowHigh,
-  setShowLowHigh,
-}) {
   function showOnlyDiscountedItems() {
     if (isDiscounted === false) {
-      setIsDiscounted(true);
+      dispatch(changeIsDiscounted(true));
     } else {
-      setIsDiscounted(false);
+      dispatch(changeIsDiscounted(false));
     }
   }
 
@@ -38,49 +35,31 @@ function ProductsFilter({
   }
 
   const [colorOfBydefault, setColorOfBydefault] = useState("#282828");
-  const [colorOfNewest, setColorOfNewest] = useState("#8B8B8B");
   const [colorOfPriceHighLow, setColorOfPriceHighLow] = useState("#8B8B8B");
   const [colorOfPriceLowHigh, setColorOfPriceLowHigh] = useState("#8B8B8B");
+
   function changeColorBydefault() {
     setFilterBy("by default");
     setColorOfBydefault("#282828");
 
-    setColorOfNewest("#8B8B8B");
     setColorOfPriceHighLow("#8B8B8B");
     setColorOfPriceLowHigh("#8B8B8B");
 
-    setShowByDefault(true);
-    setShowNewest(false);
-    setShowHighLow(false);
-    setShowLowHigh(false);
-  }
-
-  function changeColorNewest() {
-    setFilterBy("newest");
-    setColorOfNewest("#282828");
-
-    setColorOfBydefault("#8B8B8B");
-    setColorOfPriceHighLow("#8B8B8B");
-    setColorOfPriceLowHigh("#8B8B8B");
-
-    setShowByDefault(false);
-    setShowNewest(true);
-    setShowHighLow(false);
-    setShowLowHigh(false);
+    dispatch(changeShowByDefault(true));
+    dispatch(changeShowHighLow(false));
+    dispatch(changeShowLowHigh(false));
   }
 
   function changeColorPriceHighLow() {
     setFilterBy("price: high-low");
     setColorOfPriceHighLow("#282828");
 
-    setColorOfNewest("#8B8B8B");
     setColorOfBydefault("#8B8B8B");
     setColorOfPriceLowHigh("#8B8B8B");
 
-    setShowByDefault(false);
-    setShowNewest(false);
-    setShowHighLow(true);
-    setShowLowHigh(false);
+    dispatch(changeShowByDefault(false));
+    dispatch(changeShowHighLow(true));
+    dispatch(changeShowLowHigh(false));
   }
 
   function changeColorPriceLowHigh() {
@@ -88,32 +67,32 @@ function ProductsFilter({
     setColorOfPriceLowHigh("#282828");
 
     setColorOfPriceHighLow("#8B8B8B");
-    setColorOfNewest("#8B8B8B");
     setColorOfBydefault("#8B8B8B");
 
-    setShowByDefault(false);
-    setShowNewest(false);
-    setShowHighLow(false);
-    setShowLowHigh(true);
+    dispatch(changeShowByDefault(false));
+    dispatch(changeShowHighLow(false));
+    dispatch(changeShowLowHigh(true));
   }
 
   return (
     <div className={styles.filterProducts}>
-      <label>Price</label>
-      <input
-        type="number"
-        placeholder="from"
-        className={styles.inputFilter}
-        value={fromVal}
-        onChange={(event) => setFromVal(event.target.value)}
-      />
-      <input
-        type="number"
-        placeholder="to"
-        className={styles.inputFilter}
-        value={toVal}
-        onChange={(event) => setToVal(event.target.value)}
-      />
+      <div className={styles.priceDiv}>
+        <label>Price</label>
+        <input
+          type="number"
+          placeholder="from"
+          className={styles.inputFilter}
+          value={fromVal === 0 ? "" : fromVal}
+          onChange={(event) => dispatch(assignFromVal(event.target.value))}
+        />
+        <input
+          type="number"
+          placeholder="to"
+          className={styles.inputFilter}
+          value={toVal === 0 ? "" : toVal}
+          onChange={(event) => dispatch(assignToVal(event.target.value))}
+        />
+      </div>
 
       <div className={styles.checkboxDiv} style={{ display: displayCheckBox }}>
         <label className={styles.discountedItems}>Discounted items</label>
@@ -124,8 +103,8 @@ function ProductsFilter({
         />
       </div>
 
-      <label>Sorted</label>
       <div className={styles.btnScrollDownDiv}>
+        <label>Sorted</label>
         <button
           className={styles.filterBtn}
           onClick={() =>
@@ -146,13 +125,6 @@ function ProductsFilter({
             style={{ color: colorOfBydefault }}
           >
             by default
-          </button>
-          <button
-            className={styles.newest}
-            onClick={() => changeColorNewest()}
-            style={{ color: colorOfNewest }}
-          >
-            newest
           </button>
           <button
             className={styles.priceHighLow}

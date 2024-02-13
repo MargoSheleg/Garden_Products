@@ -28,6 +28,10 @@ export const cartSlice = createSlice({
     saveCartAtLocalStorage(state) {
       localStorage.setItem("cart", JSON.stringify(state.cart));
     },
+
+    addQuantityKeyToCart(state) {
+      state.cart = state.cart.map((el) => ({ ...el, quantity: 1 }));
+    },
   },
 });
 
@@ -37,5 +41,6 @@ export const {
   removeFromCart,
   getCartFromLocalStorage,
   saveCartAtLocalStorage,
+  addQuantityKeyToCart,
 } = cartSlice.actions;
 export default cartSlice.reducer;

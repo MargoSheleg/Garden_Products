@@ -3,51 +3,36 @@ import Error from "../../components/Error";
 import Title from "../../components/Title/index";
 import ProducstFilter from "../../components/ProductsFilter";
 import ProductCard from "../../components/ProductCard";
-import { useState, useEffect } from "react";
+import {
+  makeOnlyDiscountedProductsArray,
+  filterProductsByFromvalToval,
+} from "../../helpers";
 import { black } from "../../utils/index";
 import styles from "./index.module.css";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchAllProducts } from "../../store/slices/productSlice";
+import { useSelector } from "react-redux";
 import Loading from "../../components/Loading";
 
-function AllProducts({ compareByDateDescending }) {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchAllProducts());
-  }, []);
-
+function AllProducts() {
+  const statusOfProduct = useSelector((store) => store.products.status);
   const productsList = useSelector(
     (store) => store.products.productsFromServer
   );
 
-  const [fromVal, setFromVal] = useState("");
-  const [toVal, setToVal] = useState("");
-  const [isDiscounted, setIsDiscounted] = useState(false);
+  const fromVal = useSelector((store) => store.filter.fromVal);
+  const toVal = useSelector((store) => store.filter.toVal);
+  const isDiscounted = useSelector((store) => store.filter.isDiscounted);
+  const showByDefault = useSelector((store) => store.filter.showByDefault);
+  const showHighLow = useSelector((store) => store.filter.showHighLow);
+  const showLowHigh = useSelector((store) => store.filter.showLowHigh);
 
-  const [showByDefault, setShowByDefault] = useState(true);
-  const [showNewest, setShowNewest] = useState(false);
-  const [showHighLow, setShowHighLow] = useState(false);
-  const [showLowHigh, setShowLowHigh] = useState(false);
+  const filteredProducts = filterProductsByFromvalToval(
+    productsList,
+    fromVal,
+    toVal
+  );
+  const onlyDiscountedProducts =
+    makeOnlyDiscountedProductsArray(filteredProducts);
 
-  const filteredProducts = productsList.filter((el) => {
-    if (fromVal && toVal) {
-      return el.price >= fromVal && el.price <= toVal;
-    } else if (fromVal) {
-      return el.price >= fromVal;
-    } else if (toVal) {
-      return el.price <= toVal;
-    } else {
-      return true;
-    }
-  });
-
-  const onlyDiscountedProducts = filteredProducts.filter((el) => {
-    return el.discont_price !== null;
-  });
-
-  const statusOfProduct = useSelector((store) => store.products.status);
-  console.log(statusOfProduct);
   return (
     <div className={styles.allProductsPage}>
       <NavButtons
@@ -57,23 +42,7 @@ function AllProducts({ compareByDateDescending }) {
       />
       <Title title={"All products"} />
 
-      <ProducstFilter
-        isDiscounted={isDiscounted}
-        setIsDiscounted={setIsDiscounted}
-        fromVal={fromVal}
-        setFromVal={setFromVal}
-        toVal={toVal}
-        setToVal={setToVal}
-        displayCheckBox={"flex"}
-        showByDefault={showByDefault}
-        setShowByDefault={setShowByDefault}
-        showNewest={showNewest}
-        setShowNewest={setShowNewest}
-        showHighLow={showHighLow}
-        setShowHighLow={setShowHighLow}
-        showLowHigh={showLowHigh}
-        setShowLowHigh={setShowLowHigh}
-      />
+      <ProducstFilter displayCheckBox={"flex"} />
 
       <div className={styles.productsBlock}>
         {statusOfProduct === "fulfilled" &&
@@ -82,10 +51,6 @@ function AllProducts({ compareByDateDescending }) {
                 onlyDiscountedProducts.map((el) => (
                   <ProductCard key={el.id} el={el} />
                 ))) ||
-              (showNewest &&
-                onlyDiscountedProducts
-                  .sort(compareByDateDescending)
-                  .map((el) => <ProductCard key={el.id} el={el} />)) ||
               (showHighLow &&
                 onlyDiscountedProducts
                   .sort(function (a, b) {
@@ -136,10 +101,6 @@ function AllProducts({ compareByDateDescending }) {
                 filteredProducts.map((el) => (
                   <ProductCard key={el.id} el={el} />
                 ))) ||
-              (showNewest &&
-                filteredProducts
-                  .sort(compareByDateDescending)
-                  .map((el) => <ProductCard key={el.id} el={el} />)) ||
               (showHighLow &&
                 filteredProducts
                   .sort(function (a, b) {

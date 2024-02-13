@@ -15,8 +15,15 @@ export const productSlice = createSlice({
   initialState: {
     productsFromServer: [],
     status: "",
+    onlyDiscountedProducts: [],
   },
-  reducers: {},
+  reducers: {
+    getOnlyDiscountedProducts(state) {
+      state.productsFromServer.filter((el) => {
+        return el.discont_price !== null;
+      });
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchAllProducts.fulfilled, (state, action) => {
@@ -32,4 +39,5 @@ export const productSlice = createSlice({
   },
 });
 
+export const { getOnlyDiscountedProducts } = productSlice.actions;
 export default productSlice.reducer;

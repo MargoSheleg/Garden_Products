@@ -19,16 +19,15 @@
 .oneProduct .oneProductDiv {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1.5fr 1fr;
+  -ms-grid-columns: 1.5fr 4vh 1fr;
   grid-template-columns: 1.5fr 1fr;
+  gap: 4vh;
   justify-items: center;
   max-height: 80vh;
   overflow: hidden;
 }
 .oneProduct .oneProductDiv .oneProductImg {
-  height: 100%;
-  width: auto;
-  border-radius: 9px;
+  border-radius: 9px 0 0 9px;
 }
 
 .titleOfTheProduct {

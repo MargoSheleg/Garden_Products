@@ -23,6 +23,15 @@
   max-height: 5vh;
 }
 
+.priceDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  gap: 2vh;
+}
+
 .inputFilter,
 .checkbox {
   padding: 0.5vh;
@@ -36,7 +45,7 @@
 
 .filterBtn {
   margin: 0 2vh 0 2vh;
-  padding: 0.5vh 1vh 0.5vh 1vh;
+  padding: 2vh 2vh;
   background-color: transparent;
   border: solid #dddddd 1px;
   border-radius: 6px;
@@ -115,12 +124,19 @@ input[type=checkbox]:hover {
 
 .btnScrollDownDiv {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  gap: 2vh;
 }
 
 .scrollDown {
   padding: 0.5vh 0 0.5vh 0;
   position: absolute;
-  left: 12%;
+  left: 40%;
+  top: 5vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -144,4 +160,48 @@ input[type=checkbox]:hover {
   border: none;
   background-color: transparent;
   cursor: pointer;
+}
+
+@media (max-width: 400px) {
+  .filterProducts {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
+    -ms-grid-rows: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    max-height: none;
+    white-space: nowrap;
+  }
+  .filterProducts > *:nth-child(1) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+  }
+  .filterProducts > *:nth-child(2) {
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+  }
+  .filterProducts > *:nth-child(3) {
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+  }
+  .scrollDown {
+    left: 56%;
+    top: 100%;
+  }
+  .checkboxDiv {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    gap: 2vh;
+  }
+  .btnScrollDownDiv {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    gap: 2vh;
+  }
 }

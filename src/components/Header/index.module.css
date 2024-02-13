@@ -16,14 +16,15 @@ header {
       -ms-flex-align: center;
           align-items: center;
   padding: 4vh;
+  width: 100%;
+  white-space: nowrap;
 }
 header nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   gap: 4vh;
 }
 header .cartLogoDiv {
@@ -59,4 +60,20 @@ header .cartLogoDiv .itemQuantity {
   font-weight: 500;
   font-size: 20px;
   color: #282828;
+}
+
+@media (max-width: 400px) {
+  header {
+    padding: 2vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .Link {
+    font-size: 14px;
+    white-space: nowrap;
+  }
 }

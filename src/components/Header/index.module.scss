@@ -7,10 +7,12 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 4vh;
+  width: 100%;
+  white-space: nowrap;
 
   nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     gap: 4vh;
   }
 
@@ -43,13 +45,22 @@ header {
   @include w500s20cBlack;
 }
 
-@media (max-width: 400) {
+@media (max-width: 400px) {
+  header {
+    padding: 2vh;
+    display: flex;
+    justify-content: space-between;
+  }
+  .Link {
+    font-size: 14px;
+    white-space: nowrap;
+  }
 }
-@media (max-width: 768) {
+@media (max-width: 768px) {
 }
-@media (max-width: 1024) {
+@media (max-width: 1024px) {
 }
-@media (max-width: 1440) {
+@media (max-width: 1440px) {
 }
-@media (max-width: 1920) {
+@media (max-width: 1920px) {
 }

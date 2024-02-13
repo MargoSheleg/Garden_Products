@@ -16,13 +16,22 @@
   }
 }
 
-@media (max-width: 400) {
+@media (max-width: 400px) {
+  .allProductsPage {
+    padding: 2vh 2vh 3vh 2vh;
+    .productsBlock {
+      display: grid;
+      grid-template-columns: 0.7fr 0.7fr;
+      gap: 2vh;
+      padding: 2vh 0 2vh 0;
+    }
+  }
 }
-@media (max-width: 768) {
-}
-@media (max-width: 1024) {
-}
-@media (max-width: 1440) {
-}
-@media (max-width: 1920) {
-}
+// @media (max-width: 768px) {
+// }
+// @media (max-width: 1024px) {
+// }
+// @media (max-width: 1440px) {
+// }
+// @media (max-width: 1920px) {
+// }

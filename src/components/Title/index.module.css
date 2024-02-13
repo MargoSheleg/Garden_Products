@@ -11,3 +11,9 @@ h2 {
   font-size: 64px;
   color: #282828;
 }
+
+@media (max-width: 400px) {
+  h2 {
+    font-size: 30px;
+  }
+}

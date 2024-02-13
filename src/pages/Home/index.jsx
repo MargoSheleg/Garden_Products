@@ -1,21 +1,25 @@
 import NavButton from "../../components/NavButton";
 import Title from "../../components/Title/index";
 import ProductCard from "../../components/ProductCard";
+import Loading from "../../components/Loading";
+import Error from "../../components/Error";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./index.module.css";
 import { green, black, white } from "../../utils/index";
 import handsRegistr from "../../assets/images/handsRegistr.svg";
-import { UseSelector, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchAllCategories } from "../../store/slices/categorySlice";
 
-import React, { useRef } from "react";
+import { Link as LinkScroll, animateScroll as scroll } from "react-scroll";
+
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 
-function Home({ onlyDiscountedProducts }) {
+function Home() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchAllCategories());
@@ -76,9 +80,11 @@ function Home({ onlyDiscountedProducts }) {
     }
   }
 
-  const categoryStatus = useSelector((store) => store.categories.status);
-
-  // const productStatus = useSelector((store) => store.categories.status);
+  const statusOfCategories = useSelector((store) => store.categories.status);
+  const statusOfProducts = useSelector((store) => store.categories.status);
+  const onlyDiscountedProducts = useSelector(
+    (store) => store.products.onlyDiscountedProducts
+  );
 
   return (
     <div className={styles.home}>
@@ -87,14 +93,23 @@ function Home({ onlyDiscountedProducts }) {
           Amazing Discounts
           <br /> on Garden Products!
         </h1>
-        <button
-          className={styles.checkOutBtn}
-          onMouseEnter={() => changeColorOfBtnBlackAndGreen(black)}
-          onMouseLeave={() => changeColorOfBtnBlackAndGreen(green)}
-          style={{ backgroundColor: btnColorGreen }}
+        <LinkScroll
+          activeClass="active"
+          to="prodForSale"
+          spy={true}
+          smooth={true}
+          offset={-70}
+          duration={500}
         >
-          Check out
-        </button>
+          <button
+            className={styles.checkOutBtn}
+            onMouseEnter={() => changeColorOfBtnBlackAndGreen(black)}
+            onMouseLeave={() => changeColorOfBtnBlackAndGreen(green)}
+            style={{ backgroundColor: btnColorGreen }}
+          >
+            Check out
+          </button>
+        </LinkScroll>
       </div>
 
       <div className={styles.categories}>
@@ -107,31 +122,34 @@ function Home({ onlyDiscountedProducts }) {
             linkTo={"/categories"}
           />
         </div>
-        <Swiper
-          navigation={true}
-          modules={[Navigation]}
-          className={styles.categoriesFiveBlocks}
-        >
-          {categoriesList &&
-            categoriesList.map((el) => (
-              <SwiperSlide className={styles.swiperSlideCategories}>
-                <Link
-                  className={styles.link}
-                  to={`/categories/${el.id}`}
+        {statusOfCategories === "fulfilled" && (
+          <Swiper
+            navigation={true}
+            modules={[Navigation]}
+            className={styles.categoriesFiveBlocks}
+          >
+            {categoriesList &&
+              categoriesList.map((el) => (
+                <SwiperSlide
+                  className={styles.swiperSlideCategories}
                   key={el.id}
                 >
-                  <div className={styles.categoriesBlockDiv}>
-                    <img
-                      className={styles.categoriesBlocksImg}
-                      src={"http://localhost:3333" + el.image}
-                      alt={el.title}
-                    />
-                    <p className={styles.categoriesBlocksP}>{el.title}</p>
-                  </div>
-                </Link>
-              </SwiperSlide>
-            ))}
-        </Swiper>
+                  <Link className={styles.link} to={`/categories/${el.id}`}>
+                    <div className={styles.categoriesBlockDiv}>
+                      <img
+                        className={styles.categoriesBlocksImg}
+                        src={"http://localhost:3333" + el.image}
+                        alt={el.title}
+                      />
+                      <p className={styles.categoriesBlocksP}>{el.title}</p>
+                    </div>
+                  </Link>
+                </SwiperSlide>
+              ))}
+          </Swiper>
+        )}
+        {statusOfCategories === "pending" && <Loading />}
+        {statusOfCategories === "rejected" && <Error />}
       </div>
 
       <div className={styles.discount}>
@@ -184,17 +202,22 @@ function Home({ onlyDiscountedProducts }) {
         <NavButton title={"All sales"} linkTo={"/allsales"} />
       </div>
 
-      <Swiper
-        navigation={true}
-        modules={[Navigation]}
-        className={styles.discountedProdFourSwiper}
-      >
-        {onlyDiscountedProducts.slice(0, 4).map((el) => (
-          <SwiperSlide className={styles.saleProdSwiperSlide}>
-            <ProductCard key={el.id} el={el} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      {statusOfProducts === "fulfilled" && (
+        <Swiper
+          name="prodForSale"
+          navigation={true}
+          modules={[Navigation]}
+          className={styles.discountedProdFourSwiper}
+        >
+          {onlyDiscountedProducts.slice(0, 4).map((el) => (
+            <SwiperSlide className={styles.saleProdSwiperSlide} key={el.id}>
+              <ProductCard key={el.id} el={el} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      )}
+      {statusOfProducts === "pending" && <Loading />}
+      {statusOfProducts === "rejected" && <Error />}
     </div>
   );
 }

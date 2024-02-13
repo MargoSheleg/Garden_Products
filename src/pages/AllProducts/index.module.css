@@ -20,3 +20,17 @@
   gap: 4vh;
   padding: 4vh 0 4vh 0;
 }
+
+@media (max-width: 400px) {
+  .allProductsPage {
+    padding: 2vh 2vh 3vh 2vh;
+  }
+  .allProductsPage .productsBlock {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 0.7fr 2vh 0.7fr;
+    grid-template-columns: 0.7fr 0.7fr;
+    gap: 2vh;
+    padding: 2vh 0 2vh 0;
+  }
+}

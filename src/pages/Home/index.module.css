@@ -45,7 +45,8 @@
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  padding: 1% 4% 1% 4%;
+  padding: 2vh 4vh;
+  white-space: nowrap;
 }
 .home .categories {
   padding: 7vh 4vh 5vh 4vh;

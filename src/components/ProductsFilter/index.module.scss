@@ -13,6 +13,12 @@
   max-height: 5vh;
 }
 
+.priceDiv {
+  display: flex;
+  justify-content: space-around;
+  gap: 2vh;
+}
+
 .inputFilter,
 .checkbox {
   padding: 0.5vh;
@@ -28,7 +34,7 @@
 
 .filterBtn {
   margin: 0 2vh 0 2vh;
-  padding: 0.5vh 1vh 0.5vh 1vh;
+  padding: 2vh 2vh;
   background-color: transparent;
   border: solid $thisGrayColor 1px;
   border-radius: 6px;
@@ -92,13 +98,18 @@ input[type="checkbox"]:hover {
 
 .btnScrollDownDiv {
   position: relative;
+  display: flex;
+  justify-content: space-around;
+  gap: 2vh;
 }
 
 .scrollDown {
   padding: 0.5vh 0 0.5vh 0;
 
   position: absolute;
-  left: 12%;
+  left: 40%;
+  top: 5vh;
+
   display: flex;
   flex-direction: column;
   gap: 0.5vh;
@@ -122,7 +133,30 @@ input[type="checkbox"]:hover {
   cursor: pointer;
 }
 
-@media (max-width: 400) {
+@media (max-width: 400px) {
+  .filterProducts {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    max-height: none;
+    white-space: nowrap;
+  }
+
+  .scrollDown {
+    left: 56%;
+    top: 100%;
+  }
+
+  .checkboxDiv {
+    display: flex;
+    justify-content: flex-start;
+    gap: 2vh;
+  }
+
+  .btnScrollDownDiv {
+    justify-content: flex-start;
+    gap: 2vh;
+  }
 }
 @media (max-width: 768) {
 }
